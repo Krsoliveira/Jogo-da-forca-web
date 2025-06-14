@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jogo da Forca</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+    <div id="container-principal">
+        <h1>Jogo da Forca</h1>
+        
+        <div class="container-jogo">
+            <div id="area-forca">
+                <svg height="400" width="300" class="figura-container" viewBox="0 0 300 400">
+                    <rect x="40" y="350" width="220" height="20" class="forca-estrutura" /> <rect x="90" y="50" width="20" height="300" class="forca-estrutura" /> <rect x="90" y="50" width="120" height="20" class="forca-estrutura" /> <line x1="140" y1="50" x2="100" y2="90" class="forca-estrutura" />  <line x1="200" y1="50" x2="200" y2="100" class="forca-corda" />    <circle cx="200" cy="125" r="25" class="figura-parte" /> <line x1="200" y1="150" x2="200" y2="250" class="figura-parte" /> <line x1="200" y1="175" x2="150" y2="225" class="figura-parte" /> <line x1="200" y1="175" x2="250" y2="225" class="figura-parte" /> <line x1="200" y1="250" x2="150" y2="300" class.="figura-parte" /> <line x1="200" y1="250" x2="250" y2="300" class="figura-parte" /> </svg>
+            </div>
+
+            <div class="controles-jogo">
+                <div id="palavra-secreta"><p></p></div>
+                <div id="area-dicas">
+                    <h3>Dicas</h3>
+                    <p id="dica1"></p>
+                    <p id="dica2"></p>
+                </div>
+            </div>
+        </div>
+
+        <div id="container-teclado">
+            <p>Tentativas restantes: <span id="tentativas-restantes"></span></p>
+            <div id="teclado"></div>
+            <p id="letras-usadas">Letras usadas: </p>
+        </div>
+    </div>
+    
+    <div id="modal-container" class="hidden">
+        <div class="modal">
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-mensagem"></p>
+            <button id="btn-jogar-novamente">Jogar Novamente</button>
+        </div>
+    </div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
