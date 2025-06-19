@@ -1,7 +1,7 @@
-# app.py (versão com níveis de dificuldade)
+# app.py (versão com cache busting automático)
 
 from flask import Flask, render_template, jsonify, session, request
-import random
+import random # Importamos a biblioteca random
 
 try:
     from palavras import PALAVRAS_POR_CATEGORIA
@@ -10,9 +10,8 @@ except ImportError:
     exit()
 
 app = Flask(__name__)
-app.secret_key = 'dificuldades-exigem-chaves-mais-fortes'
+app.secret_key = 'uma-chave-secreta-finalmente-a-funcionar'
 
-# <<< NOVO >>>: Dicionário para configurar os níveis de dificuldade.
 DIFICULDADE_CONFIG = {
     "facil": 8,
     "medio": 6,
@@ -23,7 +22,10 @@ DIFICULDADE_CONFIG = {
 
 @app.route('/')
 def pagina_inicial():
-    version = random.randint(1, 10000)
+    # <<< MUDANÇA CRÍTICA >>>
+    # Gera um número aleatório para adicionar ao final dos links CSS e JS.
+    # Isto força o navegador do utilizador a descarregar sempre os ficheiros mais recentes.
+    version = random.randint(1, 100000)
     return render_template('index.html', version=version)
 
 @app.route('/categorias')
@@ -33,9 +35,8 @@ def get_categorias():
 
 @app.route('/novo_jogo')
 def novo_jogo():
-    # <<< MUDANÇA >>>: Recebe a categoria E a dificuldade.
     categoria_escolhida = request.args.get('category')
-    dificuldade_escolhida = request.args.get('difficulty', 'medio') # 'medio' como padrão
+    dificuldade_escolhida = request.args.get('difficulty', 'medio')
 
     if not categoria_escolhida or categoria_escolhida not in PALAVRAS_POR_CATEGORIA:
         return jsonify({"erro": "Categoria inválida"}), 400
@@ -57,7 +58,6 @@ def novo_jogo():
 
     palavra_sorteada = palavras_disponiveis_categoria.pop()
     
-    # <<< MUDANÇA >>>: Define o número máximo de erros na sessão com base na dificuldade.
     max_erros = DIFICULDADE_CONFIG.get(dificuldade_escolhida, 6)
     session['max_erros'] = max_erros
     
@@ -72,14 +72,13 @@ def novo_jogo():
     return jsonify({
         'palavra_oculta': palavra_oculta,
         'dicas': dicas,
-        'tentativas_restantes': max_erros, # Envia o número correto de tentativas
+        'tentativas_restantes': max_erros,
         'erros': 0,
         'letras_tentadas': [],
         'fim_de_jogo': False
     })
 
 def processar_jogada(erros):
-    """Função auxiliar para evitar repetição de código em /tentativa e /chute."""
     palavra_correta = session.get("palavra")
     letras_tentadas = session.get("letras_tentadas", [])
     max_erros = session.get("max_erros", 6)
@@ -136,7 +135,6 @@ def chute():
     if chute_palavra != session.get("palavra"):
         erros += 1
     else:
-        # Se acertou, preenche as letras tentadas para a lógica de vitória funcionar
         session["letras_tentadas"] = list(set(list(session.get("palavra"))))
 
     return processar_jogada(erros)
