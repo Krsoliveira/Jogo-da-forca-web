@@ -3,48 +3,66 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Jogo da Forca</title>
+    <title>Jogo da Forca Neon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v={{ version }}">
 </head>
 <body>
 
     <div id="container-principal">
-        <h1>Jogo da Forca</h1>
-        
-        <div class="container-jogo">
-            <div id="area-forca">
-                <svg height="400" width="300" class="figura-container" viewBox="0 0 300 400">
-                    <rect x="40" y="350" width="220" height="20" class="forca-estrutura" /> <rect x="90" y="50" width="20" height="300" class="forca-estrutura" /> <rect x="90" y="50" width="120" height="20" class="forca-estrutura" /> <line x1="140" y1="50" x2="100" y2="90" class="forca-estrutura" />  <line x1="200" y1="50" x2="200" y2="100" class="forca-corda" />    <circle cx="200" cy="125" r="25" class="figura-parte" /> <line x1="200" y1="150" x2="200" y2="250" class="figura-parte" /> <line x1="200" y1="175" x2="150" y2="225" class="figura-parte" /> <line x1="200" y1="175" x2="250" y2="225" class="figura-parte" /> <line x1="200" y1="250" x2="150" y2="300" class.="figura-parte" /> <line x1="200" y1="250" x2="250" y2="300" class="figura-parte" /> </svg>
-            </div>
-
-            <div class="controles-jogo">
-                <div id="palavra-secreta"><p></p></div>
-                <div id="area-dicas">
-                    <h3>Dicas</h3>
-                    <p id="dica1"></p>
-                    <p id="dica2"></p>
+        <header><h1>Jogo da Forca</h1></header>
+        <main>
+            <div id="container-selecao-dificuldade">
+                <h2>Nível de Dificuldade</h2>
+                <div id="botoes-dificuldade">
+                    <button class="btn-dificuldade" data-difficulty="facil">Fácil</button>
+                    <button class="btn-dificuldade" data-difficulty="medio">Médio</button>
+                    <button class="btn-dificuldade" data-difficulty="dificil">Difícil</button>
                 </div>
             </div>
-        </div>
-
-        <div id="container-teclado">
-            <p>Tentativas restantes: <span id="tentativas-restantes"></span></p>
-            <div id="teclado"></div>
-            <p id="letras-usadas">Letras usadas: </p>
-        </div>
+            <div id="container-selecao-categoria" class="hidden">
+                <h2>Escolha uma Categoria</h2>
+                <div id="botoes-categoria"><p>A carregar categorias...</p></div>
+                <button id="btn-voltar-dificuldade" class="btn-voltar">Voltar</button>
+            </div>
+            <div id="container-jogo-principal" class="hidden">
+                <div class="container-jogo">
+                    <div id="area-forca">
+                        <svg height="350" width="250" class="figura-container" viewBox="0 0 250 350">
+                            <rect x="20" y="330" width="210" height="20" class="forca-estrutura" /><rect x="60" y="20" width="20" height="310" class="forca-estrutura" /><rect x="60" y="20" width="120" height="20" class="forca-estrutura" /><line x1="100" y1="20" x2="70" y2="50" class="forca-estrutura" /><line x1="170" y1="20" x2="170" y2="70" class="forca-corda" /><circle cx="170" cy="95" r="25" class="figura-parte" /><line x1="170" y1="120" x2="170" y2="220" class="figura-parte" /><line x1="170" y1="145" x2="120" y2="195" class="figura-parte" /><line x1="170" y1="145" x2="220" y2="195" class="figura-parte" /><line x1="170" y1="220" x2="120" y2="270" class="figura-parte" /><line x1="170" y1="220" x2="220" y2="270" class="figura-parte" />
+                        </svg>
+                    </div>
+                    <div class="controles-jogo">
+                        <div id="palavra-secreta"><p>&#160;</p></div>
+                        <div id="area-dicas">
+                            <h3>Dicas</h3>
+                            <p id="dica1">&#160;</p><p id="dica2">&#160;</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="container-interacao">
+                    <div id="letras-usadas-container">Tentativas Restantes: <span id="tentativas-restantes"></span> | Letras Usadas: <span id="letras-usadas"></span></div>
+                    <div id="teclado"></div>
+                    <div id="container-chute">
+                        <input type="text" id="input-chute" placeholder="Arriscar a palavra..." autocomplete="off">
+                        <button id="btn-chutar">Chutar!</button>
+                    </div>
+                </div>
+            </div>
+        </main>
     </div>
     
-    <div id="modal-container" class="hidden">
+    <div id="modal-container">
         <div class="modal">
-            <h2 id="modal-titulo"></h2>
-            <p id="modal-mensagem"></p>
+            <h2 id="modal-titulo"></h2><p id="modal-mensagem"></p>
             <button id="btn-jogar-novamente">Jogar Novamente</button>
         </div>
     </div>
 
-    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+    <!-- O Log de Depuração foi completamente removido daqui -->
+
+    <script src="{{ url_for('static', filename='js/main.js') }}?v={{ version }}"></script>
 </body>
 </html>

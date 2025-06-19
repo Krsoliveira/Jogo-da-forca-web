@@ -1,108 +1,108 @@
-# app.py (versão com servidor de produção waitress)
+# app.py (versão com níveis de dificuldade)
 
 from flask import Flask, render_template, jsonify, session, request
 import random
-# A importação do 'os' não é mais necessária se não usarmos os caminhos absolutos,
-# mas mantê-la não prejudica em nada.
 
-# Tenta importar a lista de palavras do arquivo palavras.py
 try:
-    from palavras import PALAVRAS_COM_DICAS
+    from palavras import PALAVRAS_POR_CATEGORIA
 except ImportError:
-    print("ERRO CRÍTICO: Arquivo 'palavras.py' não encontrado ou está vazio.")
-    print("Certifique-se de que 'palavras.py' existe na mesma pasta e contém o dicionário 'PALAVRAS_COM_DICAS'.")
-    # Em um cenário real, poderíamos ter uma lista de palavras padrão aqui como fallback.
-    # Para este projeto, vamos encerrar se o arquivo principal não for encontrado.
+    print("ERRO CRÍTICO: Arquivo 'palavras.py' não encontrado ou com estrutura incorreta.")
     exit()
 
-# Configuração do Flask
 app = Flask(__name__)
-# Chave secreta para gerenciar a sessão de cada usuário de forma segura
-app.secret_key = 'uma-chave-secreta-muito-dificil-de-adivinhar'
+app.secret_key = 'dificuldades-exigem-chaves-mais-fortes'
 
-# Constantes do Jogo
-MAX_ERROS = 7
+# <<< NOVO >>>: Dicionário para configurar os níveis de dificuldade.
+DIFICULDADE_CONFIG = {
+    "facil": 8,
+    "medio": 6,
+    "dificil": 4
+}
 
-# Definição das Rotas (Endpoints da API)
+# --- ROTAS ---
 
 @app.route('/')
 def pagina_inicial():
-    """Serve a página principal do jogo."""
-    return render_template('index.html')
+    version = random.randint(1, 10000)
+    return render_template('index.html', version=version)
+
+@app.route('/categorias')
+def get_categorias():
+    categorias = list(PALAVRAS_POR_CATEGORIA.keys())
+    return jsonify(categorias)
 
 @app.route('/novo_jogo')
 def novo_jogo():
-    """Inicia uma nova rodada do jogo."""
-    # Se for o primeiro jogo do usuário nesta sessão, cria a lista de palavras disponíveis.
-    if 'palavras_disponiveis' not in session or not session['palavras_disponiveis']:
-        palavras_disponiveis = list(PALAVRAS_COM_DICAS.keys())
-        random.shuffle(palavras_disponiveis)
-        print("--- LISTA DE PALAVRAS EMBARALHADA PARA A SESSÃO ---")
-    else:
-        palavras_disponiveis = session.get('palavras_disponiveis')
+    # <<< MUDANÇA >>>: Recebe a categoria E a dificuldade.
+    categoria_escolhida = request.args.get('category')
+    dificuldade_escolhida = request.args.get('difficulty', 'medio') # 'medio' como padrão
 
-    # Retira a última palavra da lista embaralhada.
-    palavra_sorteada = palavras_disponiveis.pop()
+    if not categoria_escolhida or categoria_escolhida not in PALAVRAS_POR_CATEGORIA:
+        return jsonify({"erro": "Categoria inválida"}), 400
+
+    if 'palavras_disponiveis_por_categoria' not in session:
+        session['palavras_disponiveis_por_categoria'] = {}
+
+    palavras_disponiveis_geral = session.get('palavras_disponiveis_por_categoria')
+
+    if categoria_escolhida not in palavras_disponiveis_geral or not palavras_disponiveis_geral[categoria_escolhida]:
+        palavras_categoria = list(PALAVRAS_POR_CATEGORIA[categoria_escolhida].keys())
+        random.shuffle(palavras_categoria)
+        palavras_disponiveis_geral[categoria_escolhida] = palavras_categoria
     
-    # Salva a lista (agora menor) de volta na sessão.
-    session['palavras_disponiveis'] = palavras_disponiveis
+    palavras_disponiveis_categoria = palavras_disponiveis_geral[categoria_escolhida]
+    
+    if not palavras_disponiveis_categoria:
+         return jsonify({"erro": "Não há mais palavras nesta categoria. Parabéns!"}), 404
 
-    # Inicia as variáveis do jogo na sessão.
+    palavra_sorteada = palavras_disponiveis_categoria.pop()
+    
+    # <<< MUDANÇA >>>: Define o número máximo de erros na sessão com base na dificuldade.
+    max_erros = DIFICULDADE_CONFIG.get(dificuldade_escolhida, 6)
+    session['max_erros'] = max_erros
+    
+    session['palavras_disponiveis_por_categoria'] = palavras_disponiveis_geral
     session['palavra'] = palavra_sorteada
     session['letras_tentadas'] = []
     session['erros'] = 0
 
-    dicas = PALAVRAS_COM_DICAS[palavra_sorteada]
+    dicas = PALAVRAS_POR_CATEGORIA[categoria_escolhida][palavra_sorteada]
     palavra_oculta = "".join("_" if ch.isalpha() else ch for ch in palavra_sorteada)
 
-    print(f"--- NOVO JOGO: {palavra_sorteada.upper()} --- Restam {len(palavras_disponiveis)} palavras.")
-    
     return jsonify({
         'palavra_oculta': palavra_oculta,
         'dicas': dicas,
-        'tentativas_restantes': MAX_ERROS - session['erros'],
+        'tentativas_restantes': max_erros, # Envia o número correto de tentativas
         'erros': 0,
         'letras_tentadas': [],
         'fim_de_jogo': False
     })
 
-@app.route('/tentativa', methods=['POST'])
-def tentativa():
-    """Processa a tentativa de uma letra pelo jogador."""
-    letra = request.json.get("letra", "").lower()
-    if not letra.isalpha() or len(letra) != 1:
-        return jsonify({"erro": "Tentativa inválida"}), 400
-
-    palavra = session.get("palavra")
+def processar_jogada(erros):
+    """Função auxiliar para evitar repetição de código em /tentativa e /chute."""
+    palavra_correta = session.get("palavra")
     letras_tentadas = session.get("letras_tentadas", [])
-    erros = session.get("erros", 0)
+    max_erros = session.get("max_erros", 6)
 
-    if letra not in letras_tentadas:
-        letras_tentadas.append(letra)
-        if letra not in palavra:
-            erros += 1
+    palavra_oculta = "".join(ch if (not ch.isalpha() or ch in letras_tentadas) else "_" for ch in palavra_correta)
+    
+    session["erros"] = erros
 
-    palavra_oculta = "".join(
-        ch if (not ch.isalpha() or ch in letras_tentadas) else "_"
-        for ch in palavra
-    )
-
-    fim_de_jogo = "_" not in palavra_oculta or erros >= MAX_ERROS
     venceu = "_" not in palavra_oculta
+    perdeu = erros >= max_erros
+    fim_de_jogo = venceu or perdeu
+    
     mensagem_fim = ""
     if fim_de_jogo:
         if venceu:
             mensagem_fim = "Parabéns, você venceu!"
         else:
-            mensagem_fim = f"Você perdeu! A palavra era: {palavra.upper()}"
-            palavra_oculta = palavra
-
-    session["letras_tentadas"] = letras_tentadas
-    session["erros"] = erros
+            mensagem_fim = f"Você perdeu! A palavra era: <strong>{palavra_correta.upper()}</strong>"
+            palavra_oculta = palavra_correta
 
     return jsonify({
         'palavra_oculta': palavra_oculta,
-        'tentativas_restantes': MAX_ERROS - erros,
+        'tentativas_restantes': max_erros - erros,
         'letras_tentadas': sorted(letras_tentadas),
         'erros': erros,
         'fim_de_jogo': fim_de_jogo,
@@ -110,15 +110,38 @@ def tentativa():
         'mensagem_fim': mensagem_fim
     })
 
-# Ponto de entrada da aplicação
+@app.route('/tentativa', methods=['POST'])
+def tentativa():
+    letra = request.json.get("letra", "").lower()
+    if not session.get("palavra"): return jsonify({"erro": "Jogo não iniciado"}), 400
+        
+    letras_tentadas = session.get("letras_tentadas", [])
+    erros = session.get("erros", 0)
+
+    if letra not in letras_tentadas:
+        letras_tentadas.append(letra)
+        if letra not in session.get("palavra"):
+            erros += 1
+    
+    session["letras_tentadas"] = letras_tentadas
+    return processar_jogada(erros)
+
+@app.route('/chute', methods=['POST'])
+def chute():
+    chute_palavra = request.json.get("palavra", "").lower().strip()
+    if not session.get("palavra"): return jsonify({"erro": "Jogo não iniciado"}), 400
+
+    erros = session.get("erros", 0)
+    
+    if chute_palavra != session.get("palavra"):
+        erros += 1
+    else:
+        # Se acertou, preenche as letras tentadas para a lógica de vitória funcionar
+        session["letras_tentadas"] = list(set(list(session.get("palavra"))))
+
+    return processar_jogada(erros)
+
 if __name__ == "__main__":
-    # Importa o 'serve' do waitress para rodar em modo de produção
     from waitress import serve
-    
-    # Mensagens para o console
-    print(f"Total de palavras carregadas no jogo: {len(PALAVRAS_COM_DICAS)}")
-    print("Servidor de produção iniciado. Acesse em:")
-    print("http://127.0.0.1:8080 ou http://localhost:8080")
-    
-    # Inicia o servidor waitress na porta 8080
+    print("Servidor de produção com NÍVEIS DE DIFICULDADE iniciado.")
     serve(app, host="0.0.0.0", port=8080)
