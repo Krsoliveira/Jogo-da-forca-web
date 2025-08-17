@@ -1,4 +1,8 @@
+/* Estilos gerais para o jogo da forca */
+
 :root {
+    --bg-dark-purple: #1A1A2E;
+    /* ... */
     --bg-dark-purple: #1A1A2E;
     --bg-light-purple: #16213E;
     --container-bg: #0F3460;
@@ -227,7 +231,6 @@ main {
     opacity: 0; visibility: hidden;
     transition: all 0.3s ease; z-index: 1000; padding: 15px;
 }
-/* === NOVAS REGRAS PARA EXIBIR O MODAL === */
 #modal-container.show {
     opacity: 1;
     visibility: visible;
@@ -251,14 +254,6 @@ main {
     color: var(--accent-yellow);
     text-transform: uppercase;
 }
-
-#btn-ver-ranking {
-  margin-top: 20px; /* Ajuste esse valor conforme necessário */
-  display: block;  /* Opcional: para garantir que o botão se comporte como um bloco centralizado */
-  margin-left: auto;
-  margin-right: auto;
-}
-
 #btn-jogar-novamente {
     font-size: 1.1rem; padding: 12px 28px;
     background-color: var(--accent-pink);
@@ -323,4 +318,136 @@ main {
     #container-chute { flex-direction: column; }
     #input-chute, #btn-chutar { width: 100%; }
     #info-jogo-container { font-size: 0.9rem; }
+}
+
+/* --- NOVOS ESTILOS PARA NÍVEL E XP --- */
+#nivel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+    width: 100%;
+    max-width: 250px;
+}
+
+#nivel-container > span {
+    font-size: 1rem;
+    font-weight: 600;
+}
+
+#nivel-container strong {
+    color: var(--accent-yellow);
+    font-family: var(--font-secondary);
+}
+
+.xp-info {
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+#xp-bar {
+    flex-grow: 1;
+    height: 12px;
+    background-color: rgba(0, 0, 0, 0.4);
+    border: 1px solid var(--container-bg);
+    border-radius: 10px;
+    overflow: hidden;
+}
+
+#xp-bar-fill {
+    width: 0%; /* Será controlado pelo JavaScript */
+    height: 100%;
+    background-color: var(--accent-cyan);
+    border-radius: 10px;
+    transition: width 0.5s ease-in-out;
+    box-shadow: 0 0 8px var(--accent-cyan);
+}
+
+#xp-texto {
+    font-family: var(--font-secondary);
+    font-size: 0.8rem;
+    color: var(--text-color);
+}
+
+/* --- NOVOS ESTILOS PARA TELA DE RANKING --- */
+#container-ranking {
+    padding: 1rem;
+}
+
+#container-ranking h2 {
+    color: var(--accent-yellow);
+    margin-bottom: 2rem;
+    font-size: 1.8rem;
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+#lista-ranking {
+    list-style: none;
+    padding: 0;
+    max-width: 400px;
+    margin: 0 auto 2rem auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+#lista-ranking li {
+    background-color: var(--container-bg);
+    padding: 15px 20px;
+    border-radius: 8px;
+    font-size: 1.2rem;
+    font-weight: 600;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-left: 5px solid var(--accent-cyan);
+    counter-increment: ranking-counter;
+}
+
+#lista-ranking li::before {
+    content: counter(ranking-counter) "º";
+    font-family: var(--font-secondary);
+    color: var(--accent-cyan);
+    font-size: 1.5rem;
+    margin-right: 15px;
+}
+
+/* Destaque para o Top 3 */
+#lista-ranking li:nth-child(1) { border-color: var(--accent-yellow); }
+#lista-ranking li:nth-child(1)::before { color: var(--accent-yellow); }
+
+#lista-ranking li:nth-child(2) { border-color: #C0C0C0; }
+#lista-ranking li:nth-child(2)::before { color: #C0C0C0; }
+
+#lista-ranking li:nth-child(3) { border-color: #CD7F32; }
+#lista-ranking li:nth-child(3)::before { color: #CD7F32; }
+
+
+/* --- AJUSTES NO MODAL DE FIM DE JOGO --- */
+.modal-botoes {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+#btn-ver-ranking {
+    font-size: 1.1rem;
+    padding: 12px 28px;
+    background-color: transparent;
+    color: var(--text-color);
+    border: 2px solid var(--text-color);
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+#btn-ver-ranking:hover {
+    background-color: var(--text-color);
+    color: var(--bg-dark-purple);
+    transform: scale(1.05);
 }

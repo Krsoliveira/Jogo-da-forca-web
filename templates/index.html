@@ -1,105 +1,93 @@
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>Jogo da Forca Neon</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v={{ version }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Jogo da Forca Neon</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}?v={{ version }}">
 </head>
 <body>
-  <div id="container-principal">
-    <header>
-      <h1>Jogo da Forca</h1>
-    </header>
-    <main>
-      <!-- Tela de seleção de dificuldade -->
-      <div id="container-selecao-dificuldade">
-        <h2>Nível de Dificuldade</h2>
-        <div id="botoes-dificuldade">
-          <button class="btn-dificuldade" data-difficulty="facil">Fácil</button>
-          <button class="btn-dificuldade" data-difficulty="medio">Médio</button>
-          <button class="btn-dificuldade" data-difficulty="dificil">Difícil</button>
-        </div>
-        <!-- Botão para acesso ao ranking comentado -->
-        <!-- <button id="btn-ver-ranking" class="btn-restart">Ver Ranking</button> -->
-      </div>
-      
-      <!-- Tela de seleção de categoria -->
-      <div id="container-selecao-categoria" class="hidden">
-        <h2>Escolha uma Categoria</h2>
-        <div id="botoes-categoria">
-          <p>A carregar categorias...</p>
-        </div>
-        <button id="btn-voltar-dificuldade" class="btn-voltar">Voltar</button>
-      </div>
-      
-      <!-- Tela do jogo -->
-      <div id="container-jogo-principal" class="hidden">
-        <div class="container-jogo">
-          <div id="area-forca">
-            <svg height="350" width="250" class="figura-container" viewBox="0 0 250 350">
-              <rect x="20" y="330" width="210" height="20" class="forca-estrutura" />
-              <rect x="60" y="20" width="20" height="310" class="forca-estrutura" />
-              <rect x="60" y="20" width="120" height="20" class="forca-estrutura" />
-              <line x1="100" y1="20" x2="70" y2="50" class="forca-estrutura" />
-              <line x1="170" y1="20" x2="170" y2="70" class="forca-corda" />
-              <circle cx="170" cy="95" r="25" class="figura-parte" />
-              <line x1="170" y1="120" x2="170" y2="220" class="figura-parte" />
-              <line x1="170" y1="145" x2="120" y2="195" class="figura-parte" />
-              <line x1="170" y1="145" x2="220" y2="195" class="figura-parte" />
-              <line x1="170" y1="220" x2="120" y2="270" class="figura-parte" />
-              <line x1="170" y1="220" x2="220" y2="270" class="figura-parte" />
-            </svg>
-          </div>
-          <div class="controles-jogo">
-            <div id="palavra-secreta">
-              <p>&#160;</p>
+    <div id="container-principal">
+        <header><h1>Jogo da Forca</h1></header>
+        <main>
+            <div id="container-selecao-dificuldade">
+                <h2>Nível de Dificuldade</h2>
+                <div id="botoes-dificuldade">
+                    <button class="btn-dificuldade" data-difficulty="facil">Fácil</button>
+                    <button class="btn-dificuldade" data-difficulty="medio">Médio</button>
+                    <button class="btn-dificuldade" data-difficulty="dificil">Difícil</button>
+                </div>
             </div>
-            <div id="area-dicas">
-              <h3>Dicas</h3>
-              <p id="dica1">&#160;</p>
-              <p id="dica2">&#160;</p>
+            <div id="container-selecao-categoria" class="hidden">
+                <h2>Escolha uma Categoria</h2>
+                <div id="botoes-categoria"><p>A carregar categorias...</p></div>
+                <button id="btn-voltar-dificuldade" class="btn-voltar">Voltar</button>
             </div>
-          </div>
-        </div>
-        <div id="container-interacao">
-          <div id="info-jogo-container">
-            <span>Tentativas: <strong id="tentativas-restantes">0</strong></span>
-            <span>Nível: <strong id="dificuldade-atual">Normal</strong></span>
-            <span>Pontuação: <strong id="pontuacao-atual">0</strong></span>
-            <button id="btn-reiniciar-jogo" class="btn-restart">Reiniciar</button>
-          </div>
-          <div id="letras-usadas-container">
-            Letras Usadas: <span id="letras-usadas"></span>
-          </div>
-          <div id="teclado"></div>
-          <div id="container-chute">
-            <input type="text" id="input-chute" placeholder="Arriscar a palavra..." autocomplete="off">
-            <button id="btn-chutar">Chutar!</button>
-          </div>
-        </div>
-      </div>
-      
-      <!-- Container para exibir o ranking (comentado) -->
-      <!-- <div id="ranking-container" class="hidden"></div> -->
-    </main>
-  </div>
-  
-  <!-- Modal para notificações (fim de jogo, erros etc.) -->
-  <div id="modal-container">
-    <div class="modal">
-      <h2 id="modal-titulo"></h2>
-      <p id="modal-mensagem"></p>
-      <button id="btn-jogar-novamente">Novo Jogo</button>
+
+            <div id="container-jogo-principal" class="hidden">
+                <div class="container-jogo">
+                    <div id="area-forca">
+                        <svg height="350" width="250" class="figura-container" viewBox="0 0 250 350">
+                            <rect x="20" y="330" width="210" height="20" class="forca-estrutura" /><rect x="60" y="20" width="20" height="310" class="forca-estrutura" /><rect x="60" y="20" width="120" height="20" class="forca-estrutura" /><line x1="100" y1="20" x2="70" y2="50" class="forca-estrutura" /><line x1="170" y1="20" x2="170" y2="70" class="forca-corda" /><circle cx="170" cy="95" r="25" class="figura-parte" /><line x1="170" y1="120" x2="170" y2="220" class="figura-parte" /><line x1="170" y1="145" x2="120" y2="195" class="figura-parte" /><line x1="170" y1="145" x2="220" y2="195" class="figura-parte" /><line x1="170" y1="220" x2="120" y2="270" class="figura-parte" /><line x1="170" y1="220" x2="220" y2="270" class="figura-parte" />
+                        </svg>
+                    </div>
+                    <div class="controles-jogo">
+                        <div id="palavra-secreta"><p>&#160;</p></div>
+                        <div id="area-dicas">
+                            <h3>Dicas</h3>
+                            <p id="dica1">&#160;</p><p id="dica2">&#160;</p>
+                        </div>
+                    </div>
+                </div>
+                <div id="container-interacao">
+                    <div id="info-jogo-container">
+                        <div id="nivel-container">
+                            <span>Nível: <strong id="nivel-atual">1</strong></span>
+                            <div class="xp-info">
+                                <div id="xp-bar">
+                                    <div id="xp-bar-fill"></div>
+                                </div>
+                                <span id="xp-texto">0/1000</span>
+                            </div>
+                        </div>
+                        <span>Tentativas: <strong id="tentativas-restantes">0</strong></span>
+                        <span>Nível Dificuldade: <strong id="dificuldade-texto">Normal</strong></span>
+                        <span>Pontuação: <strong id="pontuacao-atual">0</strong></span>
+                        <button id="btn-reiniciar-jogo" class="btn-restart">Reiniciar</button>
+                    </div>
+                    <div id="letras-usadas-container">Letras Usadas: <span id="letras-usadas"></span></div>
+                    <div id="teclado"></div>
+                    <div id="container-chute">
+                        <input type="text" id="input-chute" placeholder="Arriscar a palavra..." autocomplete="off">
+                        <button id="btn-chutar">Chutar!</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="container-ranking" class="hidden">
+                <h2>Maiores Pontuações</h2>
+                <ol id="lista-ranking"></ol>
+                <button id="btn-voltar-menu-ranking" class="btn-voltar">Voltar ao Menu</button>
+            </div>
+        </main>
     </div>
-  </div>
-  
-  <!-- Toast para notificações rápidas -->
-  <div id="toast-notificacao"></div>
-  
-  <script src="{{ url_for('static', filename='js/main.js') }}?v={{ version }}"></script>
+    
+    <div id="modal-container">
+        <div class="modal">
+            <h2 id="modal-titulo"></h2>
+            <p id="modal-mensagem"></p>
+            <div class="modal-botoes">
+                <button id="btn-jogar-novamente">Novo Jogo</button>
+                <button id="btn-ver-ranking">Ver Ranking</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="toast-notificacao"></div>
+
+    <script src="{{ url_for('static', filename='js/main.js') }}?v={{ version }}"></script>
 </body>
 </html>
