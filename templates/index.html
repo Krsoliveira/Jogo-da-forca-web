@@ -2,7 +2,7 @@
 <html lang="pt-br">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Jogo da Forca Neon</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -35,7 +35,7 @@
                         </svg>
                     </div>
                     <div class="controles-jogo">
-                        <div id="palavra-secreta"><p>&#160;</p></div>
+                        <div id="palavra-secreta" aria-live="polite"><p>&#160;</p></div>
                         <div id="area-dicas">
                             <h3>Dicas</h3>
                             <p id="dica1">&#160;</p><p id="dica2">&#160;</p>
@@ -75,7 +75,7 @@
         </main>
     </div>
     
-    <div id="modal-container">
+    <div id="modal-container" role="dialog" aria-modal="true" aria-labelledby="modal-titulo">
         <div class="modal">
             <h2 id="modal-titulo"></h2>
             <p id="modal-mensagem"></p>
@@ -86,7 +86,7 @@
         </div>
     </div>
 
-    <div id="toast-notificacao"></div>
+    <div id="toast-notificacao" role="status" aria-live="polite"></div>
 
     <script src="{{ url_for('static', filename='js/main.js') }}?v={{ version }}"></script>
 </body>
