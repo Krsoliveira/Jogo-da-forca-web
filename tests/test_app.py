@@ -1,6 +1,7 @@
 import pytest
 
-from app import PALAVRAS_POR_CATEGORIA, app
+from app import app
+from forca.palavras import PALAVRAS_POR_CATEGORIA
 
 
 @pytest.fixture
