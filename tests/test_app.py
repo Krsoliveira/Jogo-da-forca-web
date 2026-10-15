@@ -1,6 +1,6 @@
 import pytest
 
-from app import app, PALAVRAS_POR_CATEGORIA
+from app import PALAVRAS_POR_CATEGORIA, app
 
 
 @pytest.fixture
@@ -71,8 +71,8 @@ def test_derrota_encerra_rodada_e_bloqueia_novas_jogadas(client):
     iniciar(client, "dificil")
     palavra = palavra_atual(client)
     erradas = [c for c in "abcdefghijklmnopqrstuvwxyz" if c not in palavra][:4]
-    for l in erradas:
-        data = tentar(client, l).get_json()
+    for letra in erradas:
+        data = tentar(client, letra).get_json()
     assert data["fim_de_jogo"] and data["pontuacao"] == 0
     assert tentar(client, palavra[0]).status_code == 400
 
@@ -116,6 +116,7 @@ def test_health_responde_ok(client):
 
 def test_producao_exige_secret_key(monkeypatch):
     import importlib
+
     import app as modulo
 
     monkeypatch.setenv("RAILWAY_ENVIRONMENT", "production")
