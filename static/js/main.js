@@ -35,6 +35,7 @@ document.addEventListener('DOMContentLoaded', () => {
     let jogoAtivo = false;
     let dificuldadeSelecionada = null;
     let categoriasCarregadas = false;
+    let pontuacaoCorrente = 0; // pontuação da partida em andamento (para não perdê-la ao reiniciar)
 
     // --- LÓGICA DE RANKING ---
     function salvarPontuacao(pontuacaoFinal) {
@@ -66,6 +67,12 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // --- FUNÇÕES DE LÓGICA DE JOGO ---
+    function encerrarPartidaEmAndamento() {
+        salvarPontuacao(pontuacaoCorrente);
+        pontuacaoCorrente = 0;
+        jogoAtivo = false;
+    }
+
     function mostrarTela(tela) {
         elements.dificuldadeContainer.classList.add('hidden');
         elements.categoriaContainer.classList.add('hidden');
@@ -146,13 +153,14 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         } else if (data.fim_de_jogo) {
             salvarPontuacao(data.pontuacao_final); // SALVA A PONTUAÇÃO AO PERDER
+            pontuacaoCorrente = 0;
         } else {
             jogoAtivo = true;
         }
     }
 
     function fazerTentativa(letra) {
-        const botao = [...elements.teclado.children].find(b => b.textContent.toLowerCase() === letra);
+        const botao = encontrarTecla(letra);
         if (botao && !botao.disabled) {
             botao.disabled = true;
             fazerJogada('/tentativa', { method: 'POST', headers: { 'Content-Type': 'application/json' }, body: JSON.stringify({ letra }) });
@@ -193,8 +201,10 @@ document.addEventListener('DOMContentLoaded', () => {
         elements.tentativasSpan.textContent = data.tentativas_restantes;
         elements.letrasUsadasSpan.textContent = data.letras_tentadas.join(', ').toUpperCase();
         elements.pontuacaoSpan.textContent = data.pontuacao;
+        if (!data.fim_de_jogo) pontuacaoCorrente = data.pontuacao;
         elements.dificuldadeSpan.textContent = data.dificuldade || dificuldadeSelecionada;
         elements.partesDoCorpo.forEach((p, i) => p.style.opacity = i < data.erros ? '1' : '0');
+        pintarTeclado(data);
 
         if (data.nivel !== undefined) {
             elements.nivelAtualSpan.textContent = data.nivel;
@@ -208,9 +218,29 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     }
     
+    // Marca cada tecla usada como certa (está na palavra) ou errada.
+    // `palavra_oculta` já revela as letras certas, então não precisamos pedir mais nada ao servidor.
+    function pintarTeclado(data) {
+        const reveladas = new Set(data.palavra_oculta.toLowerCase());
+        data.letras_tentadas.forEach(letra => {
+            const tecla = encontrarTecla(letra);
+            if (!tecla) return;
+            tecla.disabled = true;
+            tecla.classList.toggle('correta', reveladas.has(letra));
+            tecla.classList.toggle('errada', !reveladas.has(letra));
+        });
+    }
+
+    function encontrarTecla(letra) {
+        return [...elements.teclado.children].find(b => b.textContent.toLowerCase() === letra);
+    }
+
     function resetarTecladoEDicas() {
         elements.letrasUsadasSpan.textContent = '';
-        elements.teclado.querySelectorAll('.tecla').forEach(tecla => tecla.disabled = false);
+        elements.teclado.querySelectorAll('.tecla').forEach(tecla => {
+            tecla.disabled = false;
+            tecla.classList.remove('correta', 'errada');
+        });
     }
 
     function resetarUI() {
@@ -233,6 +263,7 @@ document.addEventListener('DOMContentLoaded', () => {
         else if (target.matches('#btn-voltar-dificuldade')) mostrarTela('dificuldade');
         else if (target.matches('#btn-chutar')) fazerChute();
         else if (target.matches('.btn-restart')) {
+            encerrarPartidaEmAndamento();
             resetarUI();
             mostrarTela('dificuldade');
         } else if (target.matches('#btn-voltar-menu-ranking')) { // NOVO
@@ -260,10 +291,15 @@ document.addEventListener('DOMContentLoaded', () => {
     
     document.addEventListener('keydown', (e) => {
         if (!jogoAtivo) return;
-        if (e.key === 'Enter' && document.activeElement === elements.inputChute) { 
-            e.preventDefault(); 
-            fazerChute();
-        } else if (LETRAS.includes(e.key.toLowerCase())) {
+        if (document.activeElement === elements.inputChute) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                fazerChute();
+            }
+            return; // letras digitadas no campo pertencem ao chute, não ao teclado virtual
+        }
+        if (e.ctrlKey || e.metaKey || e.altKey) return;
+        if (e.key.length === 1 && LETRAS.includes(e.key.toLowerCase())) {
             fazerTentativa(e.key.toLowerCase());
         }
     });
