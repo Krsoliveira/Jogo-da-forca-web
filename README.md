@@ -73,3 +73,11 @@ Execute a aplicação:
 python app.py
 
 Abra o seu navegador e aceda a http://127.0.0.1:8080.
+
+Variáveis de Ambiente
+SECRET_KEY: chave que assina a sessão do jogador. Defina um valor longo e aleatório em produção (ex.: no painel do Render). Sem ela o app usa uma chave de desenvolvimento e registra um aviso.
+PORT: porta do servidor local (padrão 8080).
+
+Testes
+pip install -r requirements-dev.txt
+python -m pytest
