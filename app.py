@@ -221,7 +221,10 @@ def processar_jogada(erros, pontos_ganhos, letras_tentadas):
             "fim_de_jogo": True,
             "venceu": False,
             "palavra_oculta": palavra,
-            "mensagem_fim": f"Você perdeu! A palavra era: <strong>{palavra.upper()}</strong>.<br>Pontuação final: {pontuacao_final}",
+            "mensagem_fim": (
+                f"Você perdeu! A palavra era: <strong>{palavra.upper()}</strong>.<br>"
+                f"Pontuação final: {pontuacao_final}"
+            ),
             "pontuacao_final": pontuacao_final,
             "pontuacao": 0,
             "dificuldade": session["dificuldade_atual"],
@@ -281,4 +284,5 @@ def chute():
 
 if __name__ == "__main__":
     from waitress import serve
-    serve(app, host="0.0.0.0", port=int(os.environ.get("PORT", 8080)))
+    # Em container é preciso escutar em todas as interfaces; o proxy do Railway faz a exposição.
+    serve(app, host="0.0.0.0", port=int(os.environ.get("PORT", "8080")))  # noqa: S104 # nosec B104
