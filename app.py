@@ -15,11 +15,19 @@ app = Flask(__name__)
 
 # A sessão é assinada com esta chave: quem a conhece consegue forjar pontuação.
 # Em produção defina a variável de ambiente SECRET_KEY (ex.: no painel do Render).
+# O Railway define RAILWAY_ENVIRONMENT; nesse caso a ausência da chave é erro fatal.
 _secret = os.environ.get("SECRET_KEY")
+EM_PRODUCAO = bool(os.environ.get("RAILWAY_ENVIRONMENT"))
 if not _secret:
-    logger.warning("SECRET_KEY não definida; usando chave de desenvolvimento (inseguro em produção).")
+    if EM_PRODUCAO:
+        raise RuntimeError("SECRET_KEY é obrigatória em produção.")
+    logger.warning("SECRET_KEY não definida; usando chave de desenvolvimento.")
 app.secret_key = _secret or "dev-only-secret-key"
-app.config.update(SESSION_COOKIE_SAMESITE="Lax", SESSION_COOKIE_HTTPONLY=True)
+app.config.update(
+    SESSION_COOKIE_SAMESITE="Lax",
+    SESSION_COOKIE_HTTPONLY=True,
+    SESSION_COOKIE_SECURE=EM_PRODUCAO,  # cookie só trafega via HTTPS em produção
+)
 
 # --- CONFIGURAÇÕES DO JOGO ---
 DIFICULDADES = ["facil", "medio", "dificil"]
@@ -108,6 +116,12 @@ def _servir_proxima_palavra(categoria, dificuldade):
 @app.route("/")
 def pagina_inicial():
     return render_template("index.html", version=VERSAO_ASSETS)
+
+
+@app.route("/health")
+def health():
+    """Usado pelo healthcheck do Railway para saber se o app está de pé."""
+    return jsonify(status="ok")
 
 
 @app.route("/categorias")

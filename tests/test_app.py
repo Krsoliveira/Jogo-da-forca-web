@@ -107,3 +107,20 @@ def test_palavras_nao_repetem_ate_esgotar_categoria(client):
         client.get("/proxima_palavra")
         vistas.add(palavra_atual(client))
     assert len(vistas) == total
+
+
+def test_health_responde_ok(client):
+    resp = client.get("/health")
+    assert resp.status_code == 200 and resp.get_json() == {"status": "ok"}
+
+
+def test_producao_exige_secret_key(monkeypatch):
+    import importlib
+    import app as modulo
+
+    monkeypatch.setenv("RAILWAY_ENVIRONMENT", "production")
+    monkeypatch.delenv("SECRET_KEY", raising=False)
+    with pytest.raises(RuntimeError):
+        importlib.reload(modulo)
+    monkeypatch.delenv("RAILWAY_ENVIRONMENT")
+    importlib.reload(modulo)  # restaura o módulo para os demais testes
