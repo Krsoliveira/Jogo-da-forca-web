@@ -1,0 +1,206 @@
+{
+  "categoria": "Frutas",
+  "ordem": 1,
+  "palavras": {
+    "morango": [
+      "É vermelha, pequena e tem pintinhas pretas.",
+      "Combina perfeitamente com chocolate e chantilly."
+    ],
+    "abacaxi": [
+      "Tem uma coroa e sua casca é espinhosa.",
+      "É o símbolo de um famoso país tropical."
+    ],
+    "melancia": [
+      "Verde por fora, vermelha por dentro e cheia de sementes.",
+      "É muito consumida no verão por ser refrescante."
+    ],
+    "banana": [
+      "É amarela, alongada e rica em potássio.",
+      "É a fruta preferida dos Minions."
+    ],
+    "laranja": [
+      "Dá nome a uma cor e é rica em Vitamina C.",
+      "Seu suco é muito popular no café da manhã."
+    ],
+    "manga": [
+      "Fruta tropical de polpa suculenta e amarela.",
+      "Existe a 'espada', a 'rosa' e a 'palmer'."
+    ],
+    "uva": [
+      "Pode ser verde ou roxa, nasce em cachos.",
+      "É a matéria-prima para a fabricação do vinho."
+    ],
+    "pera": [
+      "Tem formato de 'sino' e casca geralmente verde ou amarelada.",
+      "Seu nome é igual ao de um sinal de trânsito."
+    ],
+    "kiwi": [
+      "Tem casca marrom e 'peluda', mas por dentro é verde.",
+      "Seu nome é o mesmo de uma ave da Nova Zelândia."
+    ],
+    "cereja": [
+      "Pequena, vermelha e geralmente vem em pares.",
+      "É a 'coroa' de muitos bolos e sobremesas."
+    ],
+    "maca": [
+      "Pode ser vermelha ou verde.",
+      "Dizem que uma por dia mantém o médico longe."
+    ],
+    "limao": [
+      "É azedo e usado para fazer caipirinha.",
+      "Geralmente é verde ou amarelo."
+    ],
+    "maracuja": [
+      "Sua polpa é cheia de sementes e é conhecido por ser um calmante natural.",
+      "Seu suco também é chamado de 'suco da paixão'."
+    ],
+    "goiaba": [
+      "Pode ser branca ou vermelha por dentro.",
+      "É comum comê-la com queijo."
+    ],
+    "caju": [
+      "Seu fruto verdadeiro é a castanha.",
+      "Seu suco é muito popular no Nordeste brasileiro."
+    ],
+    "abacate": [
+      "É verde, cremoso e usado para fazer guacamole.",
+      "Rico em gorduras boas."
+    ],
+    "acai": [
+      "Fruto roxo da Amazônia, consumido em tigelas.",
+      "Frequentemente acompanhado por granola e banana."
+    ],
+    "coco": [
+      "Tem uma casca dura e água refrescante por dentro.",
+      "Sua polpa branca é usada em muitas receitas de doces."
+    ],
+    "caqui": [
+      "Fruta de cor alaranjada e textura macia.",
+      "Quando não está maduro, 'amarra' a boca."
+    ],
+    "figo": [
+      "Pode ser roxo ou verde, muito doce.",
+      "Frequentemente consumido em compotas ou cristalizado."
+    ],
+    "amora": [
+      "Pequena fruta silvestre de cor escura.",
+      "Nasce em arbustos espinhosos."
+    ],
+    "framboesa": [
+      "Parente da amora, mas de cor vermelha.",
+      "Tem um sabor levemente ácido."
+    ],
+    "jabuticaba": [
+      "Frutinha preta que nasce direto no tronco da árvore.",
+      "Típica do Brasil."
+    ],
+    "lichia": [
+      "Tem casca vermelha e rugosa, com polpa branca e translúcida.",
+      "Fruta de origem asiática."
+    ],
+    "melao": [
+      "Parente da melancia, mas com polpa alaranjada ou esverdeada.",
+      "Tem um aroma muito característico."
+    ],
+    "pessego": [
+      "Tem uma casca aveludada.",
+      "Sua versão em calda é muito comum em sobremesas."
+    ],
+    "pitanga": [
+      "Pequena, vermelha e com 'gomos'.",
+      "Fruta muito comum em quintais brasileiros."
+    ],
+    "pitaya": [
+      "Conhecida como fruta-do-dragão.",
+      "Sua aparência é exótica, rosa por fora com 'escamas' verdes."
+    ],
+    "roma": [
+      "Cheia de sementes vermelhas e suculentas por dentro.",
+      "Símbolo de sorte e prosperidade."
+    ],
+    "tangerina": [
+      "Também conhecida como mexerica ou bergamota.",
+      "É fácil de descascar."
+    ],
+    "carambola": [
+      "Quando cortada, seus pedaços têm formato de estrela.",
+      "Tem um sabor agridoce."
+    ],
+    "cupuacu": [
+      "Fruta amazônica de casca dura e polpa branca e ácida.",
+      "Muito usada em cremes, sucos e sorvetes."
+    ],
+    "damasco": [
+      "Pequeno e alaranjado, parece um mini-pêssego.",
+      "Muito consumido em sua forma seca."
+    ],
+    "graviola": [
+      "Casca verde com 'espinhos' macios, polpa branca.",
+      "Seu sorvete é muito popular."
+    ],
+    "jaca": [
+      "Fruta enorme e pesada, com gomos doces.",
+      "Ou você ama, ou você odeia."
+    ],
+    "nespera": [
+      "Também conhecida como ameixa-amarela.",
+      "Pequena, alaranjada e com grandes sementes."
+    ],
+    "pequi": [
+      "Fruto do cerrado, amarelo e com um cheiro forte.",
+      "Cuidado com os espinhos ao roer."
+    ],
+    "seriguela": [
+      "Pequena, de cor vermelha ou amarela quando madura.",
+      "Muito comum no Nordeste na época do Natal."
+    ],
+    "tamarindo": [
+      "Fruto em vagem, com polpa ácida e marrom.",
+      "Usado para fazer sucos e doces."
+    ],
+    "guarana": [
+      "Fruto da Amazônia que parece um olho humano.",
+      "Famoso por ser usado em refrigerantes e energéticos."
+    ],
+    "nectarina": [
+      "É uma variação do pêssego, mas com a casca lisa.",
+      "Seu nome vem de 'néctar'."
+    ],
+    "jambo": [
+      "Fruta de casca rosa ou roxa, formato de sino.",
+      "Tem uma polpa branca e levemente adocicada."
+    ],
+    "atemoya": [
+      "Cruzamento da cherimóia com a fruta-do-conde.",
+      "Polpa doce e sem sementes."
+    ],
+    "cambuci": [
+      "Fruto verde com formato de 'disco voador'.",
+      "É azedo e usado em sucos e cachaças."
+    ],
+    "bacuri": [
+      "Fruta amazônica com polpa branca e cremosa.",
+      "Muito usada na culinária do Pará e Maranhão."
+    ],
+    "cagaita": [
+      "Fruto do cerrado, pequeno e amarelado.",
+      "Tem efeito laxativo se consumido em excesso."
+    ],
+    "sapoti": [
+      "Casca marrom, polpa doce que lembra caramelo.",
+      "Fruta de origem da América Central."
+    ],
+    "umbu": [
+      "Fruto do sertão nordestino, pequeno e esverdeado.",
+      "Seu nome vem do tupi e significa 'árvore que dá de beber'."
+    ],
+    "jenipapo": [
+      "Usado para fazer licor e doces.",
+      "Sua polpa escurece em contato com o ar."
+    ],
+    "mirtilo": [
+      "Pequena fruta azulada, também conhecida como blueberry.",
+      "Considerado um superalimento."
+    ]
+  }
+}

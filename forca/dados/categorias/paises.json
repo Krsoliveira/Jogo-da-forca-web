@@ -1,0 +1,206 @@
+{
+  "categoria": "Países",
+  "ordem": 2,
+  "palavras": {
+    "brasil": [
+      "País do futebol, samba e carnaval.",
+      "Sua capital fica no Planalto Central."
+    ],
+    "portugal": [
+      "Nosso colonizador, fica na Europa.",
+      "Sua capital é Lisboa."
+    ],
+    "japao": [
+      "Conhecido como a 'Terra do Sol Nascente'.",
+      "Famoso por sushis, samurais e animes."
+    ],
+    "egito": [
+      "Famoso por suas pirâmides e pelo Rio Nilo.",
+      "Sua escrita antiga eram os hieróglifos."
+    ],
+    "italia": [
+      "País em formato de bota, famoso por massas e pizzas.",
+      "O Coliseu e a Torre de Pisa ficam lá."
+    ],
+    "argentina": [
+      "Nosso vizinho, famoso pelo tango e pelo futebol.",
+      "Sua capital é Buenos Aires."
+    ],
+    "china": [
+      "O país mais populoso do mundo.",
+      "Conhecido pela sua Grande Muralha."
+    ],
+    "australia": [
+      "Famoso por cangurus e coalas.",
+      "É tanto um país quanto um continente."
+    ],
+    "canada": [
+      "País da América do Norte conhecido pela folha de bordo em sua bandeira.",
+      "Suas línguas oficiais são o inglês e o francês."
+    ],
+    "russia": [
+      "O maior país do mundo em área.",
+      "Famoso pelo frio, pela vodka e pela Praça Vermelha."
+    ],
+    "espanha": [
+      "Famoso pelas touradas e pela paella.",
+      "Terra de Picasso e Gaudí."
+    ],
+    "franca": [
+      "País da Torre Eiffel, do Louvre e dos vinhos.",
+      "Sua capital é Paris."
+    ],
+    "alemanha": [
+      "Conhecido pela cerveja, salsichas e carros de luxo.",
+      "O Muro de Berlim dividiu sua capital por décadas."
+    ],
+    "reino unido": [
+      "Formado por Inglaterra, Escócia, Gales e Irlanda do Norte.",
+      "A família real é uma de suas instituições mais famosas."
+    ],
+    "estados unidos": [
+      "País do Tio Sam, da Estátua da Liberdade e de Hollywood.",
+      "Sua capital é Washington D.C."
+    ],
+    "mexico": [
+      "Famoso pelos sombreros, mariachis e pela culinária apimentada.",
+      "Terra das antigas civilizações Asteca e Maia."
+    ],
+    "india": [
+      "Segundo país mais populoso, famoso por Bollywood e pelo Taj Mahal.",
+      "O hinduísmo é sua principal religião."
+    ],
+    "africa do sul": [
+      "País de Nelson Mandela e do Apartheid.",
+      "Possui três capitais."
+    ],
+    "grecia": [
+      "Berço da democracia, da filosofia e dos Jogos Olímpicos.",
+      "Famoso por suas ilhas e ruínas antigas."
+    ],
+    "suecia": [
+      "País escandinavo famoso por uma loja de móveis e pelo grupo ABBA.",
+      "Sua capital é Estocolmo."
+    ],
+    "noruega": [
+      "País dos vikings e dos fiordes.",
+      "Famoso pelo fenômeno da Aurora Boreal."
+    ],
+    "suica": [
+      "Famosa por chocolates, relógios e bancos.",
+      "É um país neutro e não se envolve em guerras."
+    ],
+    "holanda": [
+      "Conhecida por seus moinhos de vento, tulipas e canais.",
+      "Também é chamada de Países Baixos."
+    ],
+    "irlanda": [
+      "A 'Ilha Esmeralda', famosa pelos trevos e leprechauns.",
+      "O dia de São Patrício é sua maior festa nacional."
+    ],
+    "turquia": [
+      "País que se localiza em dois continentes: Europa e Ásia.",
+      "Istambul é sua cidade mais famosa."
+    ],
+    "coreia do sul": [
+      "Potência tecnológica, terra do K-Pop e de grandes empresas de eletrônicos.",
+      "Sua capital é Seul."
+    ],
+    "tailandia": [
+      "País do sudeste asiático famoso por suas praias paradisíacas e templos budistas.",
+      "Sua capital é Bangkok."
+    ],
+    "chile": [
+      "País longo e estreito, famoso por seus vinhos e pelo Deserto do Atacama.",
+      "A Ilha de Páscoa pertence a este país."
+    ],
+    "colombia": [
+      "Famosa pelo seu café e por suas esmeraldas.",
+      "Terra do escritor Gabriel García Márquez."
+    ],
+    "peru": [
+      "País dos Incas e de Machu Picchu.",
+      "A lhama é um de seus animais símbolo."
+    ],
+    "cuba": [
+      "Ilha caribenha famosa por seus charutos e carros antigos.",
+      "País com regime socialista."
+    ],
+    "jamaica": [
+      "Terra do reggae e de Bob Marley.",
+      "Usain Bolt, o homem mais rápido do mundo, nasceu lá."
+    ],
+    "marrocos": [
+      "País do norte da África, famoso por seus desertos e mercados coloridos.",
+      "Cidades famosas incluem Marrakech e Casablanca."
+    ],
+    "quenia": [
+      "País africano famoso pelos safáris e pela grande migração de gnus.",
+      "Grandes maratonistas vêm deste país."
+    ],
+    "vietna": [
+      "País do sudeste asiático que foi palco de uma famosa guerra.",
+      "Sua culinária é conhecida pelo 'pho'."
+    ],
+    "israel": [
+      "Considerado a 'Terra Santa' por várias religiões.",
+      "O Mar Morto fica em seu território."
+    ],
+    "ira": [
+      "Antigamente conhecido como Pérsia.",
+      "Famoso por seus tapetes."
+    ],
+    "arabia saudita": [
+      "Maior produtor de petróleo do mundo.",
+      "Meca, a cidade sagrada do Islamismo, fica aqui."
+    ],
+    "nova zelandia": [
+      "País da Oceania, famoso pelos esportes radicais e pela cultura Maori.",
+      "Cenário dos filmes 'O Senhor dos Anéis'."
+    ],
+    "finlandia": [
+      "Conhecido como a 'Terra dos Mil Lagos'.",
+      "Dizem que é a casa oficial do Papai Noel."
+    ],
+    "polonia": [
+      "País de nascimento do Papa João Paulo II e de Marie Curie.",
+      "Auschwitz, o campo de concentração, fica em seu território."
+    ],
+    "islandia": [
+      "'Terra do Gelo e do Fogo', com vulcões e geleiras.",
+      "Sua capital é Reykjavik."
+    ],
+    "belgica": [
+      "Famoso por seus waffles, batatas fritas e chocolates.",
+      "Bruxelas, sua capital, é sede da União Europeia."
+    ],
+    "dinamarca": [
+      "País de Hans Christian Andersen, autor de 'A Pequena Sereia'.",
+      "Famoso pelos blocos de montar LEGO."
+    ],
+    "ucrania": [
+      "País do leste europeu, celeiro da Europa.",
+      "O desastre nuclear de Chernobyl ocorreu aqui."
+    ],
+    "hungria": [
+      "Sua capital, Budapeste, é dividida pelo rio Danúbio.",
+      "Famoso pelo cubo mágico e pela páprica."
+    ],
+    "uruguai": [
+      "Pequeno vizinho do Brasil, primeiro país a sediar uma Copa do Mundo.",
+      "Famoso pelo mate e pelo doce de leite."
+    ],
+    "venezuela": [
+      "Possui as maiores reservas de petróleo do mundo.",
+      "O Salto Ángel, a cachoeira mais alta do mundo, fica aqui."
+    ],
+    "nigeria": [
+      "O país mais populoso da África.",
+      "Potência na indústria cinematográfica, conhecida como 'Nollywood'."
+    ],
+    "indonesia": [
+      "O maior arquipélago do mundo, com milhares de ilhas.",
+      "A ilha de Bali é um famoso destino turístico."
+    ]
+  }
+}

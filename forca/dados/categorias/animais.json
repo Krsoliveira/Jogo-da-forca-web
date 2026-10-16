@@ -1,0 +1,202 @@
+{
+  "categoria": "Animais",
+  "ordem": 4,
+  "palavras": {
+    "elefante": [
+      "Tem tromba, grandes orelhas e é conhecido pela memória.",
+      "É o maior mamífero terrestre."
+    ],
+    "girafa": [
+      "Famosa pelo seu pescoço muito comprido.",
+      "É o animal mais alto do mundo."
+    ],
+    "leao": [
+      "Considerado o 'Rei da Selva'.",
+      "O macho tem uma juba característica."
+    ],
+    "macaco": [
+      "Gosta de bananas e de pular em árvores.",
+      "Animal inteligente e social, vive em bandos."
+    ],
+    "tubarao": [
+      "Grande predador dos mares.",
+      "Aparece em filmes famosos como uma grande ameaça."
+    ],
+    "pinguim": [
+      "Ave que não voa e vive em climas frios.",
+      "Veste um 'smoking' natural preto e branco."
+    ],
+    "jacare": [
+      "Réptil que vive em rios e pântanos.",
+      "Parente próximo do crocodilo."
+    ],
+    "arara": [
+      "Ave colorida, símbolo da fauna brasileira.",
+      "Sua plumagem pode ser azul, amarela e vermelha."
+    ],
+    "onca": [
+      "O maior felino das Américas.",
+      "Sua pele é amarelada com manchas pretas."
+    ],
+    "cavalo": [
+      "Usado como meio de transporte e em esportes.",
+      "Relincha e vive em estábulos."
+    ],
+    "cachorro": [
+      "Conhecido como o melhor amigo do homem.",
+      "Late e abana o rabo."
+    ],
+    "gato": [
+      "Animal doméstico independente e que mia.",
+      "Dizem que tem sete ou nove vidas."
+    ],
+    "lobo": [
+      "Parente selvagem do cachorro, uiva para a lua.",
+      "Vive em alcateias."
+    ],
+    "tigre": [
+      "O maior felino do mundo, com listras pretas.",
+      "Vive nas florestas da Ásia."
+    ],
+    "urso": [
+      "Mamífero grande que pode hibernar no inverno.",
+      "O 'Pooh' é um famoso personagem desta espécie."
+    ],
+    "zebra": [
+      "Animal africano que parece um cavalo de pijama.",
+      "Suas listras são como uma impressão digital."
+    ],
+    "hipopotamo": [
+      "Grande mamífero africano que passa a maior parte do tempo na água.",
+      "Apesar da aparência dócil, é muito perigoso."
+    ],
+    "rinoceronte": [
+      "Possui um ou dois chifres no nariz.",
+      "Sua pele é grossa e parece uma armadura."
+    ],
+    "baleia": [
+      "O maior animal do planeta, vive no oceano.",
+      "A 'azul' é a maior espécie."
+    ],
+    "golfinho": [
+      "Mamífero aquático muito inteligente e brincalhão.",
+      "Comunica-se por meio de assobios e cliques."
+    ],
+    "aguia": [
+      "Ave de rapina com visão aguçada.",
+      "É símbolo de força e liberdade em muitas culturas."
+    ],
+    "coruja": [
+      "Ave noturna que consegue girar a cabeça quase 360 graus.",
+      "Símbolo da sabedoria."
+    ],
+    "tucano": [
+      "Ave tropical famosa pelo seu bico enorme e colorido.",
+      "Apesar do tamanho, seu bico é leve."
+    ],
+    "cobra": [
+      "Réptil sem patas que rasteja.",
+      "Algumas espécies são peçonhentas."
+    ],
+    "tartaruga": [
+      "Réptil que carrega sua casa nas costas.",
+      "Pode ser marinha ou terrestre."
+    ],
+    "sapo": [
+      "Anfíbio que vive perto da água e coaxa.",
+      "Não é um príncipe disfarçado."
+    ],
+    "morcego": [
+      "O único mamífero que pode voar.",
+      "Dorme de cabeça para baixo."
+    ],
+    "esquilo": [
+      "Pequeno roedor que adora nozes e vive em árvores.",
+      "Conhecido por ter uma cauda peluda."
+    ],
+    "abelha": [
+      "Inseto que produz mel e vive em colmeias.",
+      "Sua picada pode ser dolorosa."
+    ],
+    "formiga": [
+      "Inseto que vive em colônias e é conhecido por ser trabalhador.",
+      "Consegue carregar muitas vezes o seu próprio peso."
+    ],
+    "borboleta": [
+      "Inseto com asas coloridas que antes era uma lagarta.",
+      "Passa por um processo de metamorfose."
+    ],
+    "raposa": [
+      "Animal astuto e oportunista, parente dos cães.",
+      "Famosa em muitas fábulas."
+    ],
+    "coelho": [
+      "Parente da lebre, famoso pelas orelhas compridas.",
+      "É o símbolo da Páscoa."
+    ],
+    "porco": [
+      "Animal de fazenda que fornece carne como bacon e linguiça.",
+      "Gosta de rolar na lama."
+    ],
+    "vaca": [
+      "Animal de fazenda que nos dá leite.",
+      "Muge e tem chifres."
+    ],
+    "galinha": [
+      "Ave de fazenda que bota ovos.",
+      "O macho é o galo, que canta de manhã."
+    ],
+    "pato": [
+      "Ave aquática que faz 'quack'.",
+      "Tem membranas nas patas que ajudam a nadar."
+    ],
+    "ovelha": [
+      "Animal de fazenda que nos fornece lã.",
+      "Bala e vive em rebanhos."
+    ],
+    "camelo": [
+      "Animal do deserto com uma ou duas corcovas.",
+      "Armazena gordura, e não água, nas corcovas."
+    ],
+    "polvo": [
+      "Molusco com oito tentáculos.",
+      "Consegue soltar tinta para se defender."
+    ],
+    "estrela do mar": [
+      "Animal marinho com cinco ou mais braços.",
+      "Não tem cérebro nem sangue."
+    ],
+    "pavao": [
+      "Ave conhecida pela cauda exuberante e colorida do macho.",
+      "Exibe sua cauda para atrair a fêmea."
+    ],
+    "cisne": [
+      "Ave aquática elegante, branca ou preta.",
+      "O 'patinho feio' da história virou um destes."
+    ],
+    "flamengo": [
+      "Ave pernalta de cor rosa.",
+      "Sua cor vem dos pigmentos dos crustáceos que come."
+    ],
+    "preguica": [
+      "O mamífero mais lento do mundo.",
+      "Vive em árvores e dorme a maior parte do dia."
+    ],
+    "capivara": [
+      "O maior roedor do mundo, muito social.",
+      "É comum vê-la em parques urbanos perto de lagos."
+    ],
+    "tamandua": [
+      "Não tem dentes e usa sua longa língua para comer formigas e cupins.",
+      "Sua cauda parece uma bandeira."
+    ],
+    "beija flor": [
+      "Pequena ave que bate as asas muito rápido.",
+      "Alimenta-se de néctar e tem o bico fino e comprido."
+    ],
+    "hamster": [
+      "Pequeno roedor de estimação que gosta de rodas de exercício.",
+      "Guarda comida em suas bochechas."
+    ]
+  }
+}
