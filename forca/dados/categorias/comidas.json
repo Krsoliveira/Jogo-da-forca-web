@@ -1,0 +1,406 @@
+{
+  "categoria": "Comidas",
+  "ordem": 6,
+  "palavras": {
+    "feijoada": [
+      "Prato típico brasileiro servido com arroz, couve e laranja.",
+      "Leva feijão preto, carne de porco e é tradicional aos sábados."
+    ],
+    "brigadeiro": [
+      "Doce de festa infantil feito de leite condensado e chocolate.",
+      "Tem formato de bolinha coberta de granulado."
+    ],
+    "pizza": [
+      "Massa redonda coberta com molho, queijo e outros ingredientes.",
+      "Nasceu na Itália e é assada em forno quente."
+    ],
+    "lasanha": [
+      "Camadas de massa recheadas com molho e queijo, assadas no forno.",
+      "Prato italiano famoso, muito presente no almoço de domingo."
+    ],
+    "hamburguer": [
+      "Sanduíche com carne moída em formato de disco.",
+      "É servido no pão com queijo, alface e tomate."
+    ],
+    "coxinha": [
+      "Salgado em forma de gota, recheado com frango desfiado.",
+      "É empanado e frito, campeão das festinhas."
+    ],
+    "pastel": [
+      "Massa fina e crocante, frita, com recheio variado.",
+      "Quase sempre é vendido na feira, acompanhado de caldo de cana."
+    ],
+    "pao de queijo": [
+      "Bolinha assada, macia por dentro e típica de Minas Gerais.",
+      "É feita com polvilho e acompanha bem o café."
+    ],
+    "tapioca": [
+      "Massa feita de goma de mandioca, cozida na frigideira.",
+      "Pode ser recheada com queijo, coco ou carne de sol."
+    ],
+    "acaraje": [
+      "Bolinho de feijão-fradinho frito no azeite de dendê.",
+      "É vendido pelas baianas e recheado com vatapá e camarão."
+    ],
+    "moqueca": [
+      "Ensopado de peixe com leite de coco, azeite de dendê e coentro.",
+      "É preparado em panela de barro, típico da Bahia e do Espírito Santo."
+    ],
+    "churrasco": [
+      "Carnes assadas na brasa, comuns em encontros de família.",
+      "Costuma ser servido com farofa e vinagrete."
+    ],
+    "farofa": [
+      "Acompanhamento feito com farinha de mandioca torrada.",
+      "Pode levar bacon, ovos e cebola, e combina com feijoada."
+    ],
+    "cuscuz": [
+      "Massa de milho cozida no vapor, comum no café da manhã nordestino.",
+      "Pode ser servido com ovo, queijo ou manteiga."
+    ],
+    "omelete": [
+      "Prato feito com ovos batidos e dobrados na frigideira.",
+      "Pode levar queijo, presunto ou legumes no recheio."
+    ],
+    "panqueca": [
+      "Massa fina e redonda, frita na frigideira e enrolada com recheio.",
+      "Pode ser doce ou salgada, com carne moída ou queijo."
+    ],
+    "espaguete": [
+      "Massa comprida e fina, típica da culinária italiana.",
+      "Costuma ser servida com molho de tomate ou bolonhesa."
+    ],
+    "macarrao": [
+      "Alimento de farinha de trigo, vendido seco e cozido em água.",
+      "Existe em vários formatos: parafuso, penne, talharim."
+    ],
+    "risoto": [
+      "Prato italiano de arroz cremoso, cozido aos poucos no caldo.",
+      "Os sabores mais comuns são cogumelo, queijo e açafrão."
+    ],
+    "sushi": [
+      "Prato japonês com arroz temperado e peixe cru.",
+      "Costuma ser comido com molho de soja e wasabi."
+    ],
+    "taco": [
+      "Tortilha dobrada com recheio, típica do México.",
+      "É servida com carne, molho picante e guacamole."
+    ],
+    "empada": [
+      "Salgado assado em massa quebradiça, com recheio cremoso.",
+      "O recheio mais clássico é o de frango com palmito."
+    ],
+    "esfiha": [
+      "Pastel assado de origem árabe, aberto ou fechado.",
+      "Pode ser de carne, queijo ou calabresa."
+    ],
+    "quibe": [
+      "Bolinho de carne com trigo, de origem árabe.",
+      "Pode ser frito ou assado e é muito servido em festas."
+    ],
+    "pamonha": [
+      "Massa doce de milho verde, cozida na própria palha.",
+      "Típica das festas juninas, vendida quente por ambulantes."
+    ],
+    "canjica": [
+      "Sobremesa de milho branco, leite de coco e canela.",
+      "Tradicional nas festas de São João."
+    ],
+    "pacoca": [
+      "Doce esfarelado feito de amendoim torrado e açúcar.",
+      "Muito vendida em festas juninas, em tabletes ou no formato de rolha."
+    ],
+    "cocada": [
+      "Doce feito com coco ralado e açúcar.",
+      "Pode ser branca, queimada ou de leite."
+    ],
+    "quindim": [
+      "Doce amarelo e brilhante, feito de gemas, açúcar e coco.",
+      "Tem origem portuguesa e é muito popular na Bahia."
+    ],
+    "pudim": [
+      "Sobremesa de leite condensado com calda de caramelo.",
+      "É assado em forma com furo no meio e servido gelado."
+    ],
+    "mousse": [
+      "Sobremesa leve e aerada, de textura cremosa.",
+      "O sabor mais famoso é o de chocolate ou maracujá."
+    ],
+    "sorvete": [
+      "Sobremesa gelada e cremosa, vendida em bolas.",
+      "É servida em casquinha ou copinho, em muitos sabores."
+    ],
+    "picole": [
+      "Sobremesa gelada e dura, servida em um palito.",
+      "Pode ser de fruta, de leite ou de chocolate."
+    ],
+    "bolo": [
+      "Sobremesa assada de massa fofa, presente em aniversários.",
+      "É cortado em fatias e a vela é soprada antes."
+    ],
+    "torta": [
+      "Massa assada com recheio doce ou salgado.",
+      "A de frango e a de limão estão entre as mais comuns."
+    ],
+    "brownie": [
+      "Quadradinho de chocolate, denso e úmido, de origem americana.",
+      "Costuma levar nozes e ser servido com sorvete."
+    ],
+    "croissant": [
+      "Massa folhada em formato de meia-lua, de origem francesa.",
+      "É crocante por fora e macio por dentro, ótimo no café da manhã."
+    ],
+    "sanduiche": [
+      "Duas fatias de pão com recheio no meio.",
+      "Pode levar queijo, presunto, alface e tomate."
+    ],
+    "cachorro quente": [
+      "Pão macio recheado com salsicha, molho e batata palha.",
+      "É vendido em lanchonetes e carrinhos de rua."
+    ],
+    "batata frita": [
+      "Palitos dourados e crocantes, acompanhamento de lanches.",
+      "É servida com sal, ketchup ou maionese."
+    ],
+    "strogonoff": [
+      "Prato de carne ou frango com molho cremoso de creme de leite.",
+      "Costuma vir acompanhado de arroz branco e batata palha."
+    ],
+    "bacalhau": [
+      "Peixe salgado e seco, muito consumido em Portugal.",
+      "É prato tradicional da ceia de Natal."
+    ],
+    "vatapa": [
+      "Creme de pão, camarão, leite de coco e dendê.",
+      "É típico da Bahia e acompanha o acarajé."
+    ],
+    "baiao de dois": [
+      "Prato nordestino de arroz e feijão cozidos juntos.",
+      "Costuma levar queijo coalho e carne seca."
+    ],
+    "pao": [
+      "Alimento básico de farinha, fermento e água, assado no forno.",
+      "Na padaria, o mais famoso é o francês."
+    ],
+    "bruschetta": [
+      "Fatia de pão tostado com tomate, manjericão e azeite.",
+      "É uma entrada típica da Itália."
+    ],
+    "ravioli": [
+      "Massa italiana em quadradinhos recheados, cozida e servida com molho.",
+      "O recheio costuma ser de queijo, carne ou espinafre."
+    ],
+    "nhoque": [
+      "Bolinhas macias de massa de batata, de origem italiana.",
+      "Há a tradição de comê-lo no dia 29 de cada mês."
+    ],
+    "paella": [
+      "Arroz espanhol cozido com frutos do mar e açafrão.",
+      "É preparada em uma frigideira larga e rasa."
+    ],
+    "guacamole": [
+      "Pasta de abacate amassado, típica do México.",
+      "Leva tomate, cebola, limão e acompanha nachos."
+    ],
+    "falafel": [
+      "Bolinho frito de grão-de-bico, de origem árabe.",
+      "É servido no pão sírio com molho de gergelim."
+    ],
+    "fondue": [
+      "Prato suíço em que se mergulham pedaços de pão ou fruta em queijo ou chocolate derretido.",
+      "Costuma ser servido em uma panelinha sobre uma pequena chama."
+    ],
+    "crepe": [
+      "Massa fina e delicada, de origem francesa, dobrada com recheio.",
+      "Pode ser doce com chocolate ou salgado com queijo."
+    ],
+    "waffle": [
+      "Massa assada em forma que deixa marcas quadriculadas.",
+      "Pode ser servido com mel, frutas e sorvete."
+    ],
+    "panetone": [
+      "Pão doce de origem italiana, típico do Natal.",
+      "Leva frutas cristalizadas e passas."
+    ],
+    "rabanada": [
+      "Fatias de pão molhadas, fritas e cobertas com açúcar e canela.",
+      "É uma sobremesa típica da ceia de Natal."
+    ],
+    "biscoito": [
+      "Alimento seco e crocante, assado em pequenos pedaços.",
+      "Pode ser doce, salgado, recheado ou com gotas de chocolate."
+    ],
+    "chocolate": [
+      "Doce feito com cacau, açúcar e leite.",
+      "A Páscoa é a data em que mais se consome."
+    ],
+    "pipoca": [
+      "Grãos de milho que estouram ao serem aquecidos.",
+      "É o petisco clássico dos cinemas."
+    ],
+    "algodao doce": [
+      "Guloseima feita de fios finos de açúcar, enrolados em um palito.",
+      "Parece uma nuvem e é vendido em parques e festas."
+    ],
+    "beijinho": [
+      "Docinho de festa feito de leite condensado e coco ralado.",
+      "Costuma ter um cravo enfeitando o topo."
+    ],
+    "bombom": [
+      "Pequeno doce de chocolate com recheio, vendido em caixas.",
+      "É um presente clássico em datas especiais."
+    ],
+    "caldo verde": [
+      "Sopa portuguesa feita de batata, couve e rodelas de linguiça.",
+      "É muito servida em festas juninas e noites frias."
+    ],
+    "sopa": [
+      "Prato líquido servido quente, geralmente em noites frias.",
+      "É comida com colher e pode levar legumes, massa ou carne."
+    ],
+    "salada": [
+      "Prato frio de legumes e folhas, temperado com azeite.",
+      "É a opção leve e saudável nas refeições."
+    ],
+    "mingau": [
+      "Papa quente feita de leite com amido ou aveia.",
+      "É um café da manhã tradicional, de textura cremosa."
+    ],
+    "granola": [
+      "Mistura crocante de aveia, mel e castanhas, servida no café da manhã.",
+      "Costuma acompanhar iogurte e frutas."
+    ],
+    "iogurte": [
+      "Alimento cremoso feito de leite fermentado.",
+      "Pode ser natural ou com polpa de frutas."
+    ],
+    "queijo": [
+      "Alimento feito de leite coagulado e maturado.",
+      "Há de minas, mussarela, parmesão, entre muitos outros."
+    ],
+    "requeijao": [
+      "Creme de leite espalhável, de sabor suave.",
+      "É passado no pão e vem em copo de vidro."
+    ],
+    "presunto": [
+      "Fatia fina de carne suína curada ou cozida.",
+      "É recheio comum de sanduíches e pizzas."
+    ],
+    "mortadela": [
+      "Embutido rosado e macio, feito com carne e pedacinhos de gordura.",
+      "É o recheio de um sanduíche famoso do Mercadão de São Paulo."
+    ],
+    "linguica": [
+      "Embutido de carne temperada em formato alongado.",
+      "É assada no churrasco ou frita com cebola."
+    ],
+    "salsicha": [
+      "Embutido fino e macio de carne moída.",
+      "É a base do cachorro-quente."
+    ],
+    "costela": [
+      "Corte de carne bovina com osso, assado por horas.",
+      "Quando bem preparada, solta do osso com facilidade."
+    ],
+    "picanha": [
+      "Corte bovino preferido do churrasco brasileiro.",
+      "Tem uma capa de gordura que lhe dá sabor."
+    ],
+    "bife": [
+      "Fatia de carne grelhada ou frita na frigideira.",
+      "Costuma vir acompanhado de arroz e batata frita."
+    ],
+    "lombo": [
+      "Corte macio da parte das costas do porco.",
+      "É assado inteiro em almoços festivos."
+    ],
+    "escondidinho": [
+      "Prato de purê coberto de carne moída, gratinado no forno.",
+      "A versão mais famosa leva mandioca e carne seca."
+    ],
+    "pao de mel": [
+      "Doce de massa escura de mel e especiarias, coberto com chocolate.",
+      "Costuma vir recheado com doce de leite."
+    ],
+    "bolo de cenoura": [
+      "Sobremesa alaranjada e fofa, famosa por sua cobertura.",
+      "É coberto com calda de chocolate."
+    ],
+    "arroz doce": [
+      "Sobremesa cremosa de grãos cozidos no leite, com açúcar e canela.",
+      "Costuma ser servido frio e polvilhado de canela."
+    ],
+    "curau": [
+      "Creme doce feito com milho verde ralado.",
+      "É típico das festas juninas."
+    ],
+    "gelatina": [
+      "Sobremesa tremida e colorida, feita de pó dissolvido em água e gelada.",
+      "Pode ser de morango, uva ou limão."
+    ],
+    "salpicao": [
+      "Salada gelada de frango desfiado, maionese e batata palha.",
+      "É um clássico das ceias e festas de fim de ano."
+    ],
+    "maionese": [
+      "Molho cremoso e claro feito de ovos e óleo.",
+      "Acompanha batata frita e entra em saladas e sanduíches."
+    ],
+    "vinagrete": [
+      "Molho de tomate, cebola e pimentão picados, temperado com vinagre.",
+      "É o acompanhamento do churrasco."
+    ],
+    "tabule": [
+      "Salada árabe de trigo, salsinha, tomate e hortelã.",
+      "É temperada com limão e azeite."
+    ],
+    "feijao": [
+      "Grão básico da refeição do brasileiro, cozido com tempero.",
+      "Combina com arroz e é um dos pratos mais tradicionais do país."
+    ],
+    "arroz": [
+      "Grão branco e cozido, base do prato feito nacional.",
+      "Quase sempre acompanha o feijão."
+    ],
+    "ovo frito": [
+      "Prato simples de clara cozida e gema mole, feito na frigideira.",
+      "Costuma ser colocado sobre o arroz com feijão."
+    ],
+    "polenta": [
+      "Papa firme de milho, de origem italiana.",
+      "Pode ser cozida, frita ou servida com molho."
+    ],
+    "cuca": [
+      "Bolo coberto por uma farofa doce, típico do Sul.",
+      "É de origem alemã e muito comum com banana."
+    ],
+    "pave": [
+      "Sobremesa em camadas de biscoito e creme, servida gelada.",
+      "Seu nome vem de uma palavra francesa que significa calçada."
+    ],
+    "torresmo": [
+      "Pedaço de pele de porco frito, crocante e dourado.",
+      "É um petisco comum em botecos e em feijoadas."
+    ],
+    "ceviche": [
+      "Peixe cru marinado em suco de limão, típico do Peru.",
+      "É servido gelado com cebola roxa e coentro."
+    ],
+    "churros": [
+      "Doce espanhol frito, em forma de palito sulcado.",
+      "É recheado com doce de leite e polvilhado de açúcar e canela."
+    ],
+    "empadao": [
+      "Torta salgada grande, feita de massa quebradiça.",
+      "O recheio tradicional é de frango, e é típica de Goiás."
+    ],
+    "pinhao": [
+      "Semente comestível da araucária, consumida cozida.",
+      "É a estrela das festas juninas no Sul do Brasil."
+    ],
+    "rosquinha": [
+      "Massa doce frita em formato de anel.",
+      "Pode ser coberta de glacê colorido e granulado."
+    ]
+  }
+}
