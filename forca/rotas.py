@@ -8,16 +8,20 @@ import random
 
 from flask import Blueprint, current_app, g, jsonify, render_template, request, session
 
-from . import regras
+from . import banco, regras
 from .config import (
+    ALEATORIO,
     DIFICULDADE_CONFIG,
     LETRAS_VALIDAS,
+    PALAVRAS_RECENTES,
     PENALIDADE_CHUTE_ERRADO,
     XP_PARA_PROXIMO_NIVEL,
 )
 from .palavras import PALAVRAS_POR_CATEGORIA
 
 bp = Blueprint("jogo", __name__)
+
+CATEGORIAS = [*PALAVRAS_POR_CATEGORIA, ALEATORIO]
 
 
 def _armazenamento():
@@ -46,7 +50,8 @@ def _erro(mensagem, status=400):
 
 
 def _dicas(categoria, palavra, dificuldade):
-    return regras.dicas_para(PALAVRAS_POR_CATEGORIA[categoria][palavra], dificuldade)
+    base = banco.dicas(palavra) if categoria == ALEATORIO else PALAVRAS_POR_CATEGORIA[categoria][palavra]
+    return regras.dicas_para(base, dificuldade)
 
 
 def _campos_nivel(partida):
@@ -57,7 +62,7 @@ def _campos_nivel(partida):
     }
 
 
-def _servir_proxima_palavra(partida, categoria, dificuldade):
+def _sortear_da_categoria(partida, categoria):
     disponiveis = partida.setdefault("palavras_disponiveis_por_categoria", {})
 
     # Quando o baralho da categoria acaba, embaralha de novo (jogo contínuo).
@@ -66,7 +71,32 @@ def _servir_proxima_palavra(partida, categoria, dificuldade):
         random.shuffle(palavras)
         disponiveis[categoria] = palavras
 
-    palavra = disponiveis[categoria].pop()
+    return disponiveis[categoria].pop()
+
+
+def _sortear_aleatoria(partida, dificuldade):
+    """Sorteia do banco geral na dificuldade atual, evitando as últimas palavras jogadas.
+
+    Guardar só as recentes (e não um baralho de milhares de palavras) mantém o estado da partida
+    pequeno; com milhares de candidatas, dez tentativas bastam para fugir das repetições.
+    """
+    candidatas = banco.palavras(dificuldade)
+    recentes = partida.setdefault("palavras_recentes", [])
+    # S311/B311: sorteio de jogo, não é segredo
+    for _ in range(10):
+        palavra = random.choice(candidatas)  # noqa: S311 # nosec B311
+        if palavra not in recentes:
+            break
+    recentes.append(palavra)
+    del recentes[:-PALAVRAS_RECENTES]
+    return palavra
+
+
+def _servir_proxima_palavra(partida, categoria, dificuldade):
+    if categoria == ALEATORIO:
+        palavra = _sortear_aleatoria(partida, dificuldade)
+    else:
+        palavra = _sortear_da_categoria(partida, categoria)
     max_erros = DIFICULDADE_CONFIG[dificuldade]
 
     partida.update(
@@ -102,7 +132,7 @@ def health():
 
 @bp.route("/categorias")
 def get_categorias():
-    return jsonify(list(PALAVRAS_POR_CATEGORIA.keys()))
+    return jsonify(CATEGORIAS)
 
 
 @bp.route("/novo_jogo")
@@ -110,7 +140,7 @@ def novo_jogo():
     categoria = request.args.get("category")
     dificuldade = request.args.get("difficulty", "medio")
 
-    if categoria not in PALAVRAS_POR_CATEGORIA:
+    if categoria not in CATEGORIAS:
         return _erro("Categoria inválida.")
     if dificuldade not in DIFICULDADE_CONFIG:
         return _erro("Dificuldade inválida.")
