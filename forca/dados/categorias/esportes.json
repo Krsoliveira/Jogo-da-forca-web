@@ -1,0 +1,406 @@
+{
+  "categoria": "Esportes",
+  "ordem": 8,
+  "palavras": {
+    "futebol": [
+      "Dois times de onze jogadores disputam uma bola em campo gramado.",
+      "É o esporte mais popular do Brasil, e o objetivo é fazer gol."
+    ],
+    "basquete": [
+      "Dois times tentam acertar a bola em uma cesta suspensa.",
+      "Michael Jordan e LeBron James são seus maiores astros."
+    ],
+    "voleibol": [
+      "Dois times separados por uma rede mandam a bola ao chão do adversário.",
+      "Cada equipe tem seis jogadores em quadra e pode dar três toques."
+    ],
+    "handebol": [
+      "Dois times jogam a bola com as mãos e arremessam em um gol.",
+      "É disputado em quadra, com sete jogadores de cada lado."
+    ],
+    "tenis": [
+      "Dois jogadores se enfrentam com raquetes e uma bolinha amarela.",
+      "Wimbledon e Roland Garros são os torneios mais famosos."
+    ],
+    "natacao": [
+      "Competição em que atletas se deslocam na piscina.",
+      "Tem estilos como crawl, costas, peito e borboleta."
+    ],
+    "atletismo": [
+      "Reúne provas de corrida, saltos e lançamentos.",
+      "É a base dos Jogos Olímpicos de verão."
+    ],
+    "ginastica": [
+      "Esporte de força e flexibilidade, com acrobacias em aparelhos.",
+      "Simone Biles é uma de suas maiores estrelas."
+    ],
+    "judo": [
+      "Arte marcial japonesa de projeções e imobilizações.",
+      "Seus atletas usam um quimono e faixas de várias cores."
+    ],
+    "karate": [
+      "Arte marcial de origem japonesa com golpes de mãos e pés.",
+      "Os praticantes usam quimono branco e faixas coloridas."
+    ],
+    "boxe": [
+      "Esporte de luta em que dois atletas se golpeiam com luvas.",
+      "Acontece em um ringue dividido em rounds."
+    ],
+    "capoeira": [
+      "Luta e dança criada por africanos escravizados no Brasil.",
+      "Os jogadores fazem roda ao som de um berimbau."
+    ],
+    "esgrima": [
+      "Duelo em que dois atletas usam espadas leves e finas.",
+      "Os competidores usam máscara e roupa branca de proteção."
+    ],
+    "remo": [
+      "Esporte em que atletas impulsionam um barco com pás compridas.",
+      "A prova costuma ser em rios ou lagos, com equipes sincronizadas."
+    ],
+    "canoagem": [
+      "Atletas descem rios ou competem em águas calmas dentro de pequenos barcos.",
+      "Os competidores usam pás para se impulsionar."
+    ],
+    "surfe": [
+      "Atleta desliza sobre as ondas do mar de pé em uma prancha.",
+      "Gabriel Medina e Italo Ferreira são brasileiros campeões mundiais."
+    ],
+    "skate": [
+      "Atleta anda e faz manobras sobre uma prancha com quatro rodas.",
+      "Pode ser praticado em pistas, ruas e bowls."
+    ],
+    "patinacao": [
+      "Deslizar sobre rodas ou lâminas em pistas e no gelo.",
+      "Pode ser artística ou de velocidade."
+    ],
+    "ciclismo": [
+      "Corrida e passeios sobre duas rodas movidas a pedal.",
+      "A Volta da França é a prova mais famosa."
+    ],
+    "maratona": [
+      "Corrida de longa distância, com 42 quilômetros e 195 metros.",
+      "Seu nome vem de uma antiga cidade grega."
+    ],
+    "triatlo": [
+      "Prova que combina nado, bicicleta e corrida.",
+      "Os atletas completam três modalidades em sequência."
+    ],
+    "salto com vara": [
+      "Prova em que o atleta usa um bastão flexível para passar sobre uma barra alta.",
+      "Faz parte do atletismo e exige muita força e técnica."
+    ],
+    "arremesso de peso": [
+      "Prova em que o atleta lança uma bola de metal pesada com um braço só.",
+      "Faz parte do atletismo, e vence quem a joga mais longe."
+    ],
+    "lancamento de dardo": [
+      "Prova em que o atleta arremessa uma lança leve o mais longe possível.",
+      "Faz parte do atletismo."
+    ],
+    "salto em altura": [
+      "Prova em que o atleta tenta passar por cima de uma barra cada vez mais elevada.",
+      "Os competidores caem de costas em um colchão."
+    ],
+    "salto em distancia": [
+      "Prova em que o atleta corre e pula, caindo em uma caixa de areia.",
+      "Vence quem alcançar a marca mais longe."
+    ],
+    "hipismo": [
+      "Esporte em que cavaleiros e cavalos enfrentam obstáculos ou provas de adestramento.",
+      "Os competidores vestem botas e capacete."
+    ],
+    "golfe": [
+      "Esporte em que o jogador acerta uma pequena bola em buracos usando tacos.",
+      "É disputado em campos extensos e gramados."
+    ],
+    "rugby": [
+      "Dois times disputam uma bola oval, e vale carregar com as mãos.",
+      "A Nova Zelândia é famosa por sua seleção, os All Blacks."
+    ],
+    "beisebol": [
+      "Um rebatedor tenta acertar uma bola lançada com um taco e correr pelas bases.",
+      "É muito popular nos Estados Unidos e no Japão."
+    ],
+    "criquete": [
+      "Esporte com taco e bola, popular na Inglaterra e na Índia.",
+      "Uma partida pode durar vários dias."
+    ],
+    "hoquei": [
+      "Dois times se enfrentam com tacos para fazer um disco ou bola entrar no gol.",
+      "Pode ser jogado no gelo ou na grama."
+    ],
+    "curling": [
+      "Esporte de equipe em que se deslizam pedras de granito sobre o gelo.",
+      "Os atletas varrem a pista para guiar a pedra."
+    ],
+    "biatlo": [
+      "Prova de inverno que combina esqui de fundo e tiro ao alvo.",
+      "Os atletas carregam um rifle nas costas."
+    ],
+    "esqui": [
+      "Esporte de inverno em que se desliza sobre a neve com pranchas nos pés.",
+      "É praticado em montanhas cobertas de neve."
+    ],
+    "snowboard": [
+      "Esporte de neve em que se desce montanhas em cima de uma única prancha.",
+      "É parecido com o surfe, mas na neve."
+    ],
+    "saltos ornamentais": [
+      "Competição em que atletas pulam de um trampolim ou plataforma, fazendo acrobacias.",
+      "Cai na água e os juízes dão notas pela elegância."
+    ],
+    "polo aquatico": [
+      "Dois times disputam uma bola dentro da piscina e tentam marcar gols.",
+      "Os jogadores não podem apoiar os pés no fundo."
+    ],
+    "nado sincronizado": [
+      "Atletas fazem coreografias na água ao som de música.",
+      "É disputado por duplas ou equipes, com muita elegância."
+    ],
+    "mergulho": [
+      "Atividade subaquática em que se explora o fundo do mar com cilindro de ar.",
+      "Pode ser livre ou autônomo."
+    ],
+    "vela": [
+      "Esporte em que barcos são movidos pela força do vento.",
+      "Os competidores ajustam o pano preso ao mastro para ganhar velocidade."
+    ],
+    "windsurfe": [
+      "Atleta fica em pé sobre uma prancha com uma vela.",
+      "É uma mistura de surfe e navegação."
+    ],
+    "escalada": [
+      "Esporte em que se sobe paredes ou rochas usando mãos e pés.",
+      "Muitas vezes se usa corda e equipamentos de segurança."
+    ],
+    "alpinismo": [
+      "Atividade de subir grandes montanhas.",
+      "O Everest é o maior desafio do mundo para quem o pratica."
+    ],
+    "parkour": [
+      "Atividade em que se supera obstáculos urbanos com pulos e corridas.",
+      "Os praticantes saltam muros e telhados, sem equipamento."
+    ],
+    "bocha": [
+      "Esporte em que se lançam bolas pesadas para chegar perto de uma bola menor.",
+      "É muito praticado por idosos e tem origem italiana."
+    ],
+    "boliche": [
+      "Atleta lança uma bola pesada para derrubar pinos.",
+      "O objetivo é fazer um strike."
+    ],
+    "sinuca": [
+      "Jogo de mesa em que se acertam bolas coloridas em caçapas usando um taco.",
+      "A bola branca é usada para empurrar as outras."
+    ],
+    "xadrez": [
+      "Disputa de estratégia com peças como rei, rainha e bispo.",
+      "Os jogadores movem peças em um tabuleiro de 64 casas."
+    ],
+    "dardos": [
+      "Jogo de pontaria em que se lança pequenas flechas em um alvo redondo.",
+      "É popular em bares e disputado em torneios."
+    ],
+    "tiro com arco": [
+      "Esporte de precisão em que o atleta dispara flechas contra um alvo.",
+      "Combina concentração e força."
+    ],
+    "levantamento de peso": [
+      "Esporte em que atletas erguem barras com muitos discos de ferro.",
+      "Vence quem levantar a maior carga."
+    ],
+    "crossfit": [
+      "Treino intenso que mistura levantamento de peso, corrida e ginástica.",
+      "Costuma ser praticado em academias chamadas boxes."
+    ],
+    "badminton": [
+      "Esporte de raquete jogado com uma peteca de penas sobre uma rede alta.",
+      "É bastante popular na Ásia."
+    ],
+    "tenis de mesa": [
+      "Esporte de raquetes pequenas jogado em uma superfície dividida por uma rede baixa.",
+      "É conhecido também pelo nome de pingue-pongue."
+    ],
+    "squash": [
+      "Dois jogadores acertam uma pequena bola contra a parede de uma quadra fechada.",
+      "Exige muito fôlego e reflexo."
+    ],
+    "futsal": [
+      "Versão do futebol jogada em quadra pequena, com cinco jogadores por equipe.",
+      "A bola é menor e pesa menos."
+    ],
+    "futevolei": [
+      "Esporte de praia que mistura futebol e outra modalidade com rede.",
+      "Os jogadores só podem usar os pés, a cabeça e o peito."
+    ],
+    "volei de praia": [
+      "Duas duplas se enfrentam na areia, separadas por uma rede.",
+      "O Brasil tem muitos medalhistas olímpicos nessa modalidade."
+    ],
+    "peteca": [
+      "Jogo brasileiro em que se bate com as mãos em um brinquedo de penas.",
+      "Pode ser jogada em duplas, sobre uma rede."
+    ],
+    "corrida de rua": [
+      "Prova de resistência em ruas e avenidas das cidades.",
+      "Pode ter 5, 10 ou 21 quilômetros."
+    ],
+    "jiu jitsu": [
+      "Luta em que se busca o domínio do adversário no chão.",
+      "Os brasileiros Gracie ajudaram a difundi-lo pelo mundo."
+    ],
+    "taekwondo": [
+      "Arte marcial coreana famosa por seus chutes altos.",
+      "Os atletas usam colete de proteção."
+    ],
+    "muay thai": [
+      "Luta da Tailândia que usa socos, chutes, joelhos e cotovelos.",
+      "É chamada de arte das oito armas."
+    ],
+    "kung fu": [
+      "Conjunto de artes marciais chinesas.",
+      "Bruce Lee e Jackie Chan ajudaram a popularizá-lo no cinema."
+    ],
+    "sumo": [
+      "Luta japonesa em que gigantes tentam empurrar o rival para fora do círculo.",
+      "Os lutadores são muito pesados e usam faixas na cintura."
+    ],
+    "luta livre": [
+      "Esporte em que dois atletas tentam derrubar e imobilizar um ao outro.",
+      "É disputada em um tapete e é diferente do boxe."
+    ],
+    "motociclismo": [
+      "Corridas disputadas em duas rodas motorizadas.",
+      "A MotoGP é a principal competição mundial."
+    ],
+    "automobilismo": [
+      "Corridas disputadas por pilotos em carros velozes.",
+      "Ayrton Senna é um dos maiores nomes brasileiros."
+    ],
+    "kart": [
+      "Corrida de pequenos veículos de quatro rodas, sem carroceria.",
+      "Muitos pilotos famosos começaram nele."
+    ],
+    "rali": [
+      "Corrida de carros em estradas de terra, neve ou asfalto.",
+      "Pilotos e navegadores seguem um trajeto cronometrado."
+    ],
+    "formula um": [
+      "Principal categoria do automobilismo mundial.",
+      "Reúne os carros mais rápidos do planeta, que correm em grandes prêmios."
+    ],
+    "bmx": [
+      "Modalidade de bicicletas pequenas para saltos e acrobacias.",
+      "Os atletas correm em pistas com rampas e curvas."
+    ],
+    "pesca esportiva": [
+      "Atividade de capturar peixes por lazer e depois soltá-los.",
+      "Exige paciência, vara e isca."
+    ],
+    "caminhada": [
+      "Atividade física simples de andar em ritmo acelerado.",
+      "Faz bem à saúde e pode ser feita em parques."
+    ],
+    "paraquedismo": [
+      "Esporte radical em que se salta de um avião.",
+      "O atleta cai em queda livre antes de abrir o equipamento."
+    ],
+    "parapente": [
+      "Voo livre em que o atleta é sustentado por uma grande vela e o vento.",
+      "Costuma decolar do alto de morros."
+    ],
+    "rafting": [
+      "Descida de corredeiras em um bote inflável, em equipe.",
+      "Os participantes usam remos e coletes salva-vidas."
+    ],
+    "pentatlo moderno": [
+      "Prova que reúne esgrima, natação, hipismo, tiro e corrida.",
+      "Cinco modalidades em uma só competição."
+    ],
+    "decatlo": [
+      "Prova de atletismo com dez modalidades.",
+      "Seu campeão é considerado o atleta mais completo."
+    ],
+    "jogo de damas": [
+      "Disputa em tabuleiro em que peças capturam as do adversário pulando sobre elas.",
+      "As peças são brancas e pretas, e vence quem capturar todas as do rival."
+    ],
+    "polo": [
+      "Esporte em que atletas a cavalo acertam uma bola com um taco de cabo longo.",
+      "É associado à elite e disputado em grandes campos gramados."
+    ],
+    "ultimate": [
+      "Dois times disputam um disco voador, passando-o até a zona de ponto.",
+      "Não existe árbitro: os próprios atletas resolvem as faltas."
+    ],
+    "skimboard": [
+      "Esporte praticado na beira da praia, em pranchas finas, deslizando na água rasa.",
+      "O atleta corre e salta sobre a prancha para pegar as ondinhas."
+    ],
+    "slackline": [
+      "Atividade de equilíbrio sobre uma fita elástica esticada entre dois pontos.",
+      "É comum em parques e montanhas."
+    ],
+    "stand up paddle": [
+      "Praticante fica em pé sobre uma prancha e se impulsiona com um remo.",
+      "Pode ser feito em lagos, rios e no mar."
+    ],
+    "bodyboard": [
+      "Atleta deita sobre uma pequena prancha para pegar ondas.",
+      "É praticado deitado, com nadadeiras nos pés."
+    ],
+    "hidroginastica": [
+      "Exercícios feitos dentro da piscina, de baixo impacto.",
+      "Muito recomendados para idosos."
+    ],
+    "esporte eletronico": [
+      "Competição de videogames em equipes ou individual.",
+      "Reúne torneios com premiação e grandes plateias."
+    ],
+    "lancamento de disco": [
+      "Prova em que o atleta gira o corpo para arremessar um prato achatado de metal.",
+      "Faz parte do atletismo, e vence quem o manda mais longe."
+    ],
+    "arremesso de martelo": [
+      "Prova em que o atleta gira e solta uma bola de metal presa a um cabo.",
+      "Faz parte do atletismo, e a bola pesa mais de sete quilos."
+    ],
+    "salto triplo": [
+      "Prova de atletismo com três impulsos seguidos antes de cair na areia.",
+      "Combina um pulo, uma passada e um impulso final."
+    ],
+    "revezamento": [
+      "Prova em equipe em que cada atleta passa um bastão ao colega.",
+      "Quatro corredores se alternam em voltas na pista."
+    ],
+    "ginastica ritmica": [
+      "Atletas fazem coreografias com fita, arco, bola ou maças.",
+      "Combina dança, flexibilidade e coordenação com aparelhos leves."
+    ],
+    "tiro esportivo": [
+      "Disputa de pontaria com armas de pressão ou de fogo em estandes.",
+      "Vence quem acerta o alvo com mais precisão."
+    ],
+    "wakeboard": [
+      "Atleta é puxado por um barco sobre uma prancha curta, fazendo manobras.",
+      "É uma mistura de esqui aquático com surfe."
+    ],
+    "bobsled": [
+      "Equipe desce uma pista de gelo em um trenó aerodinâmico.",
+      "Faz parte dos Jogos Olímpicos de inverno."
+    ],
+    "futebol americano": [
+      "Esporte de contato com bola oval, jogado com capacete e proteção de ombros.",
+      "A final da liga é o Super Bowl, um evento assistido no mundo todo."
+    ],
+    "marcha atletica": [
+      "Prova em que o atleta anda o mais rápido possível sem perder o contato com o chão.",
+      "Os juízes eliminam quem começar a correr."
+    ],
+    "barreiras": [
+      "Prova de velocidade em que os atletas passam por obstáculos baixos enfileirados.",
+      "Os competidores precisam pular a cada poucos metros sem derrubá-los."
+    ]
+  }
+}
