@@ -69,6 +69,8 @@ main {
     background-color: var(--accent-pink);
     transform: translateY(-3px);
 }
+.btn-aleatorio { border: 1px dashed var(--accent-cyan); }
+.btn-aleatorio::before { content: "🎲 "; }
 .btn-voltar {
     margin-top: 2rem; background: transparent;
     border: 1px solid var(--text-color);
