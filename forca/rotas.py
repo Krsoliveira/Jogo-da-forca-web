@@ -1,8 +1,12 @@
-"""Rotas HTTP do jogo. O estado da partida vive na sessão (cookie assinado)."""
+"""Rotas HTTP do jogo.
+
+O cookie de sessão guarda só o identificador da partida (`pid`). O estado completo (palavra
+secreta, erros, pontuação) fica no servidor, em `forca.partidas`, e nunca é enviado ao navegador.
+"""
 
 import random
 
-from flask import Blueprint, current_app, jsonify, render_template, request, session
+from flask import Blueprint, current_app, g, jsonify, render_template, request, session
 
 from . import regras
 from .config import (
@@ -16,6 +20,27 @@ from .palavras import PALAVRAS_POR_CATEGORIA
 bp = Blueprint("jogo", __name__)
 
 
+def _armazenamento():
+    return current_app.extensions["partidas"]
+
+
+def _partida():
+    """Estado da partida do cookie atual, ou None se não houver partida válida."""
+    pid = session.get("pid")
+    estado = _armazenamento().obter(pid) if pid else None
+    if estado is not None:
+        g.pid, g.partida = pid, estado
+    return estado
+
+
+@bp.after_request
+def _persistir_partida(resposta):
+    # Salva o estado alterado ao fim da requisição (necessário se o armazenamento for externo).
+    if "partida" in g:
+        _armazenamento().salvar(g.pid, g.partida)
+    return resposta
+
+
 def _erro(mensagem, status=400):
     return jsonify({"erro": mensagem}), status
 
@@ -24,16 +49,16 @@ def _dicas(categoria, palavra, dificuldade):
     return regras.dicas_para(PALAVRAS_POR_CATEGORIA[categoria][palavra], dificuldade)
 
 
-def _campos_nivel():
+def _campos_nivel(partida):
     return {
-        "nivel": session.get("nivel", 1),
-        "xp_atual": session.get("xp_atual", 0),
+        "nivel": partida.get("nivel", 1),
+        "xp_atual": partida.get("xp_atual", 0),
         "xp_necessario": XP_PARA_PROXIMO_NIVEL,
     }
 
 
-def _servir_proxima_palavra(categoria, dificuldade):
-    disponiveis = session.get("palavras_disponiveis_por_categoria", {})
+def _servir_proxima_palavra(partida, categoria, dificuldade):
+    disponiveis = partida.setdefault("palavras_disponiveis_por_categoria", {})
 
     # Quando o baralho da categoria acaba, embaralha de novo (jogo contínuo).
     if not disponiveis.get(categoria):
@@ -44,12 +69,11 @@ def _servir_proxima_palavra(categoria, dificuldade):
     palavra = disponiveis[categoria].pop()
     max_erros = DIFICULDADE_CONFIG[dificuldade]
 
-    session.update(
+    partida.update(
         palavra=palavra,
         letras_tentadas=[],
         erros=0,
         pontos_rodada=0,
-        palavras_disponiveis_por_categoria=disponiveis,
         max_erros=max_erros,
     )
 
@@ -59,9 +83,9 @@ def _servir_proxima_palavra(categoria, dificuldade):
         "tentativas_restantes": max_erros,
         "erros": 0,
         "letras_tentadas": [],
-        "pontuacao": session.get("pontuacao_partida", 0),
+        "pontuacao": partida.get("pontuacao_partida", 0),
         "dificuldade": dificuldade,
-        **_campos_nivel(),
+        **_campos_nivel(partida),
     }
 
 
@@ -91,50 +115,56 @@ def novo_jogo():
     if dificuldade not in DIFICULDADE_CONFIG:
         return _erro("Dificuldade inválida.")
 
+    antigo = session.get("pid")
+    if antigo:
+        _armazenamento().apagar(antigo)
+
+    partida = {
+        "categoria_atual": categoria,
+        "dificuldade_atual": dificuldade,
+        "vitorias_consecutivas": 0,
+        "pontuacao_partida": 0,
+        "nivel": 1,
+        "xp_atual": 0,
+    }
+    resposta = _servir_proxima_palavra(partida, categoria, dificuldade)
+
     session.clear()
-    session.update(
-        categoria_atual=categoria,
-        dificuldade_atual=dificuldade,
-        vitorias_consecutivas=0,
-        pontuacao_partida=0,
-        nivel=1,
-        xp_atual=0,
-    )
-    return jsonify(_servir_proxima_palavra(categoria, dificuldade))
+    session["pid"] = _armazenamento().criar(partida)
+    return jsonify(resposta)
 
 
 @bp.route("/proxima_palavra")
 def proxima_palavra():
-    categoria = session.get("categoria_atual")
-    dificuldade = session.get("dificuldade_atual")
-    if not categoria or not dificuldade:
+    partida = _partida()
+    if not partida or not partida.get("categoria_atual"):
         return _erro("Sessão inválida.")
-    return jsonify(_servir_proxima_palavra(categoria, dificuldade))
+    return jsonify(_servir_proxima_palavra(partida, partida["categoria_atual"], partida["dificuldade_atual"]))
 
 
-def _registrar_vitoria(erros, max_erros):
+def _registrar_vitoria(partida, erros, max_erros):
     """Aplica pontos, XP, nível e dificuldade. Retorna (pontos, notificacao, levelup)."""
-    pontos = regras.pontos_da_vitoria(session["pontos_rodada"], erros, max_erros)
-    session["pontuacao_partida"] += pontos
-    session["vitorias_consecutivas"] += 1
-    session["nivel"], session["xp_atual"], levelup = regras.aplicar_xp(session["nivel"], session["xp_atual"], pontos)
+    pontos = regras.pontos_da_vitoria(partida["pontos_rodada"], erros, max_erros)
+    partida["pontuacao_partida"] += pontos
+    partida["vitorias_consecutivas"] += 1
+    partida["nivel"], partida["xp_atual"], levelup = regras.aplicar_xp(partida["nivel"], partida["xp_atual"], pontos)
 
-    notificacao = f"LEVEL UP! Você alcançou o nível {session['nivel']}!" if levelup else f"+{pontos} Pontos!"
+    notificacao = f"LEVEL UP! Você alcançou o nível {partida['nivel']}!" if levelup else f"+{pontos} Pontos!"
 
-    nova = regras.proxima_dificuldade(session["dificuldade_atual"], session["vitorias_consecutivas"])
+    nova = regras.proxima_dificuldade(partida["dificuldade_atual"], partida["vitorias_consecutivas"])
     if nova:
-        session["dificuldade_atual"] = nova
+        partida["dificuldade_atual"] = nova
         aviso = f"Dificuldade aumentada para {nova.upper()}!"
         notificacao = f"{notificacao} {aviso}" if levelup else aviso
 
     return pontos, notificacao, levelup
 
 
-def processar_jogada(erros, pontos_ganhos, letras_tentadas):
-    palavra = session["palavra"]
-    max_erros = session.get("max_erros", 6)
+def processar_jogada(partida, erros, pontos_ganhos, letras_tentadas):
+    palavra = partida["palavra"]
+    max_erros = partida.get("max_erros", 6)
     oculta = regras.mascarar(palavra, letras_tentadas)
-    session["pontos_rodada"] = session.get("pontos_rodada", 0) + pontos_ganhos
+    partida["pontos_rodada"] = partida.get("pontos_rodada", 0) + pontos_ganhos
 
     base = {
         "letras_tentadas": sorted(letras_tentadas),
@@ -143,24 +173,24 @@ def processar_jogada(erros, pontos_ganhos, letras_tentadas):
     }
 
     if "_" not in oculta:
-        _, notificacao, levelup = _registrar_vitoria(erros, max_erros)
-        session.pop("palavra")  # rodada encerrada: impede repetir a jogada para farmar pontos
+        _, notificacao, levelup = _registrar_vitoria(partida, erros, max_erros)
+        partida.pop("palavra")  # rodada encerrada: impede repetir a jogada para farmar pontos
         return jsonify({
             **base,
             "vitoria_rodada": True,
             "palavra_oculta": palavra,
             "notificacao": notificacao,
-            "pontuacao": session["pontuacao_partida"],
-            "dificuldade": session["dificuldade_atual"],
+            "pontuacao": partida["pontuacao_partida"],
+            "dificuldade": partida["dificuldade_atual"],
             "levelup": levelup,
-            **_campos_nivel(),
+            **_campos_nivel(partida),
         })
 
     if erros >= max_erros:
-        pontuacao_final = session.get("pontuacao_partida", 0)
-        session["vitorias_consecutivas"] = 0
-        session["pontuacao_partida"] = 0
-        session.pop("palavra")  # rodada encerrada: impede continuar chutando após perder
+        pontuacao_final = partida.get("pontuacao_partida", 0)
+        partida["vitorias_consecutivas"] = 0
+        partida["pontuacao_partida"] = 0
+        partida.pop("palavra")  # rodada encerrada: impede continuar chutando após perder
         return jsonify({
             **base,
             "fim_de_jogo": True,
@@ -172,31 +202,32 @@ def processar_jogada(erros, pontos_ganhos, letras_tentadas):
             ),
             "pontuacao_final": pontuacao_final,
             "pontuacao": 0,
-            "dificuldade": session["dificuldade_atual"],
-            **_campos_nivel(),
+            "dificuldade": partida["dificuldade_atual"],
+            **_campos_nivel(partida),
         })
 
-    session.update(erros=erros, letras_tentadas=letras_tentadas)
+    partida.update(erros=erros, letras_tentadas=letras_tentadas)
     return jsonify({
         **base,
         "fim_de_jogo": False,
         "palavra_oculta": oculta,
-        "pontuacao": session["pontuacao_partida"] + session["pontos_rodada"],
-        "dificuldade": session["dificuldade_atual"],
-        "dicas": _dicas(session["categoria_atual"], palavra, session["dificuldade_atual"]),
-        **_campos_nivel(),
+        "pontuacao": partida["pontuacao_partida"] + partida["pontos_rodada"],
+        "dificuldade": partida["dificuldade_atual"],
+        "dicas": _dicas(partida["categoria_atual"], palavra, partida["dificuldade_atual"]),
+        **_campos_nivel(partida),
     })
 
 
 @bp.route("/tentativa", methods=["POST"])
 def tentativa():
-    if not session.get("palavra"):
+    partida = _partida()
+    if not partida or not partida.get("palavra"):
         return _erro("Jogo não iniciado.")
     letra = str((request.get_json(silent=True) or {}).get("letra", "")).lower()
     if letra not in LETRAS_VALIDAS:
         return _erro("Letra inválida.")
 
-    letras_tentadas, erros, palavra = list(session["letras_tentadas"]), session["erros"], session["palavra"]
+    letras_tentadas, erros, palavra = list(partida["letras_tentadas"]), partida["erros"], partida["palavra"]
     pontos_ganhos = 0
 
     if letra not in letras_tentadas:
@@ -205,23 +236,24 @@ def tentativa():
             pontos_ganhos = regras.pontos_da_letra(palavra, letra)
         else:
             erros += 1
-    return processar_jogada(erros, pontos_ganhos, letras_tentadas)
+    return processar_jogada(partida, erros, pontos_ganhos, letras_tentadas)
 
 
 @bp.route("/chute", methods=["POST"])
 def chute():
-    if not session.get("palavra"):
+    partida = _partida()
+    if not partida or not partida.get("palavra"):
         return _erro("Jogo não iniciado.")
     chute_palavra = str((request.get_json(silent=True) or {}).get("palavra", "")).lower().strip()
 
-    erros, palavra = session["erros"], session["palavra"]
-    pontos_ganhos, letras_tentadas = 0, session["letras_tentadas"]
+    erros, palavra = partida["erros"], partida["palavra"]
+    pontos_ganhos, letras_tentadas = 0, partida["letras_tentadas"]
 
     if chute_palavra == palavra:
         pontos_ganhos = regras.pontos_do_chute(palavra, letras_tentadas)
         letras_tentadas = list(set(palavra))
     else:
         erros += 1
-        session["pontuacao_partida"] = max(0, session.get("pontuacao_partida", 0) - PENALIDADE_CHUTE_ERRADO)
+        partida["pontuacao_partida"] = max(0, partida.get("pontuacao_partida", 0) - PENALIDADE_CHUTE_ERRADO)
 
-    return processar_jogada(erros, pontos_ganhos, letras_tentadas)
+    return processar_jogada(partida, erros, pontos_ganhos, letras_tentadas)

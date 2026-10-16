@@ -17,6 +17,10 @@ VITORIAS_PARA_SUBIR_NIVEL_DIFICULDADE = 5
 XP_PARA_PROXIMO_NIVEL = 1000
 LETRAS_VALIDAS = set(string.ascii_lowercase)
 
+# --- ESTADO DAS PARTIDAS NO SERVIDOR ---
+PARTIDA_TTL_SEGUNDOS = 60 * 60  # partida parada por 1h é descartada
+MAX_PARTIDAS = 5000  # teto de partidas em memória; acima disso descarta as mais antigas
+
 
 def versao_assets(static_dir):
     """Versão para cache busting baseada na data de modificação dos estáticos
