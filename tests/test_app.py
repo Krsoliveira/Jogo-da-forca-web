@@ -17,7 +17,8 @@ def iniciar(client, dificuldade="medio", categoria="Frutas"):
 
 def palavra_atual(client):
     with client.session_transaction() as s:
-        return s["palavra"]
+        pid = s["pid"]
+    return app.extensions["partidas"].obter(pid)["palavra"]
 
 
 def tentar(client, letra):
