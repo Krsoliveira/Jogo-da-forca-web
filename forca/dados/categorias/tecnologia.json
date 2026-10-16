@@ -1,0 +1,410 @@
+{
+  "categoria": "Tecnologia",
+  "ordem": 10,
+  "palavras": {
+    "algoritmo": [
+      "Sequência de passos para resolver um problema.",
+      "Uma receita de bolo é um exemplo do dia a dia."
+    ],
+    "programa": [
+      "Conjunto de instruções que o computador executa.",
+      "O navegador e o editor de texto são exemplos."
+    ],
+    "codigo": [
+      "Texto escrito por quem desenvolve sistemas.",
+      "Fica em arquivos e é interpretado ou compilado."
+    ],
+    "software": [
+      "Parte lógica do computador, que não se pode tocar.",
+      "Inclui sistemas operacionais e aplicativos."
+    ],
+    "hardware": [
+      "Parte física do computador, que se pode tocar.",
+      "Inclui placa, memória, disco e processador."
+    ],
+    "processador": [
+      "Chip que executa os cálculos do computador.",
+      "É considerado o cérebro da máquina."
+    ],
+    "memoria": [
+      "Parte do computador que guarda dados temporariamente enquanto ele trabalha.",
+      "Quanto mais houver dela, mais programas rodam ao mesmo tempo."
+    ],
+    "teclado": [
+      "Periférico com letras e números para digitar.",
+      "O layout mais comum começa com as letras Q, W, E, R, T, Y."
+    ],
+    "mouse": [
+      "Periférico que move o cursor na tela.",
+      "Tem botões e uma pequena roda no meio."
+    ],
+    "monitor": [
+      "Aparelho que exibe as imagens do computador.",
+      "Pode ter diferentes resoluções e tamanhos."
+    ],
+    "impressora": [
+      "Periférico que coloca no papel o que está no computador.",
+      "Usa tinta ou toner."
+    ],
+    "roteador": [
+      "Aparelho que distribui o sinal da internet pela casa.",
+      "Tem luzes piscando e uma ou mais antenas."
+    ],
+    "servidor": [
+      "Computador que fornece dados e serviços a outros.",
+      "Sites e jogos online ficam hospedados nele."
+    ],
+    "nuvem": [
+      "Forma de guardar arquivos e programas em computadores remotos, via internet.",
+      "Dá nome a serviços como Google Drive e iCloud."
+    ],
+    "internet": [
+      "Rede mundial que conecta bilhões de dispositivos.",
+      "Permite acessar sites, mensagens e vídeos."
+    ],
+    "navegador": [
+      "Programa usado para abrir sites.",
+      "Chrome, Firefox e Edge são exemplos."
+    ],
+    "site": [
+      "Conjunto de páginas acessadas por um endereço na internet.",
+      "Tem um domínio, como o .com.br."
+    ],
+    "aplicativo": [
+      "Programa feito para celular ou tablet.",
+      "É baixado em lojas, como a Play Store."
+    ],
+    "sistema": [
+      "Conjunto de programas e regras que fazem algo funcionar.",
+      "O Windows e o Android são exemplos de operacionais."
+    ],
+    "banco de dados": [
+      "Local organizado onde as informações de um sistema são guardadas e consultadas.",
+      "Pode ser relacional, como o MySQL, ou não relacional."
+    ],
+    "rede": [
+      "Conjunto de computadores conectados para trocar informações.",
+      "Pode ser local, como a de casa, ou global."
+    ],
+    "firewall": [
+      "Barreira que filtra o que entra e sai de uma rede.",
+      "Protege contra acessos não autorizados."
+    ],
+    "criptografia": [
+      "Técnica que embaralha informações para que só quem tem a chave as leia.",
+      "Protege mensagens e senhas."
+    ],
+    "senha": [
+      "Palavra secreta usada para entrar em uma conta.",
+      "Quanto mais longa e variada, mais segura."
+    ],
+    "hacker": [
+      "Especialista capaz de entrar em sistemas de computador.",
+      "Pode agir por curiosidade, para proteger ou para atacar."
+    ],
+    "virus": [
+      "Programa malicioso que se espalha e danifica computadores.",
+      "Pode apagar arquivos ou roubar informações."
+    ],
+    "antivirus": [
+      "Programa que protege o computador contra ameaças digitais.",
+      "Faz varreduras e bloqueia arquivos perigosos."
+    ],
+    "backup": [
+      "Cópia de segurança dos seus arquivos.",
+      "Salva o seu trabalho se o aparelho quebrar."
+    ],
+    "arquivo": [
+      "Unidade de informação guardada no computador, como uma foto ou um texto.",
+      "Tem nome e uma extensão, como .png ou .pdf."
+    ],
+    "pasta": [
+      "Local usado para organizar documentos no computador.",
+      "Tem um desenho amarelo nos sistemas mais conhecidos."
+    ],
+    "download": [
+      "Ação de baixar um arquivo da internet para o seu aparelho.",
+      "É o oposto de enviar um arquivo."
+    ],
+    "upload": [
+      "Ação de enviar um arquivo do seu aparelho para a internet.",
+      "Acontece quando você publica uma foto."
+    ],
+    "wifi": [
+      "Tecnologia que conecta aparelhos à internet sem fio.",
+      "Fica visível como um símbolo de ondas no celular."
+    ],
+    "bluetooth": [
+      "Tecnologia sem fio de curto alcance entre aparelhos.",
+      "Conecta fones, caixas de som e teclados."
+    ],
+    "bateria": [
+      "Componente que armazena energia nos aparelhos portáteis.",
+      "Precisa de carregador e acaba depois de algumas horas de uso."
+    ],
+    "tela": [
+      "Parte do aparelho que mostra as imagens.",
+      "Em celulares, costuma ser sensível ao toque."
+    ],
+    "pixel": [
+      "Menor ponto que forma uma imagem digital.",
+      "Milhões deles formam uma foto."
+    ],
+    "resolucao": [
+      "Quantidade de pontos que compõem uma imagem na tela.",
+      "Full HD e 4K são exemplos."
+    ],
+    "camera": [
+      "Dispositivo que captura imagens e vídeos.",
+      "Está presente em celulares, notebooks e na segurança."
+    ],
+    "microfone": [
+      "Aparelho que capta o som da voz.",
+      "Usado em chamadas de vídeo, lives e gravações."
+    ],
+    "fone de ouvido": [
+      "Acessório que leva o som diretamente às orelhas.",
+      "Pode ter fio ou ser sem fio."
+    ],
+    "smartphone": [
+      "Celular com recursos de computador, tela sensível ao toque e acesso à internet.",
+      "É usado para ligar, mandar mensagens e tirar fotos."
+    ],
+    "tablet": [
+      "Aparelho portátil de tela grande sensível ao toque.",
+      "É maior que um celular e menor que um notebook."
+    ],
+    "notebook": [
+      "Computador portátil com tela, teclado e bateria integrados.",
+      "É levado em mochilas e usado no colo."
+    ],
+    "computador": [
+      "Máquina que processa dados e executa programas.",
+      "Pode ser de mesa ou portátil."
+    ],
+    "console": [
+      "Aparelho dedicado a jogos eletrônicos.",
+      "PlayStation e Xbox são exemplos."
+    ],
+    "joystick": [
+      "Controle usado para mover personagens em jogos.",
+      "Tem botões e alavancas analógicas."
+    ],
+    "robo": [
+      "Máquina programada para executar tarefas sozinha.",
+      "Aparece em fábricas e em filmes de ficção científica."
+    ],
+    "drone": [
+      "Pequena aeronave sem piloto, controlada à distância.",
+      "Tem hélices e é usado para fazer imagens aéreas."
+    ],
+    "satelite": [
+      "Objeto que orbita a Terra e transmite sinais.",
+      "Ajuda no GPS, na TV e na previsão do tempo."
+    ],
+    "antena": [
+      "Equipamento que capta ou envia sinais de rádio ou TV.",
+      "Fica em torres e telhados."
+    ],
+    "fibra optica": [
+      "Cabo que transmite dados em forma de luz.",
+      "É o que permite internet muito rápida."
+    ],
+    "email": [
+      "Mensagem enviada pela internet, com assunto e anexos.",
+      "Tem um endereço com arroba."
+    ],
+    "chat": [
+      "Conversa em tempo real por mensagens.",
+      "Também aparece em lives e jogos online."
+    ],
+    "rede social": [
+      "Plataforma onde as pessoas compartilham fotos, vídeos e ideias.",
+      "Instagram e TikTok são exemplos."
+    ],
+    "perfil": [
+      "Página com as informações de um usuário em um serviço.",
+      "Exibe foto, nome e publicações."
+    ],
+    "hashtag": [
+      "Palavra precedida do símbolo da cerquilha, usada para agrupar assuntos.",
+      "Ajuda a encontrar publicações sobre o mesmo tema."
+    ],
+    "streaming": [
+      "Transmissão de vídeo ou música pela internet, sem baixar o arquivo.",
+      "Netflix e Spotify funcionam assim."
+    ],
+    "podcast": [
+      "Programa de áudio, no estilo de rádio, disponível para ouvir a qualquer hora.",
+      "Costuma ter episódios sobre vários assuntos."
+    ],
+    "emoji": [
+      "Pequeno desenho usado para expressar emoções em mensagens.",
+      "Uma carinha amarela sorrindo é um exemplo."
+    ],
+    "meme": [
+      "Imagem ou vídeo engraçado que viraliza na internet.",
+      "Costuma ter legenda e muitas versões."
+    ],
+    "login": [
+      "Ato de entrar em uma conta com usuário e senha.",
+      "O botão para sair do sistema faz o contrário."
+    ],
+    "token": [
+      "Código temporário usado para provar sua identidade em um sistema.",
+      "Costuma ser gerado após o login."
+    ],
+    "api": [
+      "Interface que permite que um sistema converse com outro.",
+      "Funciona como um garçom entre cliente e cozinha."
+    ],
+    "python": [
+      "Linguagem de programação conhecida pela sintaxe simples.",
+      "Tem esse nome por causa de uma comédia, e não da cobra."
+    ],
+    "javascript": [
+      "Linguagem que dá vida e interatividade às páginas da web.",
+      "Roda no navegador e também no servidor."
+    ],
+    "linguagem": [
+      "Conjunto de regras e palavras usado para escrever programas.",
+      "Python e Java são exemplos."
+    ],
+    "compilador": [
+      "Programa que traduz o código para a linguagem da máquina.",
+      "Aponta erros antes de o programa rodar."
+    ],
+    "depuracao": [
+      "Processo de achar e corrigir erros em um programa.",
+      "Em inglês, é conhecido como debug."
+    ],
+    "variavel": [
+      "Espaço com nome que guarda um valor em um programa.",
+      "Seu valor pode mudar durante a execução."
+    ],
+    "funcao": [
+      "Bloco de código que executa uma tarefa e pode ser reaproveitado.",
+      "É chamada pelo nome, e pode receber parâmetros."
+    ],
+    "vetor": [
+      "Estrutura que guarda vários valores em sequência.",
+      "Seus itens são acessados por posições, começando do zero."
+    ],
+    "objeto": [
+      "Elemento que reúne dados e comportamentos na programação orientada.",
+      "É criado a partir de uma classe."
+    ],
+    "classe": [
+      "Molde usado para criar objetos em programação.",
+      "Define atributos e métodos."
+    ],
+    "heranca": [
+      "Mecanismo em que uma classe aproveita características de outra.",
+      "É um dos pilares da programação orientada a objetos."
+    ],
+    "framework": [
+      "Estrutura pronta que facilita o desenvolvimento de sistemas.",
+      "Flask e React são exemplos."
+    ],
+    "biblioteca": [
+      "Conjunto de funções prontas que podem ser usadas em outros programas.",
+      "Evita que se precise escrever tudo do zero."
+    ],
+    "repositorio": [
+      "Local onde o código de um projeto e seu histórico ficam guardados.",
+      "O GitHub hospeda milhões deles."
+    ],
+    "commit": [
+      "Registro de uma alteração salva no histórico do projeto.",
+      "Vem acompanhado de uma mensagem que explica a mudança."
+    ],
+    "branch": [
+      "Linha paralela de desenvolvimento em um repositório.",
+      "Permite testar novidades sem mexer na principal."
+    ],
+    "merge": [
+      "Ação de juntar as alterações de duas linhas de desenvolvimento.",
+      "Costuma ocorrer quando uma funcionalidade é aprovada."
+    ],
+    "deploy": [
+      "Ato de colocar uma aplicação em um servidor para o público usar.",
+      "Sua versão no ar passa por esse processo."
+    ],
+    "container": [
+      "Pacote isolado que reúne um programa e tudo o que ele precisa para rodar.",
+      "Facilita levar uma aplicação de um computador para outro."
+    ],
+    "docker": [
+      "Ferramenta que cria e executa containers.",
+      "Seu símbolo é uma baleia carregando caixas."
+    ],
+    "linux": [
+      "Sistema operacional livre, usado em servidores e celulares.",
+      "Seu mascote é um pinguim."
+    ],
+    "terminal": [
+      "Janela onde se digitam comandos em texto.",
+      "Programadores o usam para executar tarefas rapidamente."
+    ],
+    "kernel": [
+      "Núcleo de um sistema operacional.",
+      "Faz a ponte entre os programas e o hardware."
+    ],
+    "cache": [
+      "Memória rápida que guarda dados usados com frequência.",
+      "Faz sites e programas carregarem mais depressa."
+    ],
+    "bit": [
+      "Menor unidade de informação digital.",
+      "Só pode valer zero ou um."
+    ],
+    "byte": [
+      "Conjunto de oito bits.",
+      "É a unidade usada para medir o tamanho de arquivos."
+    ],
+    "binario": [
+      "Sistema numérico que usa apenas zero e um.",
+      "É a linguagem básica dos computadores."
+    ],
+    "protocolo": [
+      "Conjunto de regras para a comunicação entre computadores.",
+      "HTTP é um exemplo bem conhecido."
+    ],
+    "dominio": [
+      "Nome legível de um site, como exemplo.com.",
+      "É registrado e aponta para um endereço IP."
+    ],
+    "cookie": [
+      "Pequeno arquivo guardado pelo site no seu navegador.",
+      "Lembra preferências, como o login e o idioma."
+    ],
+    "captcha": [
+      "Teste usado para provar que quem acessa é uma pessoa e não um robô.",
+      "Pede para clicar em semáforos ou digitar letras tortas."
+    ],
+    "planilha": [
+      "Documento em tabela, com linhas, colunas e fórmulas.",
+      "O Excel é o exemplo mais conhecido."
+    ],
+    "pendrive": [
+      "Pequeno dispositivo de armazenamento que se conecta à porta USB.",
+      "Cabe no bolso e guarda arquivos."
+    ],
+    "gps": [
+      "Sistema que mostra a localização e as rotas por satélite.",
+      "Aplicativos de mapa o usam."
+    ],
+    "realidade virtual": [
+      "Tecnologia que mergulha a pessoa em um mundo digital por meio de óculos especiais.",
+      "Muito usada em jogos e simuladores."
+    ],
+    "inteligencia": [
+      "Capacidade de aprender e resolver problemas, que também se tenta replicar em máquinas.",
+      "Ela é chamada de artificial quando criada por computadores."
+    ],
+    "pixelart": [
+      "Estilo de arte feito ponto a ponto, com poucos quadradinhos visíveis.",
+      "Marcou jogos clássicos de videogame."
+    ]
+  }
+}
