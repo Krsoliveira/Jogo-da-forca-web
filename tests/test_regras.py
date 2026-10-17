@@ -51,3 +51,18 @@ def test_aplicar_xp_sobe_varios_niveis_de_uma_vez():
 )
 def test_proxima_dificuldade(atual, vitorias, esperado):
     assert regras.proxima_dificuldade(atual, vitorias) == esperado
+
+
+@pytest.mark.parametrize(
+    ("chute", "esperado"),
+    [
+        ("São Paulo", "sao paulo"),
+        ("MAÇÃ", "maca"),
+        ("guarda-chuva", "guarda chuva"),
+        ("  rio   de  janeiro ", "rio de janeiro"),
+        ("pão de queijo", "pao de queijo"),
+        (123, "123"),
+    ],
+)
+def test_normalizar_chute(chute, esperado):
+    assert regras.normalizar_chute(chute) == esperado

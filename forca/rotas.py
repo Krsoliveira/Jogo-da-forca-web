@@ -55,6 +55,14 @@ def _dicas(categoria, palavra, dificuldade):
     return regras.dicas_para(base, dificuldade)
 
 
+def _pontos(garantidos, em_jogo):
+    """Pontos já garantidos (palavras acertadas) e os da palavra atual, que só contam se ela for acertada.
+
+    A interface mostra os dois separados; `pontuacao` (a soma) continua existindo para a versão atual.
+    """
+    return {"pontos_garantidos": garantidos, "pontos_em_jogo": em_jogo}
+
+
 def _campos_nivel(partida):
     return {
         "nivel": partida.get("nivel", 1),
@@ -115,6 +123,7 @@ def _servir_proxima_palavra(partida, categoria, dificuldade):
         "erros": 0,
         "letras_tentadas": [],
         "pontuacao": partida.get("pontuacao_partida", 0),
+        **_pontos(partida.get("pontuacao_partida", 0), 0),
         "dificuldade": dificuldade,
         **_campos_nivel(partida),
     }
@@ -128,7 +137,7 @@ def pagina_inicial():
 @bp.route("/beta")
 def beta():
     """Nova interface, em construção. A interface atual continua em `/`."""
-    return render_template("menu.html", version=current_app.config["VERSAO_ASSETS"])
+    return render_template("app.html", version=current_app.config["VERSAO_ASSETS"])
 
 
 @bp.route("/beta/estilo")
@@ -243,6 +252,7 @@ def processar_jogada(partida, erros, pontos_ganhos, letras_tentadas):
             "palavra_oculta": palavra,
             "notificacao": notificacao,
             "pontuacao": partida["pontuacao_partida"],
+            **_pontos(partida["pontuacao_partida"], 0),
             "dificuldade": partida["dificuldade_atual"],
             "levelup": levelup,
             **_campos_nivel(partida),
@@ -264,6 +274,7 @@ def processar_jogada(partida, erros, pontos_ganhos, letras_tentadas):
             ),
             "pontuacao_final": pontuacao_final,
             "pontuacao": 0,
+            **_pontos(0, 0),
             "dificuldade": partida["dificuldade_atual"],
             **_campos_nivel(partida),
         })
@@ -274,6 +285,7 @@ def processar_jogada(partida, erros, pontos_ganhos, letras_tentadas):
         "fim_de_jogo": False,
         "palavra_oculta": oculta,
         "pontuacao": partida["pontuacao_partida"] + partida["pontos_rodada"],
+        **_pontos(partida["pontuacao_partida"], partida["pontos_rodada"]),
         "dificuldade": partida["dificuldade_atual"],
         "dicas": _dicas(partida["categoria_atual"], palavra, partida["dificuldade_atual"]),
         **_campos_nivel(partida),
@@ -306,7 +318,7 @@ def chute():
     partida = _partida()
     if not partida or not partida.get("palavra"):
         return _erro("Jogo não iniciado.")
-    chute_palavra = str((request.get_json(silent=True) or {}).get("palavra", "")).lower().strip()
+    chute_palavra = regras.normalizar_chute((request.get_json(silent=True) or {}).get("palavra", ""))
 
     erros, palavra = partida["erros"], partida["palavra"]
     pontos_ganhos, letras_tentadas = 0, partida["letras_tentadas"]

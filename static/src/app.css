@@ -244,7 +244,7 @@
     font-weight: 700;
     font-size: 1.05rem;
     color: var(--color-texto);
-    background: linear-gradient(180deg, rgb(40 36 90 / 0.8), rgb(18 16 44 / 0.9));
+    background: linear-gradient(180deg, #282259, #13112e);
     border: 1px solid rgb(255 255 255 / 0.1);
     border-radius: 0.7rem;
     box-shadow: 0 4px 0 rgb(0 0 0 / 0.55), inset 0 1px 0 rgb(255 255 255 / 0.08);
@@ -407,6 +407,17 @@
   .opcao-medio { --cor: var(--color-ambar); }
   .opcao-dificil { --cor: var(--color-perigo); }
 
+  /* Palco: todas as telas ocupam a mesma célula da grade. Na troca, a que sai e a que entra
+     ficam sobrepostas por um instante (cross-fade), sem nenhum quadro vazio. */
+  .palco {
+    display: grid;
+    grid-template-rows: minmax(calc(100dvh - 4rem), auto);
+  }
+  .palco > .passo {
+    grid-area: 1 / 1;
+    min-width: 0;
+  }
+
   /* Indicador de passos. */
   .passos {
     display: flex;
@@ -448,4 +459,153 @@
 @keyframes borda-viva {
   from { background-position: 0 0, 0% 0; }
   to { background-position: 0 0, 300% 0; }
+}
+
+/* ───────── Tela de jogo ───────── */
+@layer components {
+  .hud-valor {
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 1.35rem;
+    line-height: 1;
+    color: #fff;
+    text-shadow: 0 0 12px rgb(34 230 255 / 0.55);
+  }
+
+  /* Forca em SVG: estrutura em ciano; o boneco é desenhado em magenta, traço a traço. */
+  .forca {
+    width: 100%;
+    max-width: 17rem;
+    height: auto;
+    overflow: visible;
+  }
+  .forca-estrutura {
+    fill: none;
+    stroke: rgb(34 230 255 / 0.7);
+    stroke-width: 6;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 6px rgb(34 230 255 / 0.7));
+  }
+  .forca-corda {
+    fill: none;
+    stroke: rgb(255 181 71 / 0.85);
+    stroke-width: 3;
+    stroke-linecap: round;
+    filter: drop-shadow(0 0 4px rgb(255 181 71 / 0.6));
+  }
+  .forca-parte {
+    fill: none;
+    stroke: var(--color-magenta);
+    stroke-width: 5;
+    stroke-linecap: round;
+    stroke-dasharray: 1;
+    stroke-dashoffset: 1;
+    /* escondida até começar a ser desenhada: com ponta arredondada, um traço de
+       comprimento zero ainda aparece como um ponto */
+    visibility: hidden;
+    filter: drop-shadow(0 0 7px rgb(255 43 214 / 0.85));
+    transition: stroke 0.4s ease;
+  }
+  .forca-perigo .forca-parte {
+    stroke: var(--color-perigo);
+    filter: drop-shadow(0 0 9px rgb(255 61 110 / 0.95));
+  }
+  .forca-boneco { transform-box: view-box; transform-origin: 150px 22px; }
+  .forca-olhos { stroke: #fff; stroke-width: 3; stroke-linecap: round; opacity: 0; }
+
+  /* Palavra: cada palavra é um grupo que nunca quebra no meio. */
+  .palavra {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 0.6rem 1.4rem;
+  }
+  .palavra-grupo { display: flex; gap: clamp(0.25rem, 1.2vw, 0.5rem); }
+  .palavra .casa {
+    width: clamp(1.55rem, 7vw, 2.6rem);
+    height: clamp(2.2rem, 9vw, 3.2rem);
+    font-size: clamp(1.15rem, 5.2vw, 1.8rem);
+  }
+  .casa-fixa { border-bottom-color: transparent; box-shadow: none; color: var(--color-texto-suave); }
+  .casa-perdida {
+    color: var(--color-perigo);
+    border-bottom-color: var(--color-perigo);
+    text-shadow: 0 0 10px rgb(255 61 110 / 0.8);
+  }
+
+  /* Teclado QWERTY: as teclas se ajustam à largura disponível. */
+  .teclado { display: flex; flex-direction: column; gap: 0.45rem; }
+  .teclado-linha { display: flex; justify-content: center; gap: 0.35rem; }
+  /* Mesma largura em todas as linhas (a de 10 teclas define o tamanho), como num teclado de celular. */
+  .teclado .tecla {
+    flex: 0 0 calc((100% - 9 * 0.35rem) / 10);
+    max-width: 3.1rem;
+    min-width: 0;
+    height: clamp(2.6rem, 11vw, 3.25rem);
+    aspect-ratio: auto;
+    font-size: clamp(0.95rem, 4vw, 1.15rem);
+  }
+  .tecla-pendente { opacity: 0.6; }
+
+  .vida { color: var(--color-magenta); filter: drop-shadow(0 0 5px rgb(255 43 214 / 0.8)); transition: opacity 0.3s ease, filter 0.3s ease; }
+  .vida-perdida { opacity: 0.18; filter: none; }
+
+  .campo {
+    width: 100%;
+    min-height: 2.9rem;
+    padding: 0.55rem 1rem;
+    font-family: var(--font-mono);
+    font-size: 1.05rem;
+    color: #fff;
+    background: rgb(255 255 255 / 0.04);
+    border: 1.5px solid rgb(255 43 214 / 0.5);
+    border-radius: 0.85rem;
+    box-shadow: inset 0 0 14px rgb(255 43 214 / 0.12);
+  }
+  .campo::placeholder { color: var(--color-texto-suave); }
+  .campo:focus { outline: none; border-color: var(--color-magenta); box-shadow: 0 0 18px rgb(255 43 214 / 0.45), inset 0 0 14px rgb(255 43 214 / 0.18); }
+
+  /* Diálogo de fim de jogo. */
+  .dialogo {
+    width: min(26rem, calc(100vw - 2rem));
+    margin: auto;
+    padding: 0;
+    color: var(--color-texto);
+    background: transparent;
+    border: 0;
+    overflow: visible;
+  }
+  .dialogo::backdrop { background: rgb(4 3 12 / 0.72); backdrop-filter: blur(6px); }
+
+  /* Avisos curtos no topo da tela. */
+  .toasts {
+    position: fixed;
+    inset: 1rem 0 auto;
+    z-index: 60;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    pointer-events: none;
+  }
+  .toast {
+    --cor: var(--color-ciano);
+    padding: 0.6rem 1.1rem;
+    font-weight: 700;
+    color: #fff;
+    background: rgb(14 12 34 / 0.92);
+    border: 1px solid color-mix(in srgb, var(--cor) 60%, transparent);
+    border-radius: 999px;
+    box-shadow: 0 0 24px -4px color-mix(in srgb, var(--cor) 70%, transparent);
+    backdrop-filter: blur(10px);
+  }
+  .toast-sucesso { --cor: var(--color-lima); }
+  .toast-nivel { --cor: var(--color-ambar); font-size: 1.05rem; }
+  .toast-erro { --cor: var(--color-perigo); }
+}
+
+/* Na partida a grade do fundo recua, para não competir com o teclado. */
+body:has([data-passo="jogo"]:not([hidden])) .fundo-grade {
+  opacity: 0.3;
+  transition: opacity 0.6s ease;
 }

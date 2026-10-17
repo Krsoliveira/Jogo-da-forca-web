@@ -23,7 +23,7 @@ RAIZ = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)
 
 @pytest.fixture(scope="session")
 def servidor():
-    if not os.path.exists(os.path.join(RAIZ, "static", "js", "dist", "menu.js")):
+    if not os.path.exists(os.path.join(RAIZ, "static", "js", "dist", "app.js")):
         pytest.fail("Interface não compilada: rode `npm run build` antes dos testes e2e.")
     app.config.update(TESTING=True)
     srv = make_server("127.0.0.1", 0, app, threaded=True)

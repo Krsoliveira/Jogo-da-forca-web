@@ -1,5 +1,8 @@
 """Regras puras do jogo: sem Flask e sem sessão, fáceis de testar isoladamente."""
 
+import re
+import unicodedata
+
 from .config import (
     DIFICULDADES,
     PONTOS_LETRA_CERTA,
@@ -8,6 +11,15 @@ from .config import (
     VITORIAS_PARA_SUBIR_NIVEL_DIFICULDADE,
     XP_PARA_PROXIMO_NIVEL,
 )
+
+
+def normalizar_chute(texto):
+    """Prepara o chute para comparar com a resposta, que é guardada sem acentos.
+
+    Quem digita "São Paulo", "MAÇÃ" ou "guarda-chuva" acertou e não pode perder uma vida por isso.
+    """
+    sem_acento = "".join(c for c in unicodedata.normalize("NFD", str(texto)) if not unicodedata.combining(c))
+    return re.sub(r"[\s-]+", " ", sem_acento.lower()).strip()
 
 
 def mascarar(palavra, letras_tentadas):

@@ -106,23 +106,27 @@ export function contarAte(el, de, ate, { sufixo = "" } = {}) {
  * `direcao` 1 avança (entra pela direita), -1 volta (entra pela esquerda).
  */
 export async function trocarPasso(sai, entra, direcao = 1) {
+    const saindo = sai && !sai.hidden ? sai : null;
     if (reduzMovimento()) {
-        if (sai) sai.hidden = true;
+        if (saindo) saindo.hidden = true;
         entra.hidden = false;
         return;
     }
-    if (sai && !sai.hidden) {
-        await animate(sai, { opacity: [1, 0], x: [0, -36 * direcao], filter: ["blur(0px)", "blur(6px)"] }, {
-            duration: 0.22,
-            ease: [0.4, 0, 1, 1],
-        }).finished;
-        sai.hidden = true;
-    }
+    // As duas telas animam juntas, sobrepostas no palco: a atual recua enquanto a nova chega.
     entra.hidden = false;
-    await animate(entra, { opacity: [0, 1], x: [44 * direcao, 0], filter: ["blur(8px)", "blur(0px)"] }, {
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1],
-    }).finished;
+    const animacoes = [
+        animate(entra, { opacity: [0, 1], x: [40 * direcao, 0] }, { duration: 0.45, delay: 0.05, ease: [0.16, 1, 0.3, 1] }).finished,
+    ];
+    if (saindo) {
+        saindo.inert = true; // não recebe cliques nem foco enquanto some
+        animacoes.push(
+            animate(saindo, { opacity: [1, 0], x: [0, -28 * direcao] }, { duration: 0.25, ease: [0.4, 0, 1, 1] }).finished.then(() => {
+                saindo.hidden = true;
+                saindo.inert = false;
+            }),
+        );
+    }
+    await Promise.all(animacoes);
 }
 
 /** Cartões entram em cascata com mola, levemente girados, e assentam no lugar. */
@@ -150,6 +154,39 @@ export function brilhoSegueOPonteiro(el) {
         el.style.setProperty("--mx", `${e.clientX - r.left}px`);
         el.style.setProperty("--my", `${e.clientY - r.top}px`);
     });
+}
+
+/** Vitória: uma onda percorre as casas da palavra. */
+export function ondaVitoria(casas) {
+    if (reduzMovimento()) return;
+    animate(casas, { y: [0, -14, 0], scale: [1, 1.14, 1] }, { duration: 0.55, delay: stagger(0.06), ease: "easeOut" });
+}
+
+/** As casas caem e somem para dar lugar à próxima palavra. */
+export async function saidaCasas(casas) {
+    if (reduzMovimento() || casas.length === 0) return;
+    await animate(casas, { opacity: [1, 0], y: [0, 22], rotateX: [0, -70] }, {
+        duration: 0.3,
+        delay: stagger(0.025),
+        ease: [0.4, 0, 1, 1],
+    }).finished;
+}
+
+/** As casas da nova palavra entram girando, uma depois da outra. */
+export function entradaCasas(casas) {
+    if (reduzMovimento()) return;
+    animate(casas, { opacity: [0, 1], y: [-18, 0], rotateX: [80, 0] }, {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+        delay: stagger(0.035),
+    });
+}
+
+/** As teclas voltam ao estado neutro com uma pequena ondulação. */
+export function entradaTeclas(teclas) {
+    if (reduzMovimento()) return;
+    animate(teclas, { scale: [0.85, 1], opacity: [0.4, 1] }, { duration: 0.35, delay: stagger(0.012), ease: "easeOut" });
 }
 
 /** Pulso curto para chamar atenção (ex.: vida perdida). */
