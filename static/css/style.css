@@ -182,11 +182,16 @@ main {
     display: flex; justify-content: center;
     align-items: center;
 }
-.tecla:not(:disabled):hover {
-    background-color: var(--accent-cyan);
-    transform: translateY(-2px);
-    border-color: var(--accent-cyan);
+/* Hover só em dispositivos com mouse: em telas de toque o :hover "gruda" na última tecla tocada.
+   Usa contorno em vez de preenchimento para não parecer uma letra já acertada (.correta). */
+@media (hover: hover) and (pointer: fine) {
+    .tecla:not(:disabled):hover {
+        transform: translateY(-2px);
+        border-color: var(--accent-cyan);
+        box-shadow: 0 0 10px var(--accent-cyan);
+    }
 }
+.tecla:not(:disabled):active { transform: scale(0.92); }
 .tecla:disabled {
     background-color: #333; color: #666;
     cursor: not-allowed;
