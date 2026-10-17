@@ -51,7 +51,7 @@ jobs:
       - run: npm ci
       - run: npm run build
       - name: Confere se o CSS foi gerado
-        run: test -s static/css/app.css && test -s static/js/dist/menu.js && test -s static/js/dist/estilo.js && test -s static/fonts/space-grotesk-latin-wght-normal.woff2
+        run: test -s static/css/app.css && test -s static/js/dist/app.js && test -s static/js/dist/estilo.js && test -s static/fonts/space-grotesk-latin-wght-normal.woff2
 
   e2e:
     name: E2E (Playwright)

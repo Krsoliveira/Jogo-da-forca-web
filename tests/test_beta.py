@@ -82,7 +82,7 @@ def test_arquivos_estaticos_da_interface_existem(caminho):
     assert resposta.status_code == 200
 
 
-@pytest.mark.parametrize(("rota", "bundle"), [("/beta", "js/dist/menu.js"), ("/beta/estilo", "js/dist/estilo.js")])
+@pytest.mark.parametrize(("rota", "bundle"), [("/beta", "js/dist/app.js"), ("/beta/estilo", "js/dist/estilo.js")])
 def test_cada_pagina_carrega_seu_bundle_e_o_css(rota, bundle):
     # gerados por `npm run build` (fora do git); o CI confere que o build produz os arquivos
     html = app.test_client().get(rota).get_data(as_text=True)
@@ -92,7 +92,7 @@ def test_cada_pagina_carrega_seu_bundle_e_o_css(rota, bundle):
 
 def test_menu_tem_todos_os_passos_e_um_unico_h1():
     html = app.test_client().get("/beta").get_data(as_text=True)
-    for passo in ("inicio", "dificuldade", "categoria", "pronto", "erro"):
+    for passo in ("inicio", "dificuldade", "categoria", "jogo", "erro"):
         assert f'data-passo="{passo}"' in html
     assert html.count("<h1") == 1
 

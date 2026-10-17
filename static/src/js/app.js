@@ -1,6 +1,8 @@
-// Menu da nova interface: início → dificuldade → categoria → pronto.
+// Nova interface: início → dificuldade → categoria → partida.
 // Cada passo entra no histórico do navegador, então o "voltar" do celular volta um passo.
+import { api } from "./lib/api.js";
 import { icone, ICONE_DA_DIFICULDADE, iconeDaCategoria, preencherIcones } from "./lib/icones.js";
+import { criarJogo } from "./lib/jogo.js";
 import {
     brilhoSegueOPonteiro,
     cartoesEmCascata,
@@ -18,7 +20,7 @@ const $$ = (seletor, raiz = document) => [...raiz.querySelectorAll(seletor)];
 const NOME_DIFICULDADE = { facil: "Fácil", medio: "Médio", dificil: "Difícil" };
 const CHAVE_DIFICULDADE = "forca:dificuldade";
 const CHAVE_RANKING = "rankingJogoDaForca"; // mesmo ranking da interface atual
-const ORDEM = ["inicio", "dificuldade", "categoria", "pronto"];
+const ORDEM = ["inicio", "dificuldade", "categoria", "jogo"];
 
 const estado = { passo: "inicio", dificuldade: null, categoria: null, catalogo: null, ocupado: false };
 
@@ -42,9 +44,7 @@ function mostrarRecorde() {
 
 // ───────── Catálogo (dificuldades e categorias) ─────────
 async function carregarCatalogo() {
-    const resposta = await fetch("/api/catalogo", { headers: { Accept: "application/json" } });
-    if (!resposta.ok) throw new Error(`HTTP ${resposta.status}`);
-    estado.catalogo = await resposta.json();
+    estado.catalogo = await api.catalogo();
 }
 
 function criarOpcao({ titulo, meta, nomeIcone, classe = "", valor, rotulo }) {
@@ -149,22 +149,18 @@ async function escolherCategoria(opcao, nome) {
     estado.categoria = nome;
     const todas = $$("[data-passo=categoria] .opcao");
     await confirmarEscolha(opcao, todas.filter((o) => o !== opcao));
-    irPara("pronto");
+    irPara("jogo");
 }
 
 function preencherResumo() {
-    const nome = NOME_DIFICULDADE[estado.dificuldade] ?? "";
-    $$("[data-resumo-dificuldade]").forEach((el) => { el.textContent = nome; });
-    $("[data-resumo-categoria]").textContent = estado.categoria === "Aleatório" ? "Modo aleatório" : (estado.categoria ?? "");
-    const d = estado.catalogo?.dificuldades.find((x) => x.id === estado.dificuldade);
-    $("[data-resumo-tentativas]").textContent = d ? String(d.tentativas) : "";
+    $$("[data-resumo-dificuldade]").forEach((el) => { el.textContent = NOME_DIFICULDADE[estado.dificuldade] ?? ""; });
 }
 
 // ───────── Navegação entre passos ─────────
 /** Um passo só pode ser exibido se as escolhas anteriores existirem. */
 function passoValido(passo) {
     if (passo === "categoria") return Boolean(estado.dificuldade);
-    if (passo === "pronto") return Boolean(estado.dificuldade && estado.categoria);
+    if (passo === "jogo") return Boolean(estado.dificuldade && estado.categoria);
     return true;
 }
 
@@ -176,9 +172,19 @@ async function mostrar(passo, direcao) {
             passo = "erro";
         }
     }
+    if (estado.passo === "jogo" && passo !== "jogo") jogo.sair();
     if (passo === "dificuldade") renderizarDificuldades();
-    if (passo === "categoria") renderizarCategorias();
-    if (passo === "pronto" || passo === "categoria") preencherResumo();
+    if (passo === "categoria") {
+        renderizarCategorias();
+        preencherResumo();
+    }
+    if (passo === "jogo") {
+        try {
+            await jogo.iniciar(estado.categoria, estado.dificuldade);
+        } catch {
+            passo = "erro";
+        }
+    }
 
     estado.ocupado = true;
     const atual = $(`[data-passo="${estado.passo}"]`);
@@ -225,7 +231,16 @@ document.addEventListener("click", (e) => {
 });
 
 document.addEventListener("keydown", (e) => {
+    if (estado.passo === "jogo") {
+        if (jogo.teclaFisica(e)) e.preventDefault();
+        return; // na partida, Esc não sai: só fecha o chute (tratado no próprio campo)
+    }
     if (e.key === "Escape") voltar();
+});
+
+const jogo = criarJogo($('[data-passo="jogo"]'), {
+    // o menu da partida volta para a escolha de categoria, que é o passo anterior no histórico
+    aoVoltarAoMenu: () => voltar(),
 });
 
 // ───────── Início ─────────

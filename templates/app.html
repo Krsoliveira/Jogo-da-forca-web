@@ -1,0 +1,170 @@
+{% extends "_base_beta.html" %}
+{% set entrada = "app" %}
+{% block titulo %}Forca{% endblock %}
+{% block corpo %}
+    <main id="conteudo" class="mx-auto flex min-h-dvh max-w-5xl flex-col px-4 pb-16 [perspective:1400px]">
+
+        <!-- Início -->
+        <section class="passo flex flex-1 flex-col items-center justify-center py-16 text-center" data-passo="inicio" aria-labelledby="titulo-inicio">
+            <p class="rotulo" data-entrada>Jogo da forca</p>
+            <h1 id="titulo-inicio" class="mt-4 font-logo text-6xl font-black tracking-[0.16em] sm:text-8xl" tabindex="-1" aria-label="Forca">
+                <span class="neon animate-piscar-neon" data-letreiro aria-hidden="true"><span>F</span><span>O</span><span>R</span><span>C</span><span>A</span></span>
+            </h1>
+            <p class="mt-6 max-w-md text-lg text-texto-suave" data-entrada>Descubra a palavra antes que o boneco complete a forca. Dez temas e mais de dez mil palavras.</p>
+            <div class="mt-10 flex flex-col items-center gap-4" data-entrada>
+                <button class="btn btn-primario !min-h-14 !px-10 text-lg" type="button" data-ir="dificuldade">
+                    <span data-icone="Play"></span> Jogar
+                </button>
+                <p class="text-sm text-texto-suave" data-recorde hidden>Seu recorde: <strong class="font-mono text-texto" data-recorde-valor></strong> pontos</p>
+            </div>
+        </section>
+
+        <!-- Passo 1: dificuldade -->
+        <section class="passo py-8" data-passo="dificuldade" aria-labelledby="titulo-dificuldade" hidden>
+            <div class="flex items-center justify-between gap-3">
+                <button class="btn btn-fantasma !min-h-10 !px-3" type="button" data-voltar aria-label="Voltar ao início">
+                    <span data-icone="ArrowLeft"></span>
+                </button>
+                <ol class="passos" aria-label="Progresso">
+                    <li class="passo-ativo" aria-current="step">Dificuldade</li>
+                    <li>Categoria</li>
+                </ol>
+            </div>
+            <h2 id="titulo-dificuldade" class="mt-8 text-3xl sm:text-4xl" tabindex="-1">Escolha a dificuldade</h2>
+            <p class="mt-2 text-texto-suave">Quanto mais difícil, menos tentativas e menos dicas.</p>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3" data-lista="dificuldades" role="list"></div>
+        </section>
+
+        <!-- Passo 2: categoria -->
+        <section class="passo py-8" data-passo="categoria" aria-labelledby="titulo-categoria" hidden>
+            <div class="flex items-center justify-between gap-3">
+                <button class="btn btn-fantasma !min-h-10 !px-3" type="button" data-voltar aria-label="Voltar para a dificuldade">
+                    <span data-icone="ArrowLeft"></span>
+                </button>
+                <ol class="passos" aria-label="Progresso">
+                    <li class="passo-feito">Dificuldade</li>
+                    <li class="passo-ativo" aria-current="step">Categoria</li>
+                </ol>
+            </div>
+            <h2 id="titulo-categoria" class="mt-8 text-3xl sm:text-4xl" tabindex="-1">Escolha a categoria</h2>
+            <p class="mt-2 text-texto-suave">Dificuldade: <strong class="text-texto" data-resumo-dificuldade></strong></p>
+            <div class="mt-8" data-lista="aleatorio"></div>
+            <div class="mt-4 grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5" data-lista="categorias" role="list"></div>
+        </section>
+
+        <!-- Jogo -->
+        <section class="passo py-5 sm:py-8" data-passo="jogo" aria-labelledby="titulo-jogo" hidden>
+            <h2 id="titulo-jogo" class="sr-only" tabindex="-1">Partida</h2>
+
+            <!-- HUD -->
+            <div class="flex flex-wrap items-center gap-3">
+                <button class="btn btn-fantasma !min-h-10 !px-3" type="button" data-sair aria-label="Sair da partida e voltar ao menu">
+                    <span data-icone="ArrowLeft"></span>
+                </button>
+                <span class="selo" data-hud-categoria></span>
+                <span class="selo" data-hud-dificuldade></span>
+                <div class="ml-auto text-right">
+                    <p class="rotulo">Pontos</p>
+                    <p class="hud-valor" data-hud-pontos>0</p>
+                    <p class="mt-1 font-mono text-xs text-lima" data-hud-em-jogo hidden
+                       title="Pontos desta palavra: só contam se você acertá-la"></p>
+                </div>
+            </div>
+            <div class="mt-4 flex items-center gap-3">
+                <span class="selo selo-lima shrink-0">Nível <span data-hud-nivel>1</span></span>
+                <div class="barra flex-1" role="progressbar" aria-label="Experiência para o próximo nível" aria-valuemin="0" aria-valuemax="1000" aria-valuenow="0" data-hud-xp-barra>
+                    <span data-hud-xp></span>
+                </div>
+                <span class="font-mono text-xs text-texto-suave" data-hud-xp-texto>0/1000</span>
+            </div>
+
+            <div class="mt-6 grid gap-6 lg:grid-cols-[minmax(0,19rem)_1fr] lg:items-center">
+                <!-- Forca -->
+                <div class="painel flex items-center justify-center p-4 sm:p-6">
+                    <svg class="forca max-h-[28vh] lg:max-h-none" viewBox="0 0 220 260" role="img" aria-label="Forca vazia" data-forca>
+                        <line class="forca-estrutura" x1="18" y1="246" x2="150" y2="246"/>
+                        <line class="forca-estrutura" x1="50" y1="246" x2="50" y2="14"/>
+                        <line class="forca-estrutura" x1="50" y1="14" x2="150" y2="14"/>
+                        <line class="forca-estrutura" x1="50" y1="52" x2="88" y2="14"/>
+                        <g class="forca-boneco" data-boneco>
+                            <line class="forca-corda" x1="150" y1="14" x2="150" y2="46"/>
+                            <circle class="forca-parte" cx="150" cy="66" r="20" pathLength="1" data-parte/>
+                            <line class="forca-parte" x1="150" y1="86" x2="150" y2="150" pathLength="1" data-parte/>
+                            <line class="forca-parte" x1="150" y1="104" x2="122" y2="132" pathLength="1" data-parte/>
+                            <line class="forca-parte" x1="150" y1="104" x2="178" y2="132" pathLength="1" data-parte/>
+                            <line class="forca-parte" x1="150" y1="150" x2="126" y2="192" pathLength="1" data-parte/>
+                            <line class="forca-parte" x1="150" y1="150" x2="174" y2="192" pathLength="1" data-parte/>
+                            <g class="forca-olhos" data-olhos>
+                                <path d="M140 58 l7 7 M147 58 l-7 7 M153 58 l7 7 M160 58 l-7 7"/>
+                            </g>
+                        </g>
+                    </svg>
+                </div>
+
+                <div class="flex flex-col gap-5">
+                    <!-- Palavra -->
+                    <div class="flex items-center justify-between gap-3">
+                        <p class="rotulo" data-hud-tamanho></p>
+                        <p class="flex items-center gap-1 text-lg" data-vidas aria-hidden="true"></p>
+                    </div>
+                    <div class="palavra min-h-16 [perspective:700px]" data-palavra role="img" aria-label=""></div>
+
+                    <!-- Dicas -->
+                    <div class="painel p-4 sm:p-5">
+                        <p class="rotulo flex items-center gap-2"><span data-icone="Lightbulb"></span> Dicas</p>
+                        <p class="mt-2 leading-relaxed" data-dica="0"></p>
+                        <p class="mt-1 text-sm text-texto-suave" data-dica="1"></p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Teclado -->
+            <div class="teclado mx-auto mt-6 max-w-2xl" role="group" aria-label="Teclado" data-teclado></div>
+
+            <!-- Chutar a palavra -->
+            <div class="mx-auto mt-5 max-w-2xl">
+                <div class="flex justify-center" data-chute-abrir-area>
+                    <button class="btn btn-magenta" type="button" data-chute-abrir>Arriscar a palavra</button>
+                </div>
+                <form class="painel flex flex-col gap-3 p-4" data-chute-form hidden novalidate>
+                    <label class="rotulo" for="chute">Qual é a palavra?</label>
+                    <input id="chute" class="campo" name="chute" type="text" maxlength="40" autocomplete="off" autocapitalize="off" spellcheck="false" required>
+                    <p class="text-sm text-texto-suave">Se errar, você perde 1 vida e 30 pontos.</p>
+                    <div class="flex flex-wrap justify-end gap-2">
+                        <button class="btn btn-fantasma" type="button" data-chute-cancelar>Cancelar</button>
+                        <button class="btn btn-primario" type="submit">Confirmar</button>
+                    </div>
+                </form>
+            </div>
+        </section>
+
+        <!-- Erro ao carregar as opções -->
+        <section class="passo flex flex-1 flex-col items-center justify-center py-16 text-center" data-passo="erro" aria-labelledby="titulo-erro" role="alert" hidden>
+            <h2 id="titulo-erro" class="text-3xl" tabindex="-1">Não foi possível carregar o jogo</h2>
+            <p class="mt-3 text-texto-suave">Verifique sua conexão e tente de novo.</p>
+            <button class="btn mt-8" type="button" data-tentar-de-novo>Tentar de novo</button>
+        </section>
+    </main>
+
+    <!-- Fim de jogo -->
+    <dialog class="dialogo" data-fim aria-labelledby="titulo-fim">
+        <div class="painel p-6 text-center sm:p-8">
+            <p class="rotulo" data-fim-rotulo>Fim de jogo</p>
+            <h2 id="titulo-fim" class="mt-2 text-3xl" data-fim-titulo>A forca venceu</h2>
+            <div data-fim-palavra-area>
+                <p class="mt-5 text-sm text-texto-suave">A palavra era</p>
+                <p class="neon mt-1 break-words font-mono text-3xl font-extrabold tracking-widest" data-fim-palavra></p>
+            </div>
+            <p class="mt-6 text-texto-suave">Pontuação final</p>
+            <p class="hud-valor !text-4xl" data-fim-pontos>0</p>
+            <p class="selo selo-lima mt-3" data-fim-recorde hidden>Novo recorde!</p>
+            <div class="mt-8 flex flex-wrap justify-center gap-3">
+                <button class="btn btn-primario" type="button" data-jogar-de-novo>Jogar de novo</button>
+                <button class="btn btn-fantasma" type="button" data-fim-menu>Menu</button>
+            </div>
+        </div>
+    </dialog>
+
+    <div class="toasts" data-toasts aria-hidden="true"></div>
+    <p class="sr-only" aria-live="polite" data-anuncio></p>
+{% endblock %}

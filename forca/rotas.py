@@ -137,7 +137,7 @@ def pagina_inicial():
 @bp.route("/beta")
 def beta():
     """Nova interface, em construção. A interface atual continua em `/`."""
-    return render_template("menu.html", version=current_app.config["VERSAO_ASSETS"])
+    return render_template("app.html", version=current_app.config["VERSAO_ASSETS"])
 
 
 @bp.route("/beta/estilo")

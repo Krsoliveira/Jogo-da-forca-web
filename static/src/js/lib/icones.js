@@ -9,7 +9,9 @@ import {
     createElement,
     Flame,
     Globe,
+    Heart,
     HeartPulse,
+    Lightbulb,
     PawPrint,
     Play,
     Shuffle,
@@ -20,7 +22,7 @@ import {
     UtensilsCrossed,
 } from "lucide";
 
-const ICONES = { Apple, ArrowLeft, Box, Briefcase, Building2, Cpu, Flame, Globe, HeartPulse, PawPrint, Play, Shuffle, Skull, Sparkles, Tag, Trophy, UtensilsCrossed };
+const ICONES = { Apple, ArrowLeft, Box, Briefcase, Building2, Cpu, Flame, Globe, Heart, HeartPulse, Lightbulb, PawPrint, Play, Shuffle, Skull, Sparkles, Tag, Trophy, UtensilsCrossed };
 
 // Apresentação de cada categoria; uma categoria nova sem entrada aqui recebe o ícone genérico.
 const ICONE_DA_CATEGORIA = {

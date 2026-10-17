@@ -10,7 +10,7 @@ def passo_visivel(pagina, nome):
     expect(pagina.locator(f'[data-passo="{nome}"]')).to_be_visible()
 
 
-def test_fluxo_completo_ate_o_resumo(pagina):
+def test_fluxo_completo_ate_a_partida(pagina):
     pagina.goto("/beta")
     passo_visivel(pagina, "inicio")
     pagina.get_by_role("button", name="Jogar").click()
@@ -25,9 +25,10 @@ def test_fluxo_completo_ate_o_resumo(pagina):
     expect(pagina.locator("[data-lista=categorias] .opcao")).to_have_count(10)
     pagina.get_by_role("listitem", name="Frutas, 50 palavras").click()
 
-    passo_visivel(pagina, "pronto")
-    expect(pagina.locator("[data-resumo-categoria]")).to_have_text("Frutas")
-    expect(pagina.locator("[data-resumo-tentativas]")).to_have_text("4")
+    passo_visivel(pagina, "jogo")
+    expect(pagina.locator("[data-hud-categoria]")).to_have_text("Frutas")
+    expect(pagina.locator("[data-hud-dificuldade]")).to_have_text("Difícil")
+    expect(pagina.locator("[data-vidas] .vida")).to_have_count(4)
     assert pagina.erros == []
 
 
@@ -38,7 +39,7 @@ def test_modo_aleatorio_aparece_em_destaque(pagina):
     destaque = pagina.locator("[data-lista=aleatorio] .opcao-destaque")
     expect(destaque).to_contain_text("10.000 palavras")
     destaque.click()
-    expect(pagina.locator("[data-resumo-categoria]")).to_have_text("Modo aleatório")
+    expect(pagina.locator("[data-hud-categoria]")).to_have_text("Aleatório")
     assert pagina.erros == []
 
 
@@ -128,9 +129,9 @@ def test_com_animacoes_ligadas_o_fluxo_tambem_funciona(navegador, servidor):
     pg.get_by_role("button", name="Jogar").click()
     pg.get_by_role("listitem", name="Fácil: 8 tentativas, 2 dicas").click()
     pg.get_by_role("listitem", name="Animais, 49 palavras").click()
-    expect(pg.locator("[data-resumo-categoria]")).to_have_text("Animais")
+    expect(pg.locator("[data-hud-categoria]")).to_have_text("Animais")
     # depois da transição, o passo anterior fica escondido e o atual totalmente opaco
     expect(pg.locator('[data-passo="categoria"]')).to_be_hidden()
-    pg.wait_for_function("getComputedStyle(document.querySelector('[data-passo=pronto]')).opacity === '1'")
+    pg.wait_for_function("getComputedStyle(document.querySelector('[data-passo=jogo]')).opacity === '1'")
     assert erros == []
     contexto.close()

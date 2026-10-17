@@ -152,6 +152,39 @@ export function brilhoSegueOPonteiro(el) {
     });
 }
 
+/** Vitória: uma onda percorre as casas da palavra. */
+export function ondaVitoria(casas) {
+    if (reduzMovimento()) return;
+    animate(casas, { y: [0, -14, 0], scale: [1, 1.14, 1] }, { duration: 0.55, delay: stagger(0.06), ease: "easeOut" });
+}
+
+/** As casas caem e somem para dar lugar à próxima palavra. */
+export async function saidaCasas(casas) {
+    if (reduzMovimento() || casas.length === 0) return;
+    await animate(casas, { opacity: [1, 0], y: [0, 22], rotateX: [0, -70] }, {
+        duration: 0.3,
+        delay: stagger(0.025),
+        ease: [0.4, 0, 1, 1],
+    }).finished;
+}
+
+/** As casas da nova palavra entram girando, uma depois da outra. */
+export function entradaCasas(casas) {
+    if (reduzMovimento()) return;
+    animate(casas, { opacity: [0, 1], y: [-18, 0], rotateX: [80, 0] }, {
+        type: "spring",
+        stiffness: 260,
+        damping: 20,
+        delay: stagger(0.035),
+    });
+}
+
+/** As teclas voltam ao estado neutro com uma pequena ondulação. */
+export function entradaTeclas(teclas) {
+    if (reduzMovimento()) return;
+    animate(teclas, { scale: [0.85, 1], opacity: [0.4, 1] }, { duration: 0.35, delay: stagger(0.012), ease: "easeOut" });
+}
+
 /** Pulso curto para chamar atenção (ex.: vida perdida). */
 export function pulsar(el) {
     if (reduzMovimento()) return;
