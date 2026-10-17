@@ -29,13 +29,16 @@ flowchart LR
 **Como funciona o ambiente de teste**
 
 - O Railway cria o ambiente sozinho quando um Pull Request é aberto e o apaga quando ele é mergeado ou fechado.
-- Enquanto o PR estiver aberto, a URL é a mesma; cada novo commit no PR atualiza o ambiente em cerca de um minuto.
+- Enquanto o PR estiver aberto, a URL é a mesma, e cada novo commit enviado ao PR atualiza o ambiente em cerca de um minuto.
+- Se o ambiente ficar desatualizado, fechar e reabrir o PR o recria com o último commit (a URL continua a mesma).
+- Para confirmar qual versão está no ar, compare o conteúdo dos arquivos servidos com o build local: o status "Active" só diz que algum deploy está rodando, não qual.
 - Cada ambiente tem as próprias partidas em memória: testar não afeta quem joga em produção.
 
 **Decisões e por quê**
 
 - *Um ambiente por PR, em vez de uma branch `staging` fixa.* Com uma pessoa no projeto, uma branch de staging exigiria dois PRs por mudança e aumentaria o risco de conflitos. Ambientes por PR só existem enquanto necessários, o que também reduz o custo.
 - *PRs de bots (Dependabot) não ganham ambiente.* São atualizações de dependências já cobertas pelo CI; criar ambientes para elas só consumiria crédito.
+- *"Focused PR Environments" desligado.* Com essa opção do Railway ligada, o ambiente era criado ao abrir o PR, mas os commits enviados depois não chegavam até ele. Com um único serviço no projeto, ela não trazia economia.
 - *Variáveis copiadas da produção.* Os ambientes de teste herdam as variáveis de `production`. O risco é baixo porque o estado das partidas fica no servidor de cada ambiente: um cookie de teste levado à produção aponta para uma partida que não existe lá. Deve ser revisto se o projeto passar a guardar dados de usuários.
 
 ## Ciclo de uma mudança
