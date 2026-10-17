@@ -49,7 +49,21 @@ flowchart LR
 4. **Verificação automática.** O CI roda os checks; o Railway publica o ambiente de teste.
 5. **Teste manual.** A mudança é testada na URL do PR, no computador e no celular.
 6. **Merge.** Com tudo verde, o PR entra na `main` por *merge commit*, preservando o histórico.
-7. **Produção.** O Railway publica a `main` e confere o endpoint `/health`; se o deploy falhar, a versão anterior continua no ar.
+7. **Produção.** O Railway publica a `main` e, antes de trocar a versão, chama o endpoint `/health`; se ele não responder, a versão anterior continua no ar.
+
+## Configuração de deploy: o que fica onde
+
+| Onde | O quê | Para quê |
+|---|---|---|
+| `railway.json` (repositório) | Comando de build: `npm ci && npm run build` | Compila o CSS e o JavaScript no deploy. **Sem ele a página sobe sem estilo e sem JavaScript**, e a verificação de saúde não percebe, porque só confere o `/health` |
+| Painel → Settings → Deploy | **Healthcheck Path:** `/health` | O Railway só troca a versão no ar se a nova responder; uma versão quebrada nunca substitui a que funciona |
+| Painel → Settings → Deploy | **Restart Policy:** On Failure, 3 tentativas | Reinicia o app se ele cair, sem ficar em ciclo infinito |
+| Painel → Settings → Source | **Auto deploy** ligado | Em produção, cada merge na `main` é publicado sozinho; em ambientes de PR vem desligado e precisa ser ligado (ver acima) |
+| `Procfile`, `package.json`, `mise.toml` | Comando de início, scripts de build e versão do Node | O que depende só do código |
+
+Por que o healthcheck está no painel: as definições de deploy do `railway.json` (healthcheck e política de reinício) não estavam valendo (o log do deploy não mostrava nenhuma chamada de verificação), enquanto o comando de build era usado. Para conferir que a verificação está valendo, o log do deploy mostra uma chamada `GET /health` com o agente `RailwayHealthCheck/1.0`.
+
+**Atenção: prazo.** O Railway marcou a configuração por arquivo como obsoleta e diz que ela deixa de funcionar em 2026-12-01. Antes dessa data, o comando de build precisa migrar para o painel ou para o formato novo do Railway, e o ambiente de teste de um PR é o lugar certo para validar a troca.
 
 ## Padrão de commits
 
