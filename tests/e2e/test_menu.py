@@ -135,3 +135,41 @@ def test_com_animacoes_ligadas_o_fluxo_tambem_funciona(navegador, servidor):
     pg.wait_for_function("getComputedStyle(document.querySelector('[data-passo=jogo]')).opacity === '1'")
     assert erros == []
     contexto.close()
+
+
+def test_troca_de_tela_nunca_deixa_a_tela_vazia(navegador, servidor):
+    """A troca é um cross-fade: em todo quadro alguma tela está bem visível (antes, a tela piscava vazia)."""
+    contexto = navegador.new_context(base_url=servidor, reduced_motion="no-preference")
+    pg = contexto.new_page()
+    pg.goto("/beta")
+    pg.wait_for_timeout(1500)
+    menor = pg.evaluate(
+        """() => new Promise((fim) => {
+            document.querySelector('[data-ir="dificuldade"]').click();
+            const inicio = performance.now();
+            let menor = 1;
+            const medir = () => {
+                const opacidades = [...document.querySelectorAll('[data-passo]')]
+                    .filter((s) => !s.hidden)
+                    .map((s) => Number(getComputedStyle(s).opacity));
+                menor = Math.min(menor, Math.max(0, ...opacidades));
+                if (performance.now() - inicio < 700) requestAnimationFrame(medir);
+                else fim(menor);
+            };
+            requestAnimationFrame(medir);
+        })"""
+    )
+    assert menor >= 0.5, f"a tela ficou quase vazia (opacidade máxima {menor:.2f})"
+    contexto.close()
+
+
+def test_clique_rapido_durante_a_troca_de_tela_nao_e_ignorado(navegador, servidor):
+    """A tela nova aceita cliques assim que aparece; antes, cliques nos primeiros 0,5 s eram descartados."""
+    contexto = navegador.new_context(base_url=servidor, reduced_motion="no-preference")
+    pg = contexto.new_page()
+    pg.goto("/beta")
+    pg.get_by_role("button", name="Jogar").click()
+    pg.wait_for_timeout(150)  # ainda no meio da animação de entrada
+    pg.locator("[data-lista=dificuldades] .opcao").first.click(force=True)
+    expect(pg.locator('[data-passo="categoria"]')).to_be_visible(timeout=3000)
+    contexto.close()

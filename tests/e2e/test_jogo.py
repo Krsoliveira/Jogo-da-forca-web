@@ -200,3 +200,31 @@ def test_teclas_tem_a_mesma_largura_em_todas_as_linhas(pagina):
         "[...document.querySelectorAll('[data-teclado] .tecla')].map(t => Math.round(t.getBoundingClientRect().width))"
     )
     assert max(larguras) - min(larguras) <= 1
+
+
+VISIVEIS = (
+    "[...document.querySelectorAll('[data-parte]')]"
+    ".filter(p => getComputedStyle(p).visibility !== 'hidden').length"
+)
+
+
+def test_forca_vazia_nao_mostra_nenhum_ponto_do_boneco(pagina):
+    # com ponta arredondada, um traço de comprimento zero aparecia como um ponto na forca vazia
+    palavra = comecar(pagina)
+    assert pagina.evaluate(VISIVEIS) == 0
+    pagina.get_by_role("button", name=f"Letra {letras_erradas(palavra)[0].upper()}", exact=True).click()
+    expect(pagina.locator("[data-vidas] .vida-perdida")).to_have_count(1)
+    assert pagina.evaluate(VISIVEIS) == 1  # só a cabeça
+
+
+def test_forca_volta_vazia_na_palavra_seguinte(navegador, servidor):
+    contexto = navegador.new_context(base_url=servidor, reduced_motion="no-preference")
+    pg = contexto.new_page()
+    palavra = comecar(pg)
+    pg.keyboard.press(letras_erradas(palavra)[0])
+    expect(pg.locator("[data-vidas] .vida-perdida")).to_have_count(1)
+    for letra in sorted(set(c for c in palavra if c.isalpha())):
+        pg.keyboard.press(letra)
+    expect(pg.locator("[data-teclado] .tecla:not([disabled])")).to_have_count(26, timeout=8000)
+    pg.wait_for_function(VISIVEIS + " === 0", timeout=3000)
+    contexto.close()
