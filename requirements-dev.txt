@@ -2,3 +2,4 @@ pytest
 ruff
 bandit
 pip-audit
+playwright
