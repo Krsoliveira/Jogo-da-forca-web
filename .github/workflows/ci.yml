@@ -38,3 +38,17 @@ jobs:
           cache-dependency-path: requirements*.txt
       - run: pip install -r requirements.txt -r requirements-dev.txt
       - run: python -m pytest -q
+
+  interface:
+    name: Interface (Tailwind)
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+          cache: npm
+      - run: npm ci
+      - run: npm run build
+      - name: Confere se o CSS foi gerado
+        run: test -s static/css/app.css && test -s static/js/dist/beta.js && test -s static/fonts/space-grotesk-latin-wght-normal.woff2
