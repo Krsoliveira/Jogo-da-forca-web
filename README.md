@@ -87,3 +87,6 @@ O banco de palavras gerais (forca/dados/palavras_gerais.json) é gerado por scri
 Dicionário Aberto (https://dicionario-aberto.net): lista de palavras, classe gramatical e definições. Domínio público.
 wordfreq (https://github.com/rspeer/wordfreq): lista de frequência usada apenas na geração, para escolher palavras comuns. Código Apache-2.0; dados CC BY-SA 4.0 e Google Books Ngrams. Seus dados não são redistribuídos com o jogo.
 Para regenerar: pip install -r requirements-dados.txt e python scripts/gerar_banco.py. A lista de palavras bloqueadas fica em scripts/palavras_bloqueadas.txt.
+
+Fluxo de Trabalho
+Como as mudanças são desenvolvidas, testadas (CI e ambiente de teste por Pull Request) e publicadas: docs/fluxo-de-trabalho.md
