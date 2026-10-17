@@ -127,3 +127,12 @@ def test_producao_exige_secret_key(monkeypatch):
         importlib.reload(modulo)
     monkeypatch.delenv("RAILWAY_ENVIRONMENT")
     importlib.reload(modulo)  # restaura o módulo para os demais testes
+
+
+@pytest.mark.parametrize("variacao", [str.upper, lambda p: f"  {p}  ", lambda p: p.replace("a", "á")])
+def test_chute_certo_vale_com_acento_maiuscula_e_espacos(client, variacao):
+    iniciar(client)
+    palavra = palavra_atual(client)
+    data = client.post("/chute", json={"palavra": variacao(palavra)}).get_json()
+    assert data.get("vitoria_rodada") is True
+    assert data["erros"] == 0

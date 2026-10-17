@@ -306,7 +306,7 @@ def chute():
     partida = _partida()
     if not partida or not partida.get("palavra"):
         return _erro("Jogo não iniciado.")
-    chute_palavra = str((request.get_json(silent=True) or {}).get("palavra", "")).lower().strip()
+    chute_palavra = regras.normalizar_chute((request.get_json(silent=True) or {}).get("palavra", ""))
 
     erros, palavra = partida["erros"], partida["palavra"]
     pontos_ganhos, letras_tentadas = 0, partida["letras_tentadas"]
