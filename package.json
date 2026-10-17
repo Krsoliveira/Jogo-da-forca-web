@@ -1,0 +1,30 @@
+{
+  "name": "jogo-da-forca-web",
+  "private": true,
+  "description": "Pipeline de CSS (Tailwind) do Jogo da Forca; o backend é Flask.",
+  "scripts": {
+    "build:fontes": "node scripts/copiar-fontes.mjs",
+    "build:css": "tailwindcss -i static/src/app.css -o static/css/app.css --minify",
+    "build:js": "esbuild static/src/js/*.js --bundle --minify --format=esm --target=es2020 --outdir=static/js/dist",
+    "build": "npm run build:fontes && npm run build:css && npm run build:js",
+    "watch:css": "tailwindcss -i static/src/app.css -o static/css/app.css --watch",
+    "watch:js": "esbuild static/src/js/*.js --bundle --format=esm --outdir=static/js/dist --watch"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "devDependencies": {
+    "@tailwindcss/cli": "^4.3.3",
+    "esbuild": "^0.28.2",
+    "tailwindcss": "^4.3.3"
+  },
+  "overrides": {
+    "@parcel/watcher": "^2.6.0"
+  },
+  "dependencies": {
+    "@fontsource-variable/jetbrains-mono": "^5.3.0",
+    "@fontsource-variable/orbitron": "^5.3.0",
+    "@fontsource-variable/space-grotesk": "^5.3.0",
+    "motion": "^14.3.0"
+  }
+}
