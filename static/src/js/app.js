@@ -135,20 +135,26 @@ function renderizarCategorias() {
 }
 
 // ───────── Escolhas ─────────
+// `ocupado` evita dois cliques seguidos virarem duas navegações; dura só a confirmação da escolha
+// e a carga de dados, nunca a animação inteira (a tela nova aceita cliques assim que aparece).
 async function escolherDificuldade(opcao, id) {
     if (estado.ocupado) return;
+    estado.ocupado = true;
     estado.dificuldade = id;
     gravar(CHAVE_DIFICULDADE, id);
     $$("[data-lista=dificuldades] .opcao").forEach((o) => o.setAttribute("aria-pressed", String(o === opcao)));
     await confirmarEscolha(opcao, $$("[data-lista=dificuldades] .opcao").filter((o) => o !== opcao));
+    estado.ocupado = false;
     irPara("categoria");
 }
 
 async function escolherCategoria(opcao, nome) {
     if (estado.ocupado) return;
+    estado.ocupado = true;
     estado.categoria = nome;
     const todas = $$("[data-passo=categoria] .opcao");
     await confirmarEscolha(opcao, todas.filter((o) => o !== opcao));
+    estado.ocupado = false;
     irPara("jogo");
 }
 
@@ -165,6 +171,7 @@ function passoValido(passo) {
 }
 
 async function mostrar(passo, direcao) {
+    estado.ocupado = true; // enquanto carrega dados
     if (passo !== "inicio" && passo !== "erro" && !estado.catalogo) {
         try {
             await carregarCatalogo();
@@ -186,16 +193,16 @@ async function mostrar(passo, direcao) {
         }
     }
 
-    estado.ocupado = true;
     const atual = $(`[data-passo="${estado.passo}"]`);
     const proximo = $(`[data-passo="${passo}"]`);
     estado.passo = passo;
-    await trocarPasso(atual === proximo ? null : atual, proximo, direcao);
-    estado.ocupado = false;
+    window.scrollTo({ top: 0 }); // antes da troca, para a tela nova não entrar no meio da rolagem
+    const troca = trocarPasso(atual === proximo ? null : atual, proximo, direcao);
+    cartoesEmCascata($$(".opcao", proximo)); // junto com a troca, para os cartões não piscarem
+    estado.ocupado = false; // a tela que sai já está bloqueada (inert); a nova pode receber cliques
+    await troca;
 
-    cartoesEmCascata($$(".opcao", proximo));
-    $("h1, h2", proximo)?.focus({ preventScroll: true });
-    window.scrollTo({ top: 0 });
+    if (estado.passo === passo) $("h1, h2", proximo)?.focus({ preventScroll: true });
 }
 
 function direcaoEntre(de, para) {

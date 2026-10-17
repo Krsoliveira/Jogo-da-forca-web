@@ -407,6 +407,17 @@
   .opcao-medio { --cor: var(--color-ambar); }
   .opcao-dificil { --cor: var(--color-perigo); }
 
+  /* Palco: todas as telas ocupam a mesma célula da grade. Na troca, a que sai e a que entra
+     ficam sobrepostas por um instante (cross-fade), sem nenhum quadro vazio. */
+  .palco {
+    display: grid;
+    grid-template-rows: minmax(calc(100dvh - 4rem), auto);
+  }
+  .palco > .passo {
+    grid-area: 1 / 1;
+    min-width: 0;
+  }
+
   /* Indicador de passos. */
   .passos {
     display: flex;

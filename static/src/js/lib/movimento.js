@@ -106,23 +106,27 @@ export function contarAte(el, de, ate, { sufixo = "" } = {}) {
  * `direcao` 1 avança (entra pela direita), -1 volta (entra pela esquerda).
  */
 export async function trocarPasso(sai, entra, direcao = 1) {
+    const saindo = sai && !sai.hidden ? sai : null;
     if (reduzMovimento()) {
-        if (sai) sai.hidden = true;
+        if (saindo) saindo.hidden = true;
         entra.hidden = false;
         return;
     }
-    if (sai && !sai.hidden) {
-        await animate(sai, { opacity: [1, 0], x: [0, -36 * direcao], filter: ["blur(0px)", "blur(6px)"] }, {
-            duration: 0.22,
-            ease: [0.4, 0, 1, 1],
-        }).finished;
-        sai.hidden = true;
-    }
+    // As duas telas animam juntas, sobrepostas no palco: a atual recua enquanto a nova chega.
     entra.hidden = false;
-    await animate(entra, { opacity: [0, 1], x: [44 * direcao, 0], filter: ["blur(8px)", "blur(0px)"] }, {
-        duration: 0.5,
-        ease: [0.16, 1, 0.3, 1],
-    }).finished;
+    const animacoes = [
+        animate(entra, { opacity: [0, 1], x: [40 * direcao, 0] }, { duration: 0.45, delay: 0.05, ease: [0.16, 1, 0.3, 1] }).finished,
+    ];
+    if (saindo) {
+        saindo.inert = true; // não recebe cliques nem foco enquanto some
+        animacoes.push(
+            animate(saindo, { opacity: [1, 0], x: [0, -28 * direcao] }, { duration: 0.25, ease: [0.4, 0, 1, 1] }).finished.then(() => {
+                saindo.hidden = true;
+                saindo.inert = false;
+            }),
+        );
+    }
+    await Promise.all(animacoes);
 }
 
 /** Cartões entram em cascata com mola, levemente girados, e assentam no lugar. */
