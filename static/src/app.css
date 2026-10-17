@@ -489,6 +489,9 @@
     stroke-linecap: round;
     stroke-dasharray: 1;
     stroke-dashoffset: 1;
+    /* escondida até começar a ser desenhada: com ponta arredondada, um traço de
+       comprimento zero ainda aparece como um ponto */
+    visibility: hidden;
     filter: drop-shadow(0 0 7px rgb(255 43 214 / 0.85));
     transition: stroke 0.4s ease;
   }

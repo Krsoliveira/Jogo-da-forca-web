@@ -18,12 +18,15 @@ export function criarForca(svg) {
         partes.forEach((parte, i) => {
             const fracao = limitar(alvo - i, 0, 1);
             const deslocamento = 1 - fracao;
+            if (fracao === 0) return; // parte ainda não alcançada continua escondida
             if (reduzMovimento()) {
+                parte.style.visibility = "visible";
                 parte.style.strokeDashoffset = String(deslocamento);
                 return;
             }
             // a parte que estava sendo desenhada continua de onde parou; as seguintes esperam a vez
             const atraso = Math.max(0, i - Math.floor(anterior)) * duracao * 0.8;
+            setTimeout(() => { parte.style.visibility = "visible"; }, atraso * 1000);
             animate(parte, { strokeDashoffset: deslocamento }, { duration: duracao, delay: atraso, ease: [0.65, 0, 0.35, 1] });
         });
     }
@@ -58,10 +61,17 @@ export function criarForca(svg) {
             svg.classList.remove("forca-perigo");
             olhos.style.opacity = "0";
             boneco.style.transform = "";
+            const esconder = (p) => {
+                p.style.strokeDashoffset = "1";
+                p.style.visibility = "hidden";
+            };
             if (reduzMovimento()) {
-                partes.forEach((p) => { p.style.strokeDashoffset = "1"; });
+                partes.forEach(esconder);
             } else {
-                partes.forEach((p) => animate(p, { strokeDashoffset: 1 }, { duration: 0.35, ease: "easeIn" }));
+                partes.forEach((p, i) => animate(p, { strokeDashoffset: 1 }, { duration: 0.35, ease: "easeIn" }).finished.then(() => {
+                    // esconde só se um erro novo (já na palavra seguinte) não voltou a desenhar esta parte
+                    if (limitar(progresso - i, 0, 1) === 0) esconder(p);
+                }));
             }
             progresso = 0;
             svg.setAttribute("aria-label", "Forca vazia");
