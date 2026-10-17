@@ -5,10 +5,10 @@ import pytest
 from app import app
 
 
-@pytest.fixture
-def html():
+@pytest.fixture(params=["/beta", "/beta/estilo"])
+def html(request):
     app.config.update(TESTING=True)
-    resposta = app.test_client().get("/beta")
+    resposta = app.test_client().get(request.param)
     assert resposta.status_code == 200
     return resposta.get_data(as_text=True)
 
@@ -70,9 +70,7 @@ def test_beta_nao_depende_de_servidores_externos(html):
 
 def test_beta_tem_acessibilidade_basica(html):
     assert "Ir para o conteúdo" in html  # link para pular a navegação
-    assert 'role="progressbar"' in html
-    assert 'aria-label="Experiência"' in html
-    assert 'role="group"' in html  # o teclado é anunciado como um grupo
+    assert 'id="conteudo"' in html
 
 
 @pytest.mark.parametrize(
@@ -84,10 +82,19 @@ def test_arquivos_estaticos_da_interface_existem(caminho):
     assert resposta.status_code == 200
 
 
-def test_beta_carrega_o_bundle_e_o_css_compilados(html):
+@pytest.mark.parametrize(("rota", "bundle"), [("/beta", "js/dist/menu.js"), ("/beta/estilo", "js/dist/estilo.js")])
+def test_cada_pagina_carrega_seu_bundle_e_o_css(rota, bundle):
     # gerados por `npm run build` (fora do git); o CI confere que o build produz os arquivos
-    assert "js/dist/beta.js" in html
+    html = app.test_client().get(rota).get_data(as_text=True)
+    assert bundle in html
     assert "css/app.css" in html
+
+
+def test_menu_tem_todos_os_passos_e_um_unico_h1():
+    html = app.test_client().get("/beta").get_data(as_text=True)
+    for passo in ("inicio", "dificuldade", "categoria", "pronto", "erro"):
+        assert f'data-passo="{passo}"' in html
+    assert html.count("<h1") == 1
 
 
 def test_interface_atual_continua_em_raiz():

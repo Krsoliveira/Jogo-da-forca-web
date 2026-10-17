@@ -62,9 +62,15 @@
 
 /* ───────── Base ───────── */
 @layer base {
+  /* O fundo fica no <html> (e não no <body>) para a grade synthwave, com z-index -1,
+     ser pintada por cima dele. */
   html {
     color-scheme: dark;
-    background: var(--color-noite);
+    background:
+      radial-gradient(55rem 30rem at 80% -8%, rgb(255 43 214 / 0.18), transparent 60%),
+      radial-gradient(45rem 28rem at -5% 15%, rgb(34 230 255 / 0.14), transparent 60%),
+      radial-gradient(40rem 30rem at 50% 100vh, rgb(124 77 255 / 0.2), transparent 60%),
+      var(--color-noite);
     color: var(--color-texto);
     font-family: var(--font-ui);
     -webkit-font-smoothing: antialiased;
@@ -72,11 +78,6 @@
   }
   body {
     min-height: 100dvh;
-    background:
-      radial-gradient(55rem 30rem at 80% -8%, rgb(255 43 214 / 0.18), transparent 60%),
-      radial-gradient(45rem 28rem at -5% 15%, rgb(34 230 255 / 0.14), transparent 60%),
-      radial-gradient(40rem 30rem at 50% 115%, rgb(124 77 255 / 0.18), transparent 60%),
-      var(--color-noite);
   }
   h1, h2, h3 {
     font-weight: 700;
@@ -110,12 +111,12 @@
     pointer-events: none;
     z-index: -1;
     background-image:
-      linear-gradient(rgb(255 43 214 / 0.35) 1px, transparent 1px),
-      linear-gradient(90deg, rgb(34 230 255 / 0.22) 1px, transparent 1px);
+      linear-gradient(rgb(255 43 214 / 0.6) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(34 230 255 / 0.42) 1px, transparent 1px);
     background-size: 64px 64px;
     transform: perspective(420px) rotateX(62deg);
     transform-origin: bottom;
-    mask-image: linear-gradient(to top, black 10%, transparent 85%);
+    mask-image: linear-gradient(to top, black 25%, transparent 90%);
     animation: var(--animate-grade);
   }
 
@@ -321,4 +322,130 @@
   [data-letreiro] > span {
     opacity: 0;
   }
+}
+
+/* ───────── Menu ───────── */
+@layer components {
+  /* Cartão de escolha (dificuldade, categoria). Cor de destaque via --cor. */
+  .opcao {
+    --cor: var(--color-ciano);
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
+    width: 100%;
+    padding: 1.15rem 1.2rem;
+    text-align: left;
+    color: var(--color-texto);
+    background: linear-gradient(160deg, rgb(30 26 70 / 0.75), rgb(12 11 30 / 0.75));
+    backdrop-filter: blur(12px);
+    border: 1px solid var(--color-linha);
+    border-radius: 1.1rem;
+    box-shadow: 0 14px 34px -18px rgb(0 0 0 / 0.9);
+    cursor: pointer;
+    transition: border-color 0.25s ease, box-shadow 0.25s ease, background 0.25s ease;
+    transform-style: preserve-3d;
+    touch-action: manipulation;
+  }
+  .opcao::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    background: radial-gradient(18rem 8rem at var(--mx, 50%) var(--my, 0%), color-mix(in srgb, var(--cor) 22%, transparent), transparent 70%);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    pointer-events: none;
+  }
+  @media (hover: hover) {
+    .opcao:hover {
+      border-color: color-mix(in srgb, var(--cor) 65%, transparent);
+      box-shadow: 0 0 0 1px color-mix(in srgb, var(--cor) 30%, transparent), 0 0 28px -4px color-mix(in srgb, var(--cor) 55%, transparent);
+    }
+    .opcao:hover::after { opacity: 1; }
+  }
+  .opcao:focus-visible { border-color: var(--cor); }
+  .opcao[aria-pressed="true"] {
+    border-color: var(--cor);
+    box-shadow: 0 0 0 1px var(--cor), 0 0 30px -4px color-mix(in srgb, var(--cor) 70%, transparent);
+  }
+
+  .opcao-icone {
+    display: grid;
+    place-items: center;
+    width: 2.6rem;
+    height: 2.6rem;
+    margin-bottom: 0.35rem;
+    color: var(--cor);
+    background: color-mix(in srgb, var(--cor) 12%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cor) 40%, transparent);
+    border-radius: 0.8rem;
+    filter: drop-shadow(0 0 8px color-mix(in srgb, var(--cor) 60%, transparent));
+  }
+  .opcao-icone svg { width: 1.35rem; height: 1.35rem; }
+  .opcao-titulo { font-weight: 700; font-size: 1.1rem; }
+  .opcao-meta { font-size: 0.85rem; color: var(--color-texto-suave); }
+
+  /* Aleatório ganha destaque: largura total e borda animada. */
+  .opcao-destaque {
+    --cor: var(--color-magenta);
+    flex-direction: row;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.25rem 1.4rem;
+    background:
+      linear-gradient(160deg, rgb(48 18 70 / 0.85), rgb(14 10 34 / 0.85)) padding-box,
+      linear-gradient(120deg, var(--color-magenta), #8b5cff, var(--color-ciano), var(--color-magenta)) border-box;
+    background-size: 100% 100%, 300% 100%;
+    border: 1.5px solid transparent;
+    animation: borda-viva 6s linear infinite;
+  }
+  .opcao-destaque .opcao-icone { margin-bottom: 0; width: 3.1rem; height: 3.1rem; }
+
+  .opcao-facil { --cor: var(--color-lima); }
+  .opcao-medio { --cor: var(--color-ambar); }
+  .opcao-dificil { --cor: var(--color-perigo); }
+
+  /* Indicador de passos. */
+  .passos {
+    display: flex;
+    gap: 0.5rem;
+    font-size: 0.78rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--color-texto-suave);
+  }
+  .passos li {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.3rem 0.75rem;
+    border: 1px solid var(--color-linha);
+    border-radius: 999px;
+  }
+  .passos li::before {
+    content: "";
+    width: 0.45rem;
+    height: 0.45rem;
+    border-radius: 999px;
+    background: currentColor;
+    opacity: 0.5;
+  }
+  .passos .passo-ativo {
+    color: var(--color-ciano);
+    border-color: rgb(34 230 255 / 0.45);
+    box-shadow: 0 0 14px -4px rgb(34 230 255 / 0.7);
+  }
+  .passos .passo-ativo::before { opacity: 1; box-shadow: 0 0 8px var(--color-ciano); }
+  .passos .passo-feito { color: var(--color-lima); }
+
+  [data-icone] { display: inline-flex; }
+  [data-icone] svg { width: 1.2em; height: 1.2em; }
+}
+
+@keyframes borda-viva {
+  from { background-position: 0 0, 0% 0; }
+  to { background-position: 0 0, 300% 0; }
 }

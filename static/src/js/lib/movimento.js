@@ -101,6 +101,57 @@ export function contarAte(el, de, ate, { sufixo = "" } = {}) {
     });
 }
 
+/**
+ * Troca de tela: a atual sai deslizando e desfocando, a nova entra pelo lado oposto.
+ * `direcao` 1 avança (entra pela direita), -1 volta (entra pela esquerda).
+ */
+export async function trocarPasso(sai, entra, direcao = 1) {
+    if (reduzMovimento()) {
+        if (sai) sai.hidden = true;
+        entra.hidden = false;
+        return;
+    }
+    if (sai && !sai.hidden) {
+        await animate(sai, { opacity: [1, 0], x: [0, -36 * direcao], filter: ["blur(0px)", "blur(6px)"] }, {
+            duration: 0.22,
+            ease: [0.4, 0, 1, 1],
+        }).finished;
+        sai.hidden = true;
+    }
+    entra.hidden = false;
+    await animate(entra, { opacity: [0, 1], x: [44 * direcao, 0], filter: ["blur(8px)", "blur(0px)"] }, {
+        duration: 0.5,
+        ease: [0.16, 1, 0.3, 1],
+    }).finished;
+}
+
+/** Cartões entram em cascata com mola, levemente girados, e assentam no lugar. */
+export function cartoesEmCascata(cartoes) {
+    if (reduzMovimento() || cartoes.length === 0) return;
+    animate(cartoes, { opacity: [0, 1], y: [26, 0], scale: [0.94, 1], rotateX: [18, 0] }, {
+        type: "spring",
+        stiffness: 210,
+        damping: 20,
+        delay: stagger(0.045, { startDelay: 0.08 }),
+    });
+}
+
+/** Confirma a escolha: o cartão escolhido pulsa e os demais recuam. */
+export async function confirmarEscolha(escolhido, outros) {
+    if (reduzMovimento()) return;
+    animate(outros, { opacity: 0.35, scale: 0.97 }, { duration: 0.2 });
+    await animate(escolhido, { scale: [1, 1.05, 1] }, { duration: 0.32, ease: [0.34, 1.56, 0.64, 1] }).finished;
+}
+
+/** Faz o brilho interno do cartão seguir o ponteiro (via variáveis CSS --mx e --my). */
+export function brilhoSegueOPonteiro(el) {
+    el.addEventListener("pointermove", (e) => {
+        const r = el.getBoundingClientRect();
+        el.style.setProperty("--mx", `${e.clientX - r.left}px`);
+        el.style.setProperty("--my", `${e.clientY - r.top}px`);
+    });
+}
+
 /** Pulso curto para chamar atenção (ex.: vida perdida). */
 export function pulsar(el) {
     if (reduzMovimento()) return;
