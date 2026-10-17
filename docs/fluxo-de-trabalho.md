@@ -29,8 +29,8 @@ flowchart LR
 **Como funciona o ambiente de teste**
 
 - O Railway cria o ambiente sozinho quando um Pull Request é aberto e o apaga quando ele é mergeado ou fechado.
-- O ambiente recebe o código do momento em que o PR é aberto. **Hoje, commits enviados depois disso não atualizam o ambiente sozinhos** (a causa está em investigação).
-- Para testar um commit novo, feche e reabra o PR: o Railway recria o ambiente com o último commit, e a URL continua a mesma.
+- **O ambiente de PR nasce com o deploy automático desligado.** Ao abrir o PR, o Railway publica o código daquele momento, mas os commits enviados depois só chegam ao ambiente se o deploy automático estiver ativo: no Railway, escolha o ambiente do PR, abra o serviço e vá em **Settings → Source → Enable** (ao lado de "Auto deploy is disabled").
+- Alternativa: fechar e reabrir o PR recria o ambiente com o último commit, e a URL continua a mesma.
 - Para confirmar qual versão está no ar, compare o conteúdo dos arquivos servidos com o build local: o status "Active" só diz que algum deploy está rodando, não qual.
 - Cada ambiente tem as próprias partidas em memória: testar não afeta quem joga em produção.
 
@@ -38,7 +38,7 @@ flowchart LR
 
 - *Um ambiente por PR, em vez de uma branch `staging` fixa.* Com uma pessoa no projeto, uma branch de staging exigiria dois PRs por mudança e aumentaria o risco de conflitos. Ambientes por PR só existem enquanto necessários, o que também reduz o custo.
 - *PRs de bots (Dependabot) não ganham ambiente.* São atualizações de dependências já cobertas pelo CI; criar ambientes para elas só consumiria crédito.
-- *"Focused PR Environments" desligado.* Com um único serviço no projeto, a opção não traz economia. Ela foi a primeira suspeita para os commits que não chegavam ao ambiente, mas desligá-la não resolveu.
+- *"Focused PR Environments" desligado.* Com um único serviço no projeto, a opção não traz economia. Ela foi a primeira suspeita para os commits que não chegavam ao ambiente, mas a causa era o deploy automático desligado no ambiente de PR.
 - *Variáveis copiadas da produção.* Os ambientes de teste herdam as variáveis de `production`. O risco é baixo porque o estado das partidas fica no servidor de cada ambiente: um cookie de teste levado à produção aponta para uma partida que não existe lá. Deve ser revisto se o projeto passar a guardar dados de usuários.
 
 ## Ciclo de uma mudança
