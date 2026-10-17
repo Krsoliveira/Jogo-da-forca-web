@@ -1,4 +1,4 @@
-import re
+from html.parser import HTMLParser
 
 import pytest
 
@@ -19,12 +19,48 @@ def test_beta_tem_idioma_titulo_e_viewport(html):
     assert 'name="viewport"' in html
 
 
-def test_beta_nao_usa_script_nem_estilo_inline(html):
+class _ColetorInline(HTMLParser):
+    """Encontra o que um CSP estrito bloquearia. O parser normaliza tags e atributos
+    para minúsculas, então <SCRIPT> e STYLE= também são pegos."""
+
+    def __init__(self):
+        super().__init__()
+        self.problemas = []
+
+    def handle_starttag(self, tag, attrs):
+        nomes = {nome for nome, _ in attrs}
+        if tag == "script" and "src" not in nomes:
+            self.problemas.append("script inline")
+        if tag == "style":
+            self.problemas.append("bloco <style>")
+        if "style" in nomes:
+            self.problemas.append(f"atributo style em <{tag}>")
+        self.problemas += [f"evento {n} em <{tag}>" for n in nomes if n.startswith("on")]
+
+
+def _inline(html):
+    coletor = _ColetorInline()
+    coletor.feed(html)
+    return coletor.problemas
+
+
+def test_beta_nao_usa_script_estilo_nem_evento_inline(html):
     # Pré-requisito para um CSP estrito (sem 'unsafe-inline').
-    scripts_inline = re.findall(r"<script(?![^>]*\bsrc=)[^>]*>", html)
-    assert scripts_inline == []
-    assert "<style" not in html
-    assert re.search(r'\sstyle="', html) is None
+    assert _inline(html) == []
+
+
+@pytest.mark.parametrize(
+    "trecho",
+    [
+        "<SCRIPT>alert(1)</SCRIPT>",
+        "<script>x()</script>",
+        '<div STYLE="color:red">',
+        "<Style>a{}</Style>",
+        '<img OnError="x()">',
+    ],
+)
+def test_detector_de_inline_pega_variacoes_de_maiusculas(trecho):
+    assert _inline(trecho) != []
 
 
 def test_beta_nao_depende_de_servidores_externos(html):
