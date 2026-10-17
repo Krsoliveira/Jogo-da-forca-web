@@ -136,3 +136,27 @@ def test_chute_certo_vale_com_acento_maiuscula_e_espacos(client, variacao):
     data = client.post("/chute", json={"palavra": variacao(palavra)}).get_json()
     assert data.get("vitoria_rodada") is True
     assert data["erros"] == 0
+
+
+def test_pontos_garantidos_e_em_jogo_sao_informados_separados(client):
+    inicio = iniciar(client).get_json()
+    assert (inicio["pontos_garantidos"], inicio["pontos_em_jogo"]) == (0, 0)
+
+    palavra = palavra_atual(client)
+    certa = tentar(client, palavra[0]).get_json()
+    if not certa.get("vitoria_rodada"):
+        # letra certa: os pontos ficam "em jogo" até a palavra ser acertada
+        assert certa["pontos_garantidos"] == 0
+        assert certa["pontos_em_jogo"] > 0
+        assert certa["pontuacao"] == certa["pontos_garantidos"] + certa["pontos_em_jogo"]
+
+    vitoria = client.post("/chute", json={"palavra": palavra}).get_json()
+    assert vitoria["pontos_garantidos"] == vitoria["pontuacao"] > 0
+    assert vitoria["pontos_em_jogo"] == 0
+
+    proxima = client.get("/proxima_palavra").get_json()
+    assert proxima["pontos_garantidos"] == vitoria["pontos_garantidos"]
+
+    # chute errado desconta dos pontos garantidos
+    errado = client.post("/chute", json={"palavra": "zzzz"}).get_json()
+    assert errado["pontos_garantidos"] == max(0, vitoria["pontos_garantidos"] - 30)
