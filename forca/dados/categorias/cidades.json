@@ -1,0 +1,206 @@
+{
+  "categoria": "Cidades",
+  "ordem": 3,
+  "palavras": {
+    "salvador": [
+      "Primeira capital do Brasil.",
+      "Conhecida pelo Pelourinho e pelo carnaval de rua."
+    ],
+    "recife": [
+      "Capital de Pernambuco, conhecida como a 'Veneza Brasileira'.",
+      "Famosa pela praia de Boa Viagem e pelos tubarões."
+    ],
+    "manaus": [
+      "Principal cidade da Amazônia.",
+      "O Encontro das Águas dos rios Negro e Solimões acontece lá."
+    ],
+    "curitiba": [
+      "Capital do Paraná, conhecida por seu sistema de transporte e parques.",
+      "O Jardim Botânico é seu principal cartão-postal."
+    ],
+    "fortaleza": [
+      "Capital do Ceará, famosa por suas praias e pelo humor.",
+      "O Beach Park, um famoso parque aquático, fica perto."
+    ],
+    "belo horizonte": [
+      "Capital de Minas Gerais, cercada por serras.",
+      "Conhecida pelo pão de queijo e pelo complexo da Pampulha."
+    ],
+    "sao paulo": [
+      "A maior cidade do Brasil, nunca dorme.",
+      "Conhecida como a 'terra da garoa'."
+    ],
+    "rio de janeiro": [
+      "Famoso pelo Cristo Redentor e pelo Pão de Açúcar.",
+      "Conhecida como a 'Cidade Maravilhosa'."
+    ],
+    "paris": [
+      "Capital da França, conhecida como a 'Cidade Luz'.",
+      "A Torre Eiffel é seu monumento mais famoso."
+    ],
+    "nova york": [
+      "Cidade que nunca dorme, nos EUA.",
+      "A Estátua da Liberdade e a Times Square ficam lá."
+    ],
+    "brasilia": [
+      "Capital do Brasil, planejada por Oscar Niemeyer e Lúcio Costa.",
+      "Tem formato de avião."
+    ],
+    "florianopolis": [
+      "Capital de Santa Catarina, conhecida como 'Ilha da Magia'.",
+      "Famosa por suas praias e pela Ponte Hercílio Luz."
+    ],
+    "porto alegre": [
+      "Capital do Rio Grande do Sul.",
+      "Famosa pelo pôr do sol no rio Guaíba e pelo churrasco."
+    ],
+    "goiania": [
+      "Capital de Goiás, planejada e conhecida por ser muito arborizada.",
+      "Palco de um grave acidente com Césio-137."
+    ],
+    "belem": [
+      "Capital do Pará, porta de entrada para a Amazônia.",
+      "Famosa pelo mercado Ver-o-Peso e pelo Círio de Nazaré."
+    ],
+    "sao luis": [
+      "Capital do Maranhão, conhecida como a 'Ilha do Amor'.",
+      "Seu centro histórico tem azulejos portugueses e é Patrimônio da Humanidade."
+    ],
+    "natal": [
+      "Capital do Rio Grande do Norte, conhecida como a 'Cidade do Sol'.",
+      "Famosa por suas dunas e passeios de buggy."
+    ],
+    "joao pessoa": [
+      "Capital da Paraíba, onde o sol nasce primeiro nas Américas.",
+      "Conhecida pela Ponta do Seixas."
+    ],
+    "teresina": [
+      "Única capital do Nordeste que não fica no litoral.",
+      "É a capital do Piauí."
+    ],
+    "maceio": [
+      "Capital de Alagoas, conhecida como o 'Caribe Brasileiro'.",
+      "Famosa por suas piscinas naturais e praias de águas claras."
+    ],
+    "aracaju": [
+      "Capital de Sergipe, cidade planejada.",
+      "A Orla de Atalaia é um de seus principais pontos turísticos."
+    ],
+    "campo grande": [
+      "Capital do Mato Grosso do Sul, conhecida como 'Cidade Morena'.",
+      "Porta de entrada para o Pantanal e Bonito."
+    ],
+    "cuiaba": [
+      "Capital de Mato Grosso, localizada no centro geodésico da América do Sul.",
+      "Faz muito calor e é porta de entrada para o Pantanal e a Chapada dos Guimarães."
+    ],
+    "porto velho": [
+      "Capital de Rondônia.",
+      "Marcada pela construção da Estrada de Ferro Madeira-Mamoré."
+    ],
+    "boa vista": [
+      "Capital de Roraima, única capital brasileira totalmente no Hemisfério Norte.",
+      "Planejada em formato de leque."
+    ],
+    "macapa": [
+      "Capital do Amapá, cortada pela linha do Equador.",
+      "O Marco Zero é seu ponto turístico mais famoso."
+    ],
+    "rio branco": [
+      "Capital do Acre.",
+      "Seu nome é uma homenagem a um famoso diplomata brasileiro."
+    ],
+    "palmas": [
+      "A mais nova capital do Brasil, em Tocantins.",
+      "Cidade planejada com avenidas largas."
+    ],
+    "vitoria": [
+      "Capital do Espírito Santo, localizada em uma ilha.",
+      "Famosa pela moqueca capixaba."
+    ],
+    "londres": [
+      "Capital da Inglaterra, famosa pelo Big Ben, ônibus de dois andares e cabines telefônicas vermelhas.",
+      "O rio Tâmisa corta a cidade."
+    ],
+    "roma": [
+      "Capital da Itália, conhecida como a 'Cidade Eterna'.",
+      "O Coliseu e o Vaticano estão lá."
+    ],
+    "toquio": [
+      "Capital do Japão, uma das cidades mais populosas do mundo.",
+      "Mistura de tradição e tecnologia de ponta."
+    ],
+    "moscou": [
+      "Capital da Rússia, famosa pela Praça Vermelha e pelo Kremlin.",
+      "Suas estações de metrô são consideradas obras de arte."
+    ],
+    "pequim": [
+      "Capital da China, com uma história milenar.",
+      "A Cidade Proibida fica no coração da cidade."
+    ],
+    "sydney": [
+      "A cidade mais populosa da Austrália.",
+      "Famosa pela sua Opera House e pela Harbour Bridge."
+    ],
+    "cairo": [
+      "Capital do Egito, localizada às margens do rio Nilo.",
+      "As Pirâmides de Gizé ficam em sua região metropolitana."
+    ],
+    "buenos aires": [
+      "Capital da Argentina, conhecida pelo tango e pela Casa Rosada.",
+      "Bairros famosos incluem La Boca e Palermo."
+    ],
+    "lisboa": [
+      "Capital de Portugal, famosa por seus bondes amarelos e pelo fado.",
+      "A Torre de Belém e o Mosteiro dos Jerónimos são pontos turísticos."
+    ],
+    "madrid": [
+      "Capital da Espanha, famosa por seus museus (Prado, Reina Sofia) e pela vida noturna.",
+      "O Palácio Real é a residência oficial do rei."
+    ],
+    "amsterda": [
+      "Capital da Holanda, famosa por seus canais, bicicletas e casas inclinadas.",
+      "A Casa de Anne Frank é um de seus museus mais visitados."
+    ],
+    "berlim": [
+      "Capital da Alemanha.",
+      "O Portão de Brandemburgo é seu maior símbolo."
+    ],
+    "istambul": [
+      "A maior cidade da Turquia, localizada entre a Europa e a Ásia.",
+      "Antigamente chamada de Constantinopla."
+    ],
+    "atenas": [
+      "Capital da Grécia, berço da civilização ocidental.",
+      "A Acrópole domina a paisagem da cidade."
+    ],
+    "dublin": [
+      "Capital da Irlanda, famosa por seus pubs e pela cerveja Guinness.",
+      "O Temple Bar é sua área mais boêmia."
+    ],
+    "toronto": [
+      "A maior cidade do Canadá.",
+      "A CN Tower é seu marco mais famoso."
+    ],
+    "los angeles": [
+      "Cidade da Califórnia, centro da indústria do cinema.",
+      "A Calçada da Fama e o letreiro de Hollywood ficam aqui."
+    ],
+    "cidade do mexico": [
+      "Capital de um país da América do Norte, uma das maiores áreas urbanas do mundo.",
+      "Construída sobre as ruínas da antiga capital asteca, Tenochtitlán."
+    ],
+    "santiago": [
+      "Capital do Chile, cercada pela Cordilheira dos Andes.",
+      "É uma das cidades com melhor qualidade de vida da América do Sul."
+    ],
+    "lima": [
+      "Capital do Peru, conhecida como a capital gastronômica da América Latina.",
+      "Seu centro histórico é Patrimônio da Humanidade."
+    ],
+    "bangkok": [
+      "Capital da Tailândia, conhecida por seus templos e mercados flutuantes.",
+      "O trânsito é caótico."
+    ]
+  }
+}

@@ -1,0 +1,206 @@
+{
+  "categoria": "Objetos",
+  "ordem": 5,
+  "palavras": {
+    "computador": [
+      "Máquina que processa informações.",
+      "Essencial para o trabalho e diversão hoje em dia."
+    ],
+    "cadeira": [
+      "Serve para uma pessoa se sentar.",
+      "Pode ter de uma a quatro pernas."
+    ],
+    "oculos": [
+      "Acessório usado no rosto para enxergar melhor ou se proteger do sol.",
+      "Possui duas lentes."
+    ],
+    "telefone": [
+      "Usado para se comunicar a distância.",
+      "Sua versão moderna é chamada de 'smartphone'."
+    ],
+    "livro": [
+      "Contém histórias, informações ou conhecimento.",
+      "É feito de papel e pode ter capa dura ou mole."
+    ],
+    "garfo": [
+      "Utensílio de cozinha usado para espetar alimentos.",
+      "Geralmente usado junto com a faca."
+    ],
+    "chave": [
+      "Usada para abrir e fechar portas.",
+      "Cada uma tem um segredo único."
+    ],
+    "relogio": [
+      "Mostra as horas.",
+      "Pode ser de pulso, de parede ou digital."
+    ],
+    "guarda chuva": [
+      "Usado para se proteger da água que cai do céu.",
+      "Abre e fecha, formando uma cúpula."
+    ],
+    "escova": [
+      "Pode ser de dentes ou de cabelo.",
+      "Serve para limpar ou pentear."
+    ],
+    "mesa": [
+      "Móvel onde fazemos refeições ou trabalhamos.",
+      "Pode ser de madeira, vidro ou metal."
+    ],
+    "cama": [
+      "Móvel onde dormimos.",
+      "Pode ser de solteiro ou de casal."
+    ],
+    "sofa": [
+      "Móvel para sentar na sala de estar.",
+      "Geralmente fica em frente à televisão."
+    ],
+    "televisao": [
+      "Aparelho que exibe imagens e sons.",
+      "O controle remoto é seu melhor amigo."
+    ],
+    "geladeira": [
+      "Eletrodoméstico que mantém os alimentos frios.",
+      "Também chamada de refrigerador."
+    ],
+    "fogao": [
+      "Eletrodoméstico usado para cozinhar.",
+      "Pode ter boca a gás ou por indução."
+    ],
+    "caneta": [
+      "Usada para escrever com tinta.",
+      "Pode ser esferográfica, de gel ou tinteiro."
+    ],
+    "lapis": [
+      "Usado para escrever ou desenhar, pode ser apagado.",
+      "Feito de madeira e grafite."
+    ],
+    "tesoura": [
+      "Instrumento com duas lâminas usado para cortar.",
+      "Crianças devem usar a versão sem ponta."
+    ],
+    "prato": [
+      "Onde colocamos a comida para comer.",
+      "Pode ser fundo ou raso."
+    ],
+    "copo": [
+      "Recipiente para beber líquidos.",
+      "Geralmente feito de vidro."
+    ],
+    "panela": [
+      "Recipiente usado para cozinhar no fogão.",
+      "A de pressão cozinha mais rápido."
+    ],
+    "mochila": [
+      "Bolsa usada nas costas para carregar objetos.",
+      "Muito usada por estudantes."
+    ],
+    "sapato": [
+      "Calçado que protege os pés.",
+      "Existe o social, o tênis, a bota, etc."
+    ],
+    "lampada": [
+      "Objeto que ilumina o ambiente.",
+      "A invenção é atribuída a Thomas Edison."
+    ],
+    "espelho": [
+      "Superfície que reflete a imagem.",
+      "Narciso se apaixonou pelo seu próprio reflexo em um."
+    ],
+    "travesseiro": [
+      "Usado para apoiar a cabeça ao dormir.",
+      "Pode ser de penas, espuma ou látex."
+    ],
+    "martelo": [
+      "Ferramenta usada para bater em pregos.",
+      "O Thor usa um como arma."
+    ],
+    "parafuso": [
+      "Peça metálica usada para unir objetos.",
+      "Precisa de uma chave de fenda ou Philips para ser apertado."
+    ],
+    "serrote": [
+      "Ferramenta com lâmina dentada usada para cortar madeira.",
+      "Faz um barulho característico."
+    ],
+    "escada": [
+      "Objeto usado para alcançar lugares altos.",
+      "Pode ser de mão ou fixa."
+    ],
+    "vassoura": [
+      "Usada para varrer o chão.",
+      "Meio de transporte preferido das bruxas."
+    ],
+    "balde": [
+      "Recipiente para carregar água ou outros materiais.",
+      "Usado para limpeza ou em construções."
+    ],
+    "bola": [
+      "Objeto esférico usado em muitos esportes.",
+      "A de futebol é a mais famosa no Brasil."
+    ],
+    "dado": [
+      "Cubo com números de um a seis em suas faces.",
+      "Usado em jogos de tabuleiro para sorteio."
+    ],
+    "anel": [
+      "Joia usada no dedo.",
+      "Pode simbolizar um noivado ou casamento."
+    ],
+    "colar": [
+      "Adorno usado ao redor do pescoço.",
+      "Pode ter um pingente."
+    ],
+    "pulseira": [
+      "Acessório usado no pulso.",
+      "Pode ser de metal, couro ou tecido."
+    ],
+    "brinco": [
+      "Joia usada na orelha.",
+      "Geralmente vendido em pares."
+    ],
+    "chapeu": [
+      "Acessório usado na cabeça para proteger do sol ou por estilo.",
+      "O de palha é comum em festas juninas."
+    ],
+    "cinto": [
+      "Usado para segurar as calças na cintura.",
+      "Pode ter uma fivela decorativa."
+    ],
+    "carteira": [
+      "Onde guardamos dinheiro, cartões e documentos.",
+      "Geralmente levada no bolso ou na bolsa."
+    ],
+    "moeda": [
+      "Dinheiro em formato de metal.",
+      "Cara ou coroa?"
+    ],
+    "selo": [
+      "Pequeno papel colado em cartas para o envio.",
+      "Item de colecionador."
+    ],
+    "apito": [
+      "Instrumento que produz um som agudo quando soprado.",
+      "Usado por juízes e guardas de trânsito."
+    ],
+    "violao": [
+      "Instrumento musical de cordas, popular na MPB.",
+      "Pode ser acústico ou elétrico."
+    ],
+    "piano": [
+      "Instrumento musical de teclas pretas e brancas.",
+      "É um instrumento de percussão e de cordas."
+    ],
+    "bateria": [
+      "Conjunto de tambores e pratos.",
+      "Marca o ritmo da música."
+    ],
+    "microfone": [
+      "Amplifica a voz.",
+      "Essencial para cantores e palestrantes."
+    ],
+    "camera": [
+      "Usada para tirar fotos ou gravar vídeos.",
+      "Diga 'xis'!"
+    ]
+  }
+}
