@@ -1,0 +1,426 @@
+{
+  "categoria": "Profissões",
+  "ordem": 7,
+  "palavras": {
+    "medico": [
+      "Profissional que examina pacientes e receita tratamentos.",
+      "Usa jaleco e estetoscópio e atende em consultórios e hospitais."
+    ],
+    "enfermeiro": [
+      "Cuida dos pacientes, aplica injeções e faz curativos.",
+      "Trabalha em hospitais e postos de saúde, junto aos doutores."
+    ],
+    "dentista": [
+      "Cuida da saúde da boca e trata cáries.",
+      "Usa broca, espelhinho e pede para você abrir bem."
+    ],
+    "professor": [
+      "Ensina alunos em escolas e universidades.",
+      "Prepara aulas, corrige provas e usa quadro e giz."
+    ],
+    "engenheiro": [
+      "Planeja e projeta obras, máquinas e sistemas.",
+      "Calcula estruturas de pontes, prédios e estradas."
+    ],
+    "advogado": [
+      "Defende os direitos de pessoas em questões jurídicas.",
+      "Atua em tribunais e conhece muito bem as leis."
+    ],
+    "juiz": [
+      "Julga processos e decide quem tem razão.",
+      "Usa toga e um martelo de madeira nos filmes."
+    ],
+    "promotor": [
+      "Acusa em nome da sociedade quem comete crimes.",
+      "Atua em tribunais, representando o Ministério Público."
+    ],
+    "delegado": [
+      "Chefia uma delegacia e conduz investigações.",
+      "Pode prender suspeitos e comandar a polícia civil."
+    ],
+    "policial": [
+      "Protege a população e combate o crime.",
+      "Usa farda, patrulha as ruas e atende ocorrências."
+    ],
+    "bombeiro": [
+      "Combate incêndios e salva pessoas em situações de risco.",
+      "Dirige um caminhão vermelho com sirene e escada."
+    ],
+    "soldado": [
+      "Integra as forças armadas de um país.",
+      "Usa farda e treina em quartéis."
+    ],
+    "piloto": [
+      "Conduz aviões ou carros de corrida.",
+      "Fica na cabine e segue instruções da torre de controle."
+    ],
+    "comissario": [
+      "Atende os passageiros durante o voo.",
+      "Serve lanches e explica as normas de segurança no avião."
+    ],
+    "motorista": [
+      "Conduz veículos como ônibus, vans ou carros.",
+      "Precisa de carteira de habilitação para trabalhar."
+    ],
+    "taxista": [
+      "Leva passageiros de um lugar a outro cobrando pela corrida.",
+      "Seu carro tem um marcador de valor chamado taxímetro."
+    ],
+    "caminhoneiro": [
+      "Transporta cargas pelas estradas do país.",
+      "Passa dias na boleia e conhece muitos postos de beira de estrada."
+    ],
+    "marinheiro": [
+      "Trabalha em navios e conhece o mar.",
+      "Aprende a dar nós e a ler cartas de navegação."
+    ],
+    "pescador": [
+      "Captura peixes em rios e no mar.",
+      "Usa redes, anzóis e barcos para o trabalho."
+    ],
+    "agricultor": [
+      "Cultiva a terra para produzir alimentos.",
+      "Planta, cuida das lavouras e colhe na época certa."
+    ],
+    "fazendeiro": [
+      "Dono de terras que cria gado ou planta lavouras.",
+      "Vive no campo e administra a fazenda."
+    ],
+    "veterinario": [
+      "Cuida da saúde dos bichos.",
+      "Atende cães, gatos, cavalos e vacas."
+    ],
+    "biologo": [
+      "Estuda os seres vivos e o meio ambiente.",
+      "Faz pesquisas sobre animais, plantas e ecossistemas."
+    ],
+    "quimico": [
+      "Estuda substâncias e suas reações.",
+      "Trabalha em laboratórios com tubos de ensaio."
+    ],
+    "fisico": [
+      "Estuda a matéria, a energia e as forças do universo.",
+      "Albert Einstein é um dos mais famosos da história."
+    ],
+    "matematico": [
+      "Estuda números, formas e padrões lógicos.",
+      "Resolve problemas com cálculos e teoremas."
+    ],
+    "astronomo": [
+      "Estuda estrelas, planetas e galáxias.",
+      "Observa o céu usando telescópios."
+    ],
+    "geologo": [
+      "Estuda rochas, solos e a história da Terra.",
+      "Analisa vulcões, terremotos e minerais."
+    ],
+    "arquiteto": [
+      "Desenha projetos de casas e prédios.",
+      "Une beleza e funcionalidade nas construções."
+    ],
+    "pedreiro": [
+      "Constrói paredes com tijolos e cimento.",
+      "Trabalha com colher, prumo e nível para deixar tudo reto."
+    ],
+    "eletricista": [
+      "Instala e conserta a fiação elétrica.",
+      "Cuida de tomadas, disjuntores e lâmpadas."
+    ],
+    "encanador": [
+      "Conserta canos, torneiras e vazamentos.",
+      "Cuida da água e do esgoto de casas e prédios."
+    ],
+    "pintor": [
+      "Dá cor a paredes ou cria obras em telas.",
+      "Usa pincel, rolo e tinta."
+    ],
+    "carpinteiro": [
+      "Trabalha a madeira na construção de estruturas e telhados.",
+      "Usa serrote, martelo e plaina."
+    ],
+    "marceneiro": [
+      "Fabrica móveis de madeira.",
+      "Faz mesas, armários e cadeiras sob medida."
+    ],
+    "mecanico": [
+      "Conserta motores e veículos.",
+      "Trabalha em oficinas e vive com as mãos sujas de graxa."
+    ],
+    "soldador": [
+      "Une peças de metal com calor intenso.",
+      "Usa uma máscara escura para proteger os olhos."
+    ],
+    "padeiro": [
+      "Faz pães e outros produtos de forno logo cedo.",
+      "Acorda de madrugada para o pão sair quentinho."
+    ],
+    "confeiteiro": [
+      "Prepara bolos, doces e sobremesas.",
+      "Decora com glacê e cria receitas açucaradas."
+    ],
+    "cozinheiro": [
+      "Prepara refeições em restaurantes e casas.",
+      "Usa fogão, panelas e temperos, e seu chapéu é alto."
+    ],
+    "garcom": [
+      "Atende os clientes nas mesas de bares e restaurantes.",
+      "Anota pedidos e serve as bebidas e pratos."
+    ],
+    "barista": [
+      "Prepara cafés especiais em cafeterias.",
+      "Domina máquinas de espresso e desenha na espuma."
+    ],
+    "acougueiro": [
+      "Corta e vende carnes.",
+      "Trabalha com facas afiadas atrás de um balcão refrigerado."
+    ],
+    "feirante": [
+      "Vende frutas, verduras e outros produtos em barracas ao ar livre.",
+      "Trabalha cedo em feiras de rua e grita as promoções."
+    ],
+    "comerciante": [
+      "Compra e vende produtos em uma loja.",
+      "Cuida do estoque, dos clientes e do caixa do negócio."
+    ],
+    "vendedor": [
+      "Apresenta produtos aos clientes para fechar negócios.",
+      "Ganha comissão sobre cada venda realizada."
+    ],
+    "caixa": [
+      "Registra as compras e recebe o pagamento dos clientes.",
+      "Trabalha em supermercados e passa produtos no leitor de código de barras."
+    ],
+    "gerente": [
+      "Coordena a equipe e os resultados de um setor ou loja.",
+      "Toma decisões e cuida de metas e escalas de trabalho."
+    ],
+    "contador": [
+      "Cuida das contas e dos impostos de empresas.",
+      "Organiza balanços e planilhas financeiras."
+    ],
+    "economista": [
+      "Estuda como o dinheiro e os recursos circulam na sociedade.",
+      "Analisa inflação, juros e crescimento dos países."
+    ],
+    "administrador": [
+      "Planeja e organiza o funcionamento de empresas.",
+      "Cuida de pessoas, finanças e processos."
+    ],
+    "secretario": [
+      "Organiza agendas, telefonemas e documentos de um chefe.",
+      "Recebe visitas e marca reuniões."
+    ],
+    "recepcionista": [
+      "Recebe e orienta as pessoas na entrada de um local.",
+      "Atende o telefone e fica no balcão de hotéis e clínicas."
+    ],
+    "jornalista": [
+      "Investiga e conta notícias ao público.",
+      "Escreve reportagens para jornais, sites e TV."
+    ],
+    "reporter": [
+      "Vai ao local dos acontecimentos para cobrir notícias.",
+      "Fala com o microfone na mão, ao vivo, em frente à câmera."
+    ],
+    "locutor": [
+      "Fala em rádios e programas de áudio.",
+      "Sua voz é a principal ferramenta do trabalho."
+    ],
+    "apresentador": [
+      "Conduz programas de TV e eventos.",
+      "Entrevista convidados e anima o público."
+    ],
+    "ator": [
+      "Interpreta personagens em filmes, novelas e peças.",
+      "Decora falas e se emociona diante das câmeras."
+    ],
+    "cantor": [
+      "Faz músicas com sua voz e se apresenta em shows.",
+      "Grava discos e sobe em palcos."
+    ],
+    "musico": [
+      "Toca instrumentos ou compõe canções.",
+      "Pode integrar bandas e orquestras."
+    ],
+    "maestro": [
+      "Rege uma orquestra com os movimentos das mãos.",
+      "Usa uma batuta para marcar o ritmo."
+    ],
+    "bailarino": [
+      "Dança profissionalmente em espetáculos.",
+      "Treina flexibilidade e coreografias, às vezes com sapatilhas."
+    ],
+    "escultor": [
+      "Cria obras em pedra, argila ou metal.",
+      "Michelangelo foi um dos mais famosos, autor do Davi."
+    ],
+    "fotografo": [
+      "Registra imagens com câmera.",
+      "Cobre casamentos, eventos e paisagens."
+    ],
+    "cineasta": [
+      "Dirige e produz filmes.",
+      "Comanda o set e decide como a história será contada."
+    ],
+    "escritor": [
+      "Cria livros, contos e romances.",
+      "Passa horas diante de um texto, inventando histórias."
+    ],
+    "poeta": [
+      "Escreve versos e rimas.",
+      "Carlos Drummond de Andrade e Cecília Meireles são exemplos."
+    ],
+    "tradutor": [
+      "Converte textos de um idioma para outro.",
+      "Domina mais de uma língua e trabalha com livros e legendas."
+    ],
+    "bibliotecario": [
+      "Organiza livros e orienta quem busca informação.",
+      "Cuida do acervo de uma biblioteca."
+    ],
+    "historiador": [
+      "Estuda os acontecimentos do passado.",
+      "Pesquisa documentos antigos e reconstrói eras."
+    ],
+    "filosofo": [
+      "Reflete sobre as grandes questões da existência.",
+      "Sócrates e Platão são exemplos famosos."
+    ],
+    "psicologo": [
+      "Ajuda pessoas a entender emoções e comportamentos.",
+      "Conversa com pacientes em um consultório."
+    ],
+    "psiquiatra": [
+      "Médico que trata doenças da mente.",
+      "Pode receitar remédios para ansiedade e depressão."
+    ],
+    "fisioterapeuta": [
+      "Ajuda na recuperação de movimentos do corpo.",
+      "Usa exercícios e massagens em pacientes lesionados."
+    ],
+    "nutricionista": [
+      "Orienta sobre alimentação saudável.",
+      "Monta cardápios e planos alimentares."
+    ],
+    "farmaceutico": [
+      "Cuida dos remédios e orienta o uso correto.",
+      "Trabalha em drogarias e hospitais."
+    ],
+    "cirurgiao": [
+      "Faz operações no corpo dos pacientes.",
+      "Veste avental e luvas dentro do centro cirúrgico."
+    ],
+    "pediatra": [
+      "Médico especializado em crianças e bebês.",
+      "Acompanha o crescimento e aplica as vacinas dos pequenos."
+    ],
+    "dermatologista": [
+      "Médico que trata problemas na pele.",
+      "Examina manchas, acne e cuida do envelhecimento."
+    ],
+    "oftalmologista": [
+      "Médico que cuida da visão e dos olhos.",
+      "Ajuda a escolher óculos e lentes."
+    ],
+    "cardiologista": [
+      "Médico que trata problemas do coração.",
+      "Mede a pressão e pede exames como o eletrocardiograma."
+    ],
+    "ortopedista": [
+      "Médico que trata ossos, músculos e articulações.",
+      "Engessa fraturas e opera joelhos."
+    ],
+    "programador": [
+      "Escreve códigos que fazem sistemas funcionar.",
+      "Passa o dia no computador resolvendo erros chamados bugs."
+    ],
+    "designer": [
+      "Cria visuais para produtos, sites e marcas.",
+      "Cuida de cores, formas e da experiência do usuário."
+    ],
+    "cientista": [
+      "Investiga o mundo com experimentos e hipóteses.",
+      "Usa o método científico para descobrir novidades."
+    ],
+    "pesquisador": [
+      "Investiga um tema a fundo para gerar conhecimento.",
+      "Publica artigos e trabalha em universidades e laboratórios."
+    ],
+    "inventor": [
+      "Cria objetos ou métodos que nunca existiram.",
+      "Santos Dumont, que desenvolveu o avião, é um exemplo."
+    ],
+    "astronauta": [
+      "Viaja ao espaço em naves.",
+      "Usa um traje especial e flutua sem peso."
+    ],
+    "detetive": [
+      "Investiga casos e procura pistas para desvendar mistérios.",
+      "Sherlock Holmes é o mais famoso da ficção."
+    ],
+    "cabeleireiro": [
+      "Corta, penteia e colore cabelos.",
+      "Trabalha em salões com tesoura e secador."
+    ],
+    "manicure": [
+      "Cuida das unhas das mãos e dos pés.",
+      "Passa esmalte e lixa com habilidade."
+    ],
+    "massagista": [
+      "Alivia dores e tensões com as mãos.",
+      "Trabalha em clínicas e spas."
+    ],
+    "jardineiro": [
+      "Cuida de plantas, flores e gramados.",
+      "Rega, poda e planta em jardins e praças."
+    ],
+    "zelador": [
+      "Cuida da manutenção e da limpeza de um prédio.",
+      "Conhece os moradores e vigia o condomínio."
+    ],
+    "porteiro": [
+      "Controla quem entra e quem sai de um prédio.",
+      "Recebe encomendas e anuncia as visitas."
+    ],
+    "faxineiro": [
+      "Mantém ambientes limpos e organizados.",
+      "Usa vassoura, rodo e produtos de limpeza."
+    ],
+    "costureiro": [
+      "Corta e costura roupas.",
+      "Trabalha com agulhas, linhas e máquinas de costura."
+    ],
+    "alfaiate": [
+      "Faz roupas sob medida, como ternos.",
+      "Usa fita métrica para tirar medidas."
+    ],
+    "sapateiro": [
+      "Conserta e fabrica calçados.",
+      "Trabalha com couro, cola e martelo."
+    ],
+    "relojoeiro": [
+      "Conserta e monta relógios.",
+      "Usa lupa e ferramentas minúsculas."
+    ],
+    "chaveiro": [
+      "Faz cópias de chaves e abre fechaduras.",
+      "É chamado quando alguém fica trancado do lado de fora."
+    ],
+    "vidraceiro": [
+      "Instala e conserta janelas e espelhos.",
+      "Corta e encaixa vidros com cuidado."
+    ],
+    "diplomata": [
+      "Representa seu país em outras nações.",
+      "Trabalha em embaixadas e negocia acordos."
+    ],
+    "prefeito": [
+      "Governa uma cidade.",
+      "É eleito a cada quatro anos para cuidar do município."
+    ],
+    "vereador": [
+      "Cria leis municipais e fiscaliza a prefeitura.",
+      "Trabalha na câmara, ao lado de outros eleitos da cidade."
+    ]
+  }
+}

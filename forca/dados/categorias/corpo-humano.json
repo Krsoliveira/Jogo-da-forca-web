@@ -1,0 +1,406 @@
+{
+  "categoria": "Corpo Humano",
+  "ordem": 9,
+  "palavras": {
+    "coracao": [
+      "Órgão que bombeia o sangue para todo o corpo.",
+      "Fica no peito e bate cerca de cem mil vezes por dia."
+    ],
+    "pulmao": [
+      "Órgão que recebe o ar e realiza as trocas gasosas.",
+      "Existem dois, e ficam dentro da caixa torácica."
+    ],
+    "figado": [
+      "Maior glândula do corpo, filtra substâncias e produz bile.",
+      "Fica no lado direito do abdômen e é capaz de se regenerar."
+    ],
+    "rim": [
+      "Órgão que filtra o sangue e produz a urina.",
+      "Normalmente temos dois, em forma de feijão."
+    ],
+    "estomago": [
+      "Bolsa muscular onde o alimento é misturado ao suco gástrico.",
+      "Fica entre o esôfago e o intestino."
+    ],
+    "intestino": [
+      "Tubo longo onde os nutrientes são absorvidos.",
+      "Tem uma parte fina e outra grossa."
+    ],
+    "cerebro": [
+      "Órgão central que comanda pensamentos, memórias e movimentos.",
+      "Fica protegido pelo crânio."
+    ],
+    "cerebelo": [
+      "Parte do sistema nervoso que ajuda no equilíbrio e na coordenação.",
+      "Fica na parte de trás da cabeça, abaixo do cérebro."
+    ],
+    "medula": [
+      "Cordão nervoso que passa dentro da coluna.",
+      "Leva mensagens entre o cérebro e o resto do corpo."
+    ],
+    "nervo": [
+      "Fio que transmite sinais entre o cérebro e as partes do corpo.",
+      "Pode ser sensitivo ou motor."
+    ],
+    "musculo": [
+      "Tecido que se contrai e permite os movimentos.",
+      "O bíceps é um dos mais conhecidos."
+    ],
+    "osso": [
+      "Peça rígida que sustenta o corpo.",
+      "O adulto tem cerca de 206 deles."
+    ],
+    "esqueleto": [
+      "Conjunto de ossos que dá forma e sustento ao corpo.",
+      "É o que sobra de nós em caveiras de Halloween."
+    ],
+    "cranio": [
+      "Caixa óssea que protege o cérebro.",
+      "Fica na cabeça e é formado por vários ossos unidos."
+    ],
+    "coluna": [
+      "Eixo de ossos empilhados que sustenta as costas.",
+      "É formada por vértebras e abriga a medula."
+    ],
+    "costela": [
+      "Osso curvo que protege os órgãos do peito.",
+      "Temos doze pares delas."
+    ],
+    "clavicula": [
+      "Osso longo e fino entre o ombro e o peito.",
+      "Costuma fraturar em quedas de bicicleta."
+    ],
+    "femur": [
+      "O osso mais longo e forte do corpo.",
+      "Fica na coxa."
+    ],
+    "tibia": [
+      "Osso da parte da frente da perna, abaixo do joelho.",
+      "Costuma doer quando se leva uma pancada na canela."
+    ],
+    "patela": [
+      "Pequeno osso arredondado que protege o joelho.",
+      "Também é chamada de rótula."
+    ],
+    "bacia": [
+      "Conjunto de ossos que sustenta a coluna e liga as pernas ao tronco.",
+      "É um pouco mais larga nas mulheres."
+    ],
+    "ombro": [
+      "Articulação que liga o braço ao tronco.",
+      "Permite girar o braço em várias direções."
+    ],
+    "cotovelo": [
+      "Articulação que dobra o braço.",
+      "Fica entre o antebraço e o braço."
+    ],
+    "pulso": [
+      "Articulação entre a mão e o antebraço.",
+      "É onde se sente a pulsação e se usa o relógio."
+    ],
+    "mao": [
+      "Parte final do braço, com cinco dedos.",
+      "Serve para segurar, escrever e fazer gestos."
+    ],
+    "dedo": [
+      "Cada uma das extremidades alongadas da mão ou do pé.",
+      "Temos dez nas mãos e dez nos pés."
+    ],
+    "polegar": [
+      "O dedo mais grosso da mão, que fica de lado.",
+      "Permite pegar objetos com a força de pinça."
+    ],
+    "unha": [
+      "Lâmina dura que protege a ponta dos dedos.",
+      "Cresce sem parar e é cortada com cortador."
+    ],
+    "joelho": [
+      "Articulação que dobra a perna.",
+      "Fica entre a coxa e a canela."
+    ],
+    "tornozelo": [
+      "Articulação entre o pé e a perna.",
+      "Pode torcer ao se pisar em falso."
+    ],
+    "calcanhar": [
+      "Parte de trás do pé.",
+      "É onde fica o tendão de Aquiles."
+    ],
+    "panturrilha": [
+      "Músculo na parte de trás da perna, abaixo do joelho.",
+      "É popularmente chamada de batata da perna."
+    ],
+    "coxa": [
+      "Parte da perna entre o quadril e o joelho.",
+      "Abriga um dos ossos mais longos do corpo."
+    ],
+    "quadril": [
+      "Região do corpo onde as pernas se ligam ao tronco.",
+      "Faz parte da articulação usada para caminhar."
+    ],
+    "cintura": [
+      "Parte mais estreita do tronco, entre as costelas e o quadril.",
+      "É onde se prende o cinto."
+    ],
+    "abdomen": [
+      "Região do tronco abaixo do peito, que abriga órgãos digestivos.",
+      "É conhecido popularmente como barriga."
+    ],
+    "umbigo": [
+      "Cicatriz que marca onde o bebê foi ligado à mãe.",
+      "Fica no meio da barriga."
+    ],
+    "peito": [
+      "Parte da frente do tronco, que protege o coração e os pulmões.",
+      "Fica entre o pescoço e o abdômen."
+    ],
+    "garganta": [
+      "Passagem que liga a boca ao esôfago e à laringe.",
+      "Dói quando se está resfriado."
+    ],
+    "laringe": [
+      "Órgão do pescoço que abriga as cordas vocais.",
+      "É responsável pela voz."
+    ],
+    "traqueia": [
+      "Tubo que leva o ar do pescoço até os pulmões.",
+      "Fica na frente do esôfago."
+    ],
+    "esofago": [
+      "Tubo que leva o alimento da boca ao estômago.",
+      "Fica atrás da traqueia."
+    ],
+    "amigdalas": [
+      "Pequenas massas de tecido no fundo da garganta.",
+      "Podem inflamar e causar dor ao engolir."
+    ],
+    "lingua": [
+      "Órgão muscular da boca ligado ao paladar e à fala.",
+      "Tem papilas que reconhecem sabores."
+    ],
+    "dente": [
+      "Estrutura dura da boca usada para mastigar.",
+      "Os adultos têm normalmente trinta e dois."
+    ],
+    "gengiva": [
+      "Tecido rosado que envolve a base dos dentes.",
+      "Pode sangrar quando há inflamação."
+    ],
+    "saliva": [
+      "Líquido produzido na boca que ajuda na digestão.",
+      "Umedece o alimento antes de engolir."
+    ],
+    "labio": [
+      "Borda carnuda da boca.",
+      "Os dois podem ser coloridos com batom."
+    ],
+    "nariz": [
+      "Parte do rosto usada para respirar e sentir cheiros.",
+      "Tem duas aberturas na parte de baixo."
+    ],
+    "retina": [
+      "Camada no fundo do olho sensível à luz.",
+      "Transforma imagens em sinais enviados ao cérebro."
+    ],
+    "pupila": [
+      "Pequeno círculo escuro no centro do olho.",
+      "Aumenta ou diminui conforme a luz do ambiente."
+    ],
+    "iris": [
+      "Parte colorida do olho.",
+      "Define se os olhos são castanhos, verdes ou azuis."
+    ],
+    "cornea": [
+      "Camada transparente que cobre a frente do olho.",
+      "Funciona como uma lente protetora."
+    ],
+    "cristalino": [
+      "Lente natural do olho, que foca as imagens.",
+      "Quando fica opaco, causa catarata."
+    ],
+    "palpebra": [
+      "Dobra de pele que cobre e protege o olho.",
+      "Abre e fecha ao piscar."
+    ],
+    "sobrancelha": [
+      "Faixa de pelos acima dos olhos.",
+      "Ajuda a impedir que o suor entre neles."
+    ],
+    "cilios": [
+      "Pelinhos curtos nas bordas das pálpebras.",
+      "Protegem os olhos de poeira e podem ganhar rímel."
+    ],
+    "orelha": [
+      "Parte externa do órgão da audição.",
+      "Fica nos dois lados da cabeça e capta sons."
+    ],
+    "timpano": [
+      "Fina membrana que vibra com o som dentro do ouvido.",
+      "Pode furar com sons muito altos ou pancadas."
+    ],
+    "coclea": [
+      "Estrutura em espiral do ouvido interno.",
+      "Tem formato parecido com o de um caracol."
+    ],
+    "pele": [
+      "Maior órgão do corpo, que o cobre por inteiro.",
+      "Protege contra infecções e sente calor e frio."
+    ],
+    "derme": [
+      "Camada intermediária da pele.",
+      "Tem vasos sanguíneos, nervos e glândulas."
+    ],
+    "epiderme": [
+      "Camada mais externa da pele.",
+      "É renovada constantemente e protege contra agressões."
+    ],
+    "cabelo": [
+      "Fios que cobrem a cabeça.",
+      "Pode ser liso, ondulado ou crespo."
+    ],
+    "sangue": [
+      "Líquido vermelho que circula pelas veias e artérias.",
+      "Leva oxigênio e nutrientes a todas as células."
+    ],
+    "plaquetas": [
+      "Células do sangue que ajudam na coagulação.",
+      "Estancam os cortes, formando um tampão."
+    ],
+    "hemoglobina": [
+      "Proteína do sangue que transporta o oxigênio.",
+      "Dá a cor vermelha às hemácias."
+    ],
+    "arteria": [
+      "Vaso que leva sangue do coração para o corpo.",
+      "É mais grossa e musculosa que a veia."
+    ],
+    "veia": [
+      "Vaso que leva sangue de volta ao coração.",
+      "É a azulada que se vê no pulso."
+    ],
+    "capilar": [
+      "Menor tipo de vaso sanguíneo, mais fino que um fio de cabelo.",
+      "É onde ocorrem as trocas entre o sangue e as células."
+    ],
+    "pancreas": [
+      "Glândula que produz a insulina e enzimas digestivas.",
+      "Fica atrás do estômago."
+    ],
+    "bexiga": [
+      "Bolsa muscular onde a urina fica guardada.",
+      "Quando está cheia, dá vontade de ir ao banheiro."
+    ],
+    "baco": [
+      "Órgão do lado esquerdo do abdômen que filtra o sangue.",
+      "Faz parte do sistema de defesa do organismo."
+    ],
+    "vesicula": [
+      "Pequeno saco que guarda a bile produzida pelo fígado.",
+      "Pode ser retirada quando surgem pedras."
+    ],
+    "tireoide": [
+      "Glândula no pescoço que regula o metabolismo.",
+      "Tem formato de borboleta."
+    ],
+    "hipofise": [
+      "Pequena glândula do cérebro que comanda outras glândulas.",
+      "É chamada de glândula mestra."
+    ],
+    "hormonio": [
+      "Substância química que controla funções do corpo.",
+      "A insulina e a adrenalina são exemplos."
+    ],
+    "neuronio": [
+      "Célula do sistema nervoso que transmite impulsos elétricos.",
+      "O cérebro tem bilhões deles."
+    ],
+    "tendao": [
+      "Cordão resistente que liga o músculo ao osso.",
+      "O mais famoso fica no calcanhar."
+    ],
+    "ligamento": [
+      "Fita resistente que une um osso a outro nas articulações.",
+      "O do joelho se rompe com frequência no futebol."
+    ],
+    "cartilagem": [
+      "Tecido flexível que amortece o contato entre os ossos.",
+      "Forma a ponta do nariz e das orelhas."
+    ],
+    "articulacao": [
+      "Ponto de encontro entre dois ossos que permite movimento.",
+      "O cotovelo e o joelho são exemplos."
+    ],
+    "diafragma": [
+      "Músculo abaixo dos pulmões que ajuda na respiração.",
+      "Quando se contrai de repente, causa soluço."
+    ],
+    "apendice": [
+      "Pequena bolsa ligada ao intestino grosso.",
+      "Pode inflamar e exigir cirurgia de urgência."
+    ],
+    "cabeca": [
+      "Parte do corpo que contém o cérebro, os olhos e a boca.",
+      "Fica acima do pescoço."
+    ],
+    "pescoco": [
+      "Parte do corpo que liga a cabeça ao tronco.",
+      "Sustenta o crânio e abriga a laringe."
+    ],
+    "braco": [
+      "Membro superior do corpo, entre o ombro e a mão.",
+      "Dobra no cotovelo."
+    ],
+    "perna": [
+      "Membro inferior que vai do quadril ao pé.",
+      "Usamos para andar e correr."
+    ],
+    "testa": [
+      "Parte do rosto entre as sobrancelhas e o cabelo.",
+      "Costuma enrugar quando franzimos o rosto."
+    ],
+    "bochecha": [
+      "Parte macia e carnuda dos dois lados do rosto.",
+      "Fica vermelha quando sentimos vergonha."
+    ],
+    "queixo": [
+      "Ponto mais baixo do rosto, abaixo da boca.",
+      "Os boxeadores o protegem com as luvas."
+    ],
+    "nuca": [
+      "Parte de trás do pescoço, onde termina a cabeça.",
+      "Fica logo acima da coluna cervical."
+    ],
+    "rosto": [
+      "Parte da frente da cabeça, com olhos, nariz e boca.",
+      "É o que mais usamos para reconhecer alguém."
+    ],
+    "sinapse": [
+      "Ponto de ligação entre duas células nervosas.",
+      "É onde passam as mensagens entre neurônios."
+    ],
+    "hemacia": [
+      "Célula vermelha do sangue.",
+      "Carrega o oxigênio até os tecidos."
+    ],
+    "glandula": [
+      "Órgão que produz e libera substâncias, como suor ou hormônios.",
+      "A tireoide e o pâncreas são exemplos."
+    ],
+    "vertebra": [
+      "Cada um dos ossos que formam a coluna.",
+      "Temos mais de vinte delas, empilhadas uma sobre a outra."
+    ],
+    "mandibula": [
+      "Osso móvel que forma a parte de baixo da face.",
+      "É o único osso da cabeça que se movimenta ao mastigar e falar."
+    ],
+    "esterno": [
+      "Osso achatado no centro do peito, onde se prendem as costelas.",
+      "Protege o coração pela frente."
+    ],
+    "umero": [
+      "Osso longo do braço, entre o ombro e o cotovelo.",
+      "Forma o braço junto com os ossos do antebraço."
+    ]
+  }
+}
