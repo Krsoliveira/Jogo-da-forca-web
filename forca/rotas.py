@@ -12,6 +12,7 @@ from . import banco, regras
 from .config import (
     ALEATORIO,
     DIFICULDADE_CONFIG,
+    DIFICULDADES,
     LETRAS_VALIDAS,
     PALAVRAS_RECENTES,
     PENALIDADE_CHUTE_ERRADO,
@@ -126,8 +127,14 @@ def pagina_inicial():
 
 @bp.route("/beta")
 def beta():
-    """Guia de estilo da nova interface, em construção. A interface atual continua em `/`."""
-    return render_template("beta.html", version=current_app.config["VERSAO_ASSETS"])
+    """Nova interface, em construção. A interface atual continua em `/`."""
+    return render_template("menu.html", version=current_app.config["VERSAO_ASSETS"])
+
+
+@bp.route("/beta/estilo")
+def beta_estilo():
+    """Guia de estilo da nova interface (cores, componentes e animações)."""
+    return render_template("estilo.html", version=current_app.config["VERSAO_ASSETS"])
 
 
 @bp.route("/health")
@@ -139,6 +146,25 @@ def health():
 @bp.route("/categorias")
 def get_categorias():
     return jsonify(CATEGORIAS)
+
+
+@bp.route("/api/catalogo")
+def catalogo():
+    """Opções do menu: dificuldades com tentativas e categorias com a quantidade de palavras."""
+    dificuldades = [
+        {"id": d, "tentativas": DIFICULDADE_CONFIG[d], "dicas": 1 if d == "dificil" else 2}  # difícil esconde a 2ª dica
+        for d in DIFICULDADES
+    ]
+    categorias = [
+        {"nome": nome, "palavras": len(palavras), "aleatorio": False}
+        for nome, palavras in PALAVRAS_POR_CATEGORIA.items()
+    ]
+    total_banco = sum(len(banco.palavras(d)) for d in DIFICULDADES)
+    categorias.append({"nome": ALEATORIO, "palavras": total_banco, "aleatorio": True})
+    resposta = jsonify(dificuldades=dificuldades, categorias=categorias)
+    resposta.cache_control.public = True
+    resposta.cache_control.max_age = 300  # muda só a cada deploy
+    return resposta
 
 
 @bp.route("/novo_jogo")

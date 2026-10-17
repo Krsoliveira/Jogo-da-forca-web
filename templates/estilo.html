@@ -1,20 +1,7 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="theme-color" content="#06060f">
-    <meta name="color-scheme" content="dark">
-    <title>Forca · Guia de estilo</title>
-    <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
-    <link rel="preload" href="{{ url_for('static', filename='fonts/space-grotesk-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
-    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}?v={{ version }}">
-    <script type="module" src="{{ url_for('static', filename='js/dist/beta.js') }}?v={{ version }}"></script>
-</head>
-<body>
-    <div class="fundo-grade" aria-hidden="true"></div>
-    <a href="#conteudo" class="btn sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50">Ir para o conteúdo</a>
-
+{% extends "_base_beta.html" %}
+{% set entrada = "estilo" %}
+{% block titulo %}Forca · Guia de estilo{% endblock %}
+{% block corpo %}
     <header class="mx-auto flex max-w-5xl items-center justify-between px-4 py-6">
         <p class="font-logo text-2xl font-black tracking-[0.18em] sm:text-3xl" aria-label="Forca">
             <span class="neon animate-piscar-neon" data-letreiro aria-hidden="true"><span>F</span><span>O</span><span>R</span><span>C</span><span>A</span></span>
@@ -107,5 +94,4 @@
             </div>
         </section>
     </main>
-</body>
-</html>
+{% endblock %}
