@@ -124,6 +124,12 @@ def pagina_inicial():
     return render_template("index.html", version=current_app.config["VERSAO_ASSETS"])
 
 
+@bp.route("/beta")
+def beta():
+    """Guia de estilo da nova interface, em construção. A interface atual continua em `/`."""
+    return render_template("beta.html", version=current_app.config["VERSAO_ASSETS"])
+
+
 @bp.route("/health")
 def health():
     """Usado pelo healthcheck do Railway para saber se o app está de pé."""

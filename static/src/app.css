@@ -1,0 +1,324 @@
+@import "tailwindcss";
+
+/* ───────── Fontes (servidas localmente, ver scripts/copiar-fontes.mjs) ───────── */
+@font-face {
+  font-family: "Orbitron";
+  font-weight: 400 900;
+  font-display: swap;
+  src: url("../fonts/orbitron-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "Space Grotesk";
+  font-weight: 300 700;
+  font-display: swap;
+  src: url("../fonts/space-grotesk-latin-wght-normal.woff2") format("woff2-variations");
+}
+@font-face {
+  font-family: "JetBrains Mono";
+  font-weight: 100 800;
+  font-display: swap;
+  src: url("../fonts/jetbrains-mono-latin-wght-normal.woff2") format("woff2-variations");
+}
+
+/* ───────── Tokens de design ───────── */
+@theme {
+  --font-logo: "Orbitron", ui-sans-serif, system-ui, sans-serif;
+  --font-ui: "Space Grotesk", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, "Cascadia Code", monospace;
+
+  --color-noite: #06060f;
+  --color-noite-2: #0d0c1f;
+  --color-vidro: rgb(20 18 48 / 0.55);
+  --color-linha: rgb(255 255 255 / 0.09);
+  --color-texto: #ecebff;
+  --color-texto-suave: #9a97c7;
+
+  --color-magenta: #ff2bd6;
+  --color-ciano: #22e6ff;
+  --color-lima: #b6ff3b;
+  --color-ambar: #ffb547;
+  --color-perigo: #ff3d6e;
+
+  --radius-painel: 1.25rem;
+
+  --animate-brilho: brilho 3s linear infinite;
+  --animate-piscar-neon: piscar-neon 6s steps(1) infinite;
+  --animate-grade: grade 14s linear infinite;
+
+  @keyframes brilho {
+    from { background-position: -200% 0; }
+    to { background-position: 200% 0; }
+  }
+  /* Oscilação de letreiro neon: quase sempre aceso, com falhas breves. */
+  @keyframes piscar-neon {
+    0%, 18%, 22%, 62%, 64%, 100% { opacity: 1; }
+    20%, 63% { opacity: 0.55; }
+  }
+  @keyframes grade {
+    from { background-position: 0 0; }
+    to { background-position: 0 64px; }
+  }
+}
+
+/* ───────── Base ───────── */
+@layer base {
+  html {
+    color-scheme: dark;
+    background: var(--color-noite);
+    color: var(--color-texto);
+    font-family: var(--font-ui);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+  }
+  body {
+    min-height: 100dvh;
+    background:
+      radial-gradient(55rem 30rem at 80% -8%, rgb(255 43 214 / 0.18), transparent 60%),
+      radial-gradient(45rem 28rem at -5% 15%, rgb(34 230 255 / 0.14), transparent 60%),
+      radial-gradient(40rem 30rem at 50% 115%, rgb(124 77 255 / 0.18), transparent 60%),
+      var(--color-noite);
+  }
+  h1, h2, h3 {
+    font-weight: 700;
+    letter-spacing: -0.02em;
+  }
+  :focus-visible {
+    outline: 2px solid var(--color-ciano);
+    outline-offset: 3px;
+    border-radius: 0.6rem;
+    box-shadow: 0 0 0 6px rgb(34 230 255 / 0.18);
+  }
+  ::selection { background: rgb(255 43 214 / 0.35); }
+
+  @media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+/* ───────── Componentes ───────── */
+@layer components {
+  /* Grade synthwave em perspectiva, fixa no fundo da página. */
+  .fundo-grade {
+    position: fixed;
+    inset: auto 0 0 0;
+    height: 45vh;
+    pointer-events: none;
+    z-index: -1;
+    background-image:
+      linear-gradient(rgb(255 43 214 / 0.35) 1px, transparent 1px),
+      linear-gradient(90deg, rgb(34 230 255 / 0.22) 1px, transparent 1px);
+    background-size: 64px 64px;
+    transform: perspective(420px) rotateX(62deg);
+    transform-origin: bottom;
+    mask-image: linear-gradient(to top, black 10%, transparent 85%);
+    animation: var(--animate-grade);
+  }
+
+  /* Letreiro: texto com brilho em camadas. A cor vem de --neon. */
+  .neon {
+    --neon: var(--color-magenta);
+    color: #fff;
+    text-shadow:
+      0 0 2px #fff,
+      0 0 8px var(--neon),
+      0 0 18px var(--neon),
+      0 0 38px var(--neon);
+  }
+  .neon-ciano { --neon: var(--color-ciano); }
+  .neon-lima { --neon: var(--color-lima); }
+
+  /* Painel de vidro com borda em degradê e brilho sutil. */
+  .painel {
+    position: relative;
+    background: linear-gradient(160deg, rgb(30 26 70 / 0.7), rgb(12 11 30 / 0.7));
+    backdrop-filter: blur(14px) saturate(140%);
+    border: 1px solid var(--color-linha);
+    border-radius: var(--radius-painel);
+    box-shadow: 0 20px 50px -20px rgb(0 0 0 / 0.8), inset 0 1px 0 rgb(255 255 255 / 0.06);
+    transform-style: preserve-3d;
+    will-change: transform;
+  }
+  .painel::before {
+    content: "";
+    position: absolute;
+    inset: -1px;
+    border-radius: inherit;
+    padding: 1px;
+    background: linear-gradient(135deg, rgb(255 43 214 / 0.6), transparent 35%, transparent 65%, rgb(34 230 255 / 0.6));
+    mask: linear-gradient(#000 0 0) content-box, linear-gradient(#000 0 0);
+    mask-composite: exclude;
+    pointer-events: none;
+  }
+
+  .rotulo {
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    color: var(--color-texto-suave);
+  }
+
+  /* Botões: contorno neon; o preenchido é a ação principal. Cor via --cor. */
+  .btn {
+    --cor: var(--color-ciano);
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    min-height: 2.9rem;
+    padding: 0.55rem 1.35rem;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--cor);
+    background: rgb(255 255 255 / 0.02);
+    border: 1.5px solid color-mix(in srgb, var(--cor) 70%, transparent);
+    border-radius: 0.85rem;
+    box-shadow: 0 0 0 0 transparent, inset 0 0 12px color-mix(in srgb, var(--cor) 12%, transparent);
+    text-shadow: 0 0 10px color-mix(in srgb, var(--cor) 60%, transparent);
+    cursor: pointer;
+    transition: box-shadow 0.25s ease, background 0.25s ease, color 0.25s ease;
+    touch-action: manipulation;
+    user-select: none;
+  }
+  @media (hover: hover) {
+    .btn:hover:not(:disabled) {
+      background: color-mix(in srgb, var(--cor) 10%, transparent);
+      box-shadow: 0 0 18px color-mix(in srgb, var(--cor) 55%, transparent), inset 0 0 16px color-mix(in srgb, var(--cor) 25%, transparent);
+    }
+  }
+  .btn:disabled { opacity: 0.35; cursor: not-allowed; filter: grayscale(0.6); }
+
+  .btn-primario {
+    color: #fff;
+    border-color: transparent;
+    background: linear-gradient(120deg, var(--color-magenta), #8b5cff 55%, var(--color-ciano));
+    background-size: 200% 100%;
+    box-shadow: 0 0 22px rgb(255 43 214 / 0.45), 0 8px 24px -8px rgb(139 92 255 / 0.7);
+    text-shadow: 0 1px 2px rgb(0 0 0 / 0.35);
+    transition: box-shadow 0.25s ease, background-position 0.6s ease;
+  }
+  @media (hover: hover) {
+    .btn-primario:hover:not(:disabled) {
+      background: linear-gradient(120deg, var(--color-magenta), #8b5cff 55%, var(--color-ciano));
+      background-size: 200% 100%;
+      background-position: 100% 0;
+      box-shadow: 0 0 34px rgb(255 43 214 / 0.65), 0 0 60px rgb(34 230 255 / 0.25);
+    }
+  }
+  .btn-magenta { --cor: var(--color-magenta); }
+  .btn-lima { --cor: var(--color-lima); }
+  .btn-ambar { --cor: var(--color-ambar); }
+  .btn-fantasma { --cor: var(--color-texto-suave); }
+
+  .selo {
+    --cor: var(--color-ciano);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.4rem;
+    padding: 0.28rem 0.8rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    color: var(--cor);
+    background: color-mix(in srgb, var(--cor) 9%, transparent);
+    border: 1px solid color-mix(in srgb, var(--cor) 45%, transparent);
+    border-radius: 999px;
+  }
+
+  .selo-magenta { --cor: var(--color-magenta); }
+  .selo-lima { --cor: var(--color-lima); }
+
+  /* Tecla do teclado virtual. */
+  .tecla {
+    display: grid;
+    place-items: center;
+    aspect-ratio: 1;
+    min-width: 2.5rem;
+    font-family: var(--font-mono);
+    font-weight: 700;
+    font-size: 1.05rem;
+    color: var(--color-texto);
+    background: linear-gradient(180deg, rgb(40 36 90 / 0.8), rgb(18 16 44 / 0.9));
+    border: 1px solid rgb(255 255 255 / 0.1);
+    border-radius: 0.7rem;
+    box-shadow: 0 4px 0 rgb(0 0 0 / 0.55), inset 0 1px 0 rgb(255 255 255 / 0.08);
+    cursor: pointer;
+    transition: color 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease, background 0.2s ease;
+    touch-action: manipulation;
+    user-select: none;
+  }
+  @media (hover: hover) {
+    .tecla:hover:not(:disabled) {
+      color: var(--color-ciano);
+      border-color: rgb(34 230 255 / 0.6);
+      box-shadow: 0 4px 0 rgb(0 0 0 / 0.55), 0 0 16px rgb(34 230 255 / 0.45);
+    }
+  }
+  .tecla:disabled { cursor: not-allowed; }
+  .tecla:disabled:not(.tecla-certa, .tecla-errada) { opacity: 0.35; }
+  .tecla-certa {
+    color: #0b1a00;
+    background: var(--color-lima);
+    border-color: var(--color-lima);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 0.5), 0 0 18px rgb(182 255 59 / 0.6);
+  }
+  .tecla-errada {
+    color: rgb(255 61 110 / 0.85);
+    background: rgb(255 61 110 / 0.08);
+    border-color: rgb(255 61 110 / 0.45);
+    box-shadow: 0 2px 0 rgb(0 0 0 / 0.5);
+    text-decoration: line-through 2px;
+  }
+
+  /* Casa de uma letra da palavra secreta. */
+  .casa {
+    display: grid;
+    place-items: end center;
+    width: 2.6rem;
+    height: 3.2rem;
+    padding-bottom: 0.35rem;
+    font-family: var(--font-mono);
+    font-weight: 800;
+    font-size: 1.8rem;
+    color: #fff;
+    border-bottom: 3px solid rgb(34 230 255 / 0.55);
+    box-shadow: 0 6px 12px -8px rgb(34 230 255 / 0.9);
+    transform-style: preserve-3d;
+  }
+  .casa-revelada {
+    border-bottom-color: var(--color-lima);
+    text-shadow: 0 0 10px rgb(182 255 59 / 0.8);
+    box-shadow: 0 6px 14px -8px rgb(182 255 59 / 1);
+  }
+
+  .barra {
+    height: 0.65rem;
+    overflow: hidden;
+    background: rgb(255 255 255 / 0.06);
+    border: 1px solid var(--color-linha);
+    border-radius: 999px;
+  }
+  .barra > span {
+    display: block;
+    width: 0;
+    height: 100%;
+    border-radius: 999px;
+    background: linear-gradient(90deg, var(--color-ciano), var(--color-magenta), var(--color-ciano));
+    background-size: 200% 100%;
+    box-shadow: 0 0 14px rgb(34 230 255 / 0.7);
+    animation: var(--animate-brilho);
+  }
+}
+
+/* Estado inicial das animações de entrada. Só esconde quando há JavaScript para mostrar de volta. */
+@media (scripting: enabled) {
+  [data-entrada],
+  [data-letreiro] > span {
+    opacity: 0;
+  }
+}
