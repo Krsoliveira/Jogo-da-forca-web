@@ -13,3 +13,11 @@ venv.bak/
 .DS_Store
 # Cache de dados baixados pelos scripts
 .cache/
+
+# Interface (Tailwind)
+node_modules/
+static/css/app.css
+static/fonts/
+
+# JavaScript empacotado pelo esbuild
+static/js/dist/

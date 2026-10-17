@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#06060f">
+    <meta name="color-scheme" content="dark">
+    <title>Forca · Guia de estilo</title>
+    <link rel="icon" href="{{ url_for('static', filename='img/favicon.svg') }}" type="image/svg+xml">
+    <link rel="preload" href="{{ url_for('static', filename='fonts/space-grotesk-latin-wght-normal.woff2') }}" as="font" type="font/woff2" crossorigin>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/app.css') }}?v={{ version }}">
+    <script type="module" src="{{ url_for('static', filename='js/dist/beta.js') }}?v={{ version }}"></script>
+</head>
+<body>
+    <div class="fundo-grade" aria-hidden="true"></div>
+    <a href="#conteudo" class="btn sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50">Ir para o conteúdo</a>
+
+    <header class="mx-auto flex max-w-5xl items-center justify-between px-4 py-6">
+        <p class="font-logo text-2xl font-black tracking-[0.18em] sm:text-3xl" aria-label="Forca">
+            <span class="neon animate-piscar-neon" data-letreiro aria-hidden="true"><span>F</span><span>O</span><span>R</span><span>C</span><span>A</span></span>
+        </p>
+        <span class="selo">Beta</span>
+    </header>
+
+    <main id="conteudo" class="mx-auto flex max-w-5xl flex-col gap-6 px-4 pb-20 [perspective:1200px]">
+        <section data-entrada>
+            <p class="rotulo">Design system</p>
+            <h1 class="mt-1 text-4xl sm:text-5xl">Neon, vidro e <span class="neon neon-ciano">movimento</span></h1>
+            <p class="mt-3 max-w-prose text-texto-suave">Base visual da nova interface. Passe o mouse sobre os painéis, clique nas teclas e ganhe XP para ver as animações.</p>
+        </section>
+
+        <section class="painel p-6 sm:p-8" data-entrada aria-labelledby="t-jogo">
+            <div class="flex flex-wrap items-center justify-between gap-3">
+                <h2 id="t-jogo" class="text-xl">Palavra e teclado</h2>
+                <div class="flex items-center gap-2">
+                    <span class="selo selo-magenta"><span aria-hidden="true">♥</span> <span data-vidas>6</span> vidas</span>
+                </div>
+            </div>
+
+            <div class="mt-6 flex justify-center gap-2 sm:gap-3 [perspective:600px]" data-palavra aria-label="Palavra secreta de demonstração">
+                <span class="casa" data-casa></span><span class="casa" data-casa></span><span class="casa" data-casa></span><span class="casa" data-casa></span>
+            </div>
+
+            <div class="mx-auto mt-8 grid max-w-md grid-cols-7 gap-2" role="group" aria-label="Teclado de demonstração">
+                <button class="tecla" type="button" data-tecla="N">N</button>
+                <button class="tecla" type="button" data-tecla="E">E</button>
+                <button class="tecla" type="button" data-tecla="O">O</button>
+                <button class="tecla" type="button" data-tecla="A">A</button>
+                <button class="tecla" type="button" data-tecla="R">R</button>
+                <button class="tecla" type="button" data-tecla="S">S</button>
+                <button class="tecla" type="button" data-tecla="T">T</button>
+            </div>
+            <div class="mt-6 flex justify-center">
+                <button class="btn btn-fantasma" type="button" data-reiniciar>Reiniciar demonstração</button>
+            </div>
+        </section>
+
+        <div class="grid gap-6 md:grid-cols-2">
+            <section class="painel p-6" data-entrada aria-labelledby="t-botoes">
+                <h2 id="t-botoes" class="text-xl">Botões</h2>
+                <div class="mt-5 flex flex-wrap gap-3">
+                    <button class="btn btn-primario" type="button">Jogar agora</button>
+                    <button class="btn" type="button">Categorias</button>
+                    <button class="btn btn-magenta" type="button">Arriscar</button>
+                    <button class="btn btn-lima" type="button">Próxima</button>
+                    <button class="btn btn-ambar" type="button">Dica</button>
+                    <button class="btn btn-fantasma" type="button">Voltar</button>
+                    <button class="btn" type="button" disabled>Desativado</button>
+                </div>
+            </section>
+
+            <section class="painel p-6" data-entrada aria-labelledby="t-xp">
+                <h2 id="t-xp" class="text-xl">Nível e experiência</h2>
+                <div class="mt-5 flex flex-wrap gap-2">
+                    <span class="selo">Nível 3</span>
+                    <span class="selo selo-magenta">5 seguidas</span>
+                    <span class="selo selo-lima">Fácil</span>
+                </div>
+                <div class="barra mt-5" role="progressbar" aria-valuenow="640" aria-valuemin="0" aria-valuemax="1000" aria-label="Experiência">
+                    <span data-barra-xp></span>
+                </div>
+                <div class="mt-2 flex items-center justify-between">
+                    <p class="font-mono text-sm text-texto-suave"><span data-texto-xp>640</span> / 1000 XP</p>
+                    <button class="btn btn-lima !min-h-10 !px-4 text-sm" type="button" data-ganhar-xp>+120 XP</button>
+                </div>
+            </section>
+        </div>
+
+        <section class="painel p-6" data-entrada aria-labelledby="t-tipo">
+            <h2 id="t-tipo" class="text-xl">Tipografia</h2>
+            <div class="mt-5 grid gap-6 sm:grid-cols-3">
+                <div>
+                    <p class="rotulo">Logo</p>
+                    <p class="neon mt-2 font-logo text-3xl font-black tracking-[0.18em]">FORCA</p>
+                    <p class="mt-1 text-sm text-texto-suave">Orbitron</p>
+                </div>
+                <div>
+                    <p class="rotulo">Interface</p>
+                    <p class="mt-2 text-3xl font-bold">Aa Bb Ção</p>
+                    <p class="mt-1 text-sm text-texto-suave">Space Grotesk</p>
+                </div>
+                <div>
+                    <p class="rotulo">Palavra e teclado</p>
+                    <p class="mt-2 font-mono text-3xl font-extrabold">A B C</p>
+                    <p class="mt-1 text-sm text-texto-suave">JetBrains Mono</p>
+                </div>
+            </div>
+        </section>
+    </main>
+</body>
+</html>
