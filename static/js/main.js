@@ -105,6 +105,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     const botao = document.createElement('button');
                     botao.textContent = cat;
                     botao.classList.add('btn-categoria');
+                    if (cat === 'Aleatório') botao.classList.add('btn-aleatorio');
                     elements.botoesCategoria.appendChild(botao);
                 });
                 categoriasCarregadas = true;

@@ -16,6 +16,8 @@ PENALIDADE_CHUTE_ERRADO = 30
 VITORIAS_PARA_SUBIR_NIVEL_DIFICULDADE = 5
 XP_PARA_PROXIMO_NIVEL = 1000
 LETRAS_VALIDAS = set(string.ascii_lowercase)
+ALEATORIO = "Aleatório"  # modo sem categoria: sorteia do banco geral conforme a dificuldade
+PALAVRAS_RECENTES = 50  # no modo Aleatório, quantas palavras anteriores não podem se repetir
 
 # --- ESTADO DAS PARTIDAS NO SERVIDOR ---
 PARTIDA_TTL_SEGUNDOS = 60 * 60  # partida parada por 1h é descartada
